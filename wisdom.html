@@ -6,227 +6,207 @@
   <title>Wellness Wisdom — True Wellness School</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { display: ['Bricolage Grotesque','sans-serif'], body: ['Inter','sans-serif'] },
+          fontFamily: { display: ['Cormorant Garamond','serif'], body: ['Inter','sans-serif'] },
           colors: {
-            coral:  { DEFAULT:'#FF6B6B', dark:'#E84545' },
-            teal:   { DEFAULT:'#4ECDC4', dark:'#2BB5AB' },
-            violet: { DEFAULT:'#7C3AED', dark:'#5B21B6' },
-            amber:  { DEFAULT:'#FFD93D', dark:'#F59E0B' },
-            mint:   { DEFAULT:'#6BCB77', dark:'#16A34A' },
+            sage:     { DEFAULT:'#7A8C6E', light:'#F2F5EF', dark:'#4A5C40' },
+            cream:    { DEFAULT:'#FAF7F2', dark:'#F0EBE0' },
+            terra:    { DEFAULT:'#B5704F', light:'#F5EDE8', dark:'#8C4E31' },
+            gold:     { DEFAULT:'#C9A44B', light:'#FBF5E6' },
+            charcoal: { DEFAULT:'#1C2018' },
+            warm:     { DEFAULT:'#5C5247' },
           }
         }
       }
     }
   </script>
   <style>
-    *{scroll-behavior:smooth}
-    body{font-family:'Inter',sans-serif;overflow-x:hidden}
-    h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif}
-    .nav-blur{background:rgba(255,255,255,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-    .grad-text{background:linear-gradient(90deg,#7C3AED,#FF6B6B,#4ECDC4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-    .reveal{opacity:0}.reveal.visible{animation:fadeUp .65s ease forwards}
+    *{scroll-behavior:smooth;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;background:#FAF7F2;color:#1C2018;overflow-x:hidden}
+    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
+    .nav-glass{background:rgba(250,247,242,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .reveal{opacity:0}.reveal.visible{animation:fadeUp .7s ease forwards}
     .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}.d5{animation-delay:.5s}.d6{animation-delay:.6s}
-    .card-hover{transition:transform .25s ease,box-shadow .25s ease}
-    .card-hover:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,.12)}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-    .float{animation:float 7s ease-in-out infinite}
+    .lift{transition:transform .3s ease,box-shadow .3s ease}
+    .lift:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(28,32,24,.1)}
+    .divider{width:48px;height:2px;background:#7A8C6E}
+    .tag{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:999px}
+    .hero-img{
+      background-image:linear-gradient(to bottom,rgba(28,32,24,.4) 0%,rgba(28,32,24,.2) 50%,rgba(28,32,24,.6) 100%),
+        url('https://images.unsplash.com/photo-1529693662653-9d480530a697?w=1800&q=85&fit=crop');
+      background-size:cover;background-position:center;background-attachment:fixed;
+    }
   </style>
 </head>
-<body class="bg-white text-gray-800">
+<body>
 
 <!-- NAV -->
-<nav class="fixed top-0 w-full z-50 nav-blur border-b border-gray-100/60">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="index.html" class="font-display font-extrabold text-xl">
-      <span class="grad-text">True Wellness</span><span class="text-gray-700"> School</span>
+<nav class="fixed top-0 w-full z-50 nav-glass border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
+    <a href="index.html" class="font-display font-semibold text-2xl text-charcoal tracking-wide">
+      True Wellness <span class="text-sage">School</span>
     </a>
-    <div class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-600">
-      <a href="pillars.html"  class="hover:text-violet   transition-colors">6 Pillars</a>
-      <a href="programs.html" class="hover:text-coral    transition-colors">Programs</a>
-      <a href="recipes.html"  class="hover:text-mint-dark transition-colors">Recipes</a>
-      <a href="wisdom.html"   class="text-amber-600 font-semibold">Wisdom</a>
-      <a href="programs.html#book" class="bg-amber-500 text-white px-5 py-2 rounded-full shadow hover:bg-amber-600 transition-all">Book a Session</a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-warm">
+      <a href="pillars.html"  class="hover:text-sage-dark transition-colors">6 Pillars</a>
+      <a href="programs.html" class="hover:text-terra transition-colors">Programs</a>
+      <a href="recipes.html"  class="hover:text-sage-dark transition-colors">Recipes</a>
+      <a href="wisdom.html"   class="text-gold font-semibold">Wisdom</a>
+      <a href="programs.html#book" class="bg-terra text-white text-sm px-6 py-2.5 rounded-full hover:bg-terra-dark transition-all shadow-sm">Book a Session</a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="relative pt-32 pb-24 px-6 overflow-hidden" style="background:linear-gradient(135deg,#F59E0B 0%,#FFD93D 40%,#FBBF24 100%)">
-  <div class="absolute inset-0 opacity-15" style="background-image:radial-gradient(circle at 50% 50%, white 1px, transparent 1px);background-size:30px 30px"></div>
-  <div class="float absolute top-20 left-10 w-20 h-20 bg-white/20 rounded-full blur-xl"></div>
-  <div class="float absolute bottom-10 right-20 w-32 h-32 bg-orange-300/30 rounded-full blur-2xl"></div>
-  <div class="max-w-4xl mx-auto text-center relative z-10">
-    <div class="inline-block bg-white/30 text-gray-800 text-xs font-bold px-5 py-2 rounded-full uppercase tracking-widest mb-8">Wisdom Library</div>
-    <h1 class="font-display font-extrabold text-5xl md:text-7xl text-gray-900 leading-tight mb-6">
-      Words That<br /><span class="text-white drop-shadow-sm">Change Lives</span>
+<section class="hero-img min-h-[60vh] flex items-end pb-20 pt-36 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-4"><span class="tag bg-white/20 text-white border border-white/30">Wisdom Library</span></div>
+    <h1 class="reveal d1 font-display font-semibold text-white text-6xl md:text-8xl leading-[1.05] mb-5 drop-shadow-md">
+      Words That<br /><em>Change Lives</em>
     </h1>
-    <p class="text-gray-800/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+    <p class="reveal d2 text-white/80 text-lg max-w-xl leading-relaxed">
       Curated insights from the world's greatest minds on wellness, longevity, brain health, and the art of living well.
     </p>
   </div>
 </section>
 
 <!-- HERO QUOTE -->
-<section class="py-20 px-6 bg-white">
-  <div class="max-w-4xl mx-auto">
-    <div class="reveal relative bg-gradient-to-br from-emerald-50 via-green-50 to-lime-50 rounded-3xl overflow-hidden p-14 text-center border border-green-100">
-      <div class="absolute -top-10 -left-10 w-48 h-48 bg-green-200/40 rounded-full blur-3xl"></div>
-      <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-lime-200/40 rounded-full blur-3xl"></div>
+<section class="py-24 px-6 bg-white">
+  <div class="max-w-4xl mx-auto reveal">
+    <div class="relative rounded-2xl overflow-hidden border border-black/5 bg-gradient-to-br from-green-50 to-cream p-16 text-center">
+      <div class="absolute -top-8 -left-8 w-40 h-40 bg-green-100/50 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-8 -right-8 w-56 h-56 bg-lime-100/50 rounded-full blur-3xl"></div>
       <div class="relative z-10">
-        <div class="text-5xl text-violet mb-6">❝</div>
-        <blockquote class="font-display font-extrabold text-3xl md:text-5xl text-gray-800 leading-tight mb-6">
+        <p class="text-6xl text-sage mb-6 font-display">"</p>
+        <blockquote class="font-display font-semibold text-4xl md:text-6xl text-charcoal leading-tight mb-6">
           Let food be thy medicine<br />and medicine be thy food.
         </blockquote>
-        <p class="text-gray-600 font-semibold text-lg">— Hippocrates, Father of Medicine</p>
-        <p class="mt-6 text-gray-500 max-w-lg mx-auto leading-relaxed">
+        <p class="text-warm font-medium tracking-widest text-sm uppercase mb-6">— Hippocrates, Father of Medicine</p>
+        <p class="text-warm max-w-lg mx-auto text-sm leading-relaxed">
           Prioritising whole, nutrient-rich foods is essential to promote wellness and reduce the need for medication.
-          This truth has endured for 2,400 years — and science continues to confirm it every decade.
+          This truth has endured 2,400 years — and modern science confirms it every decade.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DAILY WISDOM CARDS -->
-<section class="py-16 px-6 bg-gray-50">
+<!-- DAILY WISDOM -->
+<section class="py-16 px-6 bg-cream">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-12 reveal">
-      <p class="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">Daily Affirmations</p>
-      <h2 class="font-display font-extrabold text-4xl text-gray-900">Anchor Your Practice</h2>
+      <div class="divider mx-auto mb-5"></div>
+      <p class="tag bg-gold-light text-warm mb-4">Daily Affirmations</p>
+      <h2 class="font-display text-5xl text-charcoal">Anchor Your Practice</h2>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
-      <div class="card-hover reveal d1 bg-white rounded-2xl border border-violet/15 p-8 text-center">
+      <div class="lift reveal d1 bg-white rounded-2xl border border-black/5 p-8 text-center">
         <div class="text-3xl mb-4">🌙</div>
-        <p class="font-display font-bold text-lg text-gray-900 mb-3">"Rest is not laziness — it is medicine."</p>
-        <p class="text-gray-500 text-sm leading-relaxed">Your nervous system heals in stillness. Guard your sleep like your life depends on it — because it does.</p>
+        <p class="font-display font-semibold text-xl text-charcoal mb-3">"Rest is not laziness — it is medicine."</p>
+        <p class="text-warm text-sm leading-relaxed">Your nervous system heals in stillness. Guard your sleep like your life depends on it — because it does.</p>
       </div>
-
-      <div class="card-hover reveal d2 bg-white rounded-2xl border border-coral/15 p-8 text-center">
+      <div class="lift reveal d2 bg-white rounded-2xl border border-black/5 p-8 text-center">
         <div class="text-3xl mb-4">🌊</div>
-        <p class="font-display font-bold text-lg text-gray-900 mb-3">"Small daily choices build extraordinary lives."</p>
-        <p class="text-gray-500 text-sm leading-relaxed">Wellness isn't one big transformation. It's a thousand quiet choices, repeated with love.</p>
+        <p class="font-display font-semibold text-xl text-charcoal mb-3">"Small daily choices build extraordinary lives."</p>
+        <p class="text-warm text-sm leading-relaxed">Wellness isn't one big transformation. It's a thousand quiet choices, repeated with love.</p>
       </div>
-
-      <div class="card-hover reveal d3 bg-white rounded-2xl border border-teal/15 p-8 text-center">
+      <div class="lift reveal d3 bg-white rounded-2xl border border-black/5 p-8 text-center">
         <div class="text-3xl mb-4">🧠</div>
-        <p class="font-display font-bold text-lg text-gray-900 mb-3">"Your brain can regenerate at any age."</p>
-        <p class="text-gray-500 text-sm leading-relaxed">Neuroplasticity means you're never stuck with the brain you have today. Feed it, challenge it, rest it.</p>
+        <p class="font-display font-semibold text-xl text-charcoal mb-3">"Your brain can regenerate at any age."</p>
+        <p class="text-warm text-sm leading-relaxed">Neuroplasticity means you're never stuck with the brain you have today. Feed it, challenge it, rest it.</p>
       </div>
-
-      <div class="card-hover reveal d4 bg-white rounded-2xl border border-mint/15 p-8 text-center">
+      <div class="lift reveal d4 bg-white rounded-2xl border border-black/5 p-8 text-center">
         <div class="text-3xl mb-4">🤝</div>
-        <p class="font-display font-bold text-lg text-gray-900 mb-3">"Community is as vital as nutrition."</p>
-        <p class="text-gray-500 text-sm leading-relaxed">Loneliness is as dangerous as smoking 15 cigarettes a day. Find your people. Show up for them.</p>
+        <p class="font-display font-semibold text-xl text-charcoal mb-3">"Community is as vital as nutrition."</p>
+        <p class="text-warm text-sm leading-relaxed">Loneliness is as dangerous as smoking 15 cigarettes a day. Find your people. Show up for them.</p>
       </div>
-
-      <div class="card-hover reveal d5 bg-white rounded-2xl border border-amber/20 p-8 text-center">
+      <div class="lift reveal d5 bg-white rounded-2xl border border-black/5 p-8 text-center">
         <div class="text-3xl mb-4">🌱</div>
-        <p class="font-display font-bold text-lg text-gray-900 mb-3">"You are what you absorb, not just what you eat."</p>
-        <p class="text-gray-500 text-sm leading-relaxed">Healing the gut means your body can finally use the nutrition you give it. Digestion is the foundation.</p>
+        <p class="font-display font-semibold text-xl text-charcoal mb-3">"You are what you absorb, not just what you eat."</p>
+        <p class="text-warm text-sm leading-relaxed">Healing the gut means your body can finally use the nutrition you give it. Digestion is the foundation.</p>
       </div>
-
-      <div class="card-hover reveal d6 bg-white rounded-2xl border border-pink-100 p-8 text-center">
+      <div class="lift reveal d6 bg-white rounded-2xl border border-black/5 p-8 text-center">
         <div class="text-3xl mb-4">💜</div>
-        <p class="font-display font-bold text-lg text-gray-900 mb-3">"True wellness comes from balance, not perfection."</p>
-        <p class="text-gray-500 text-sm leading-relaxed">Nurture your body, mind, emotions, and spirit together — not one at the expense of the others.</p>
+        <p class="font-display font-semibold text-xl text-charcoal mb-3">"True wellness comes from balance, not perfection."</p>
+        <p class="text-warm text-sm leading-relaxed">Nurture your body, mind, emotions, and spirit together — not one at the expense of the others.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- BOOK RECOMMENDATIONS -->
+<!-- BOOKS -->
 <section class="py-20 px-6 bg-white">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-14 reveal">
-      <p class="text-violet font-semibold text-sm uppercase tracking-widest mb-3">Reading List</p>
-      <h2 class="font-display font-extrabold text-4xl md:text-5xl text-gray-900">Books That Shaped Us</h2>
-      <p class="mt-4 text-gray-500 max-w-lg mx-auto">The science and philosophy behind everything we teach — recommended reading for your wellness journey.</p>
+      <div class="divider mx-auto mb-5"></div>
+      <p class="tag bg-sage-light text-sage-dark mb-4">Reading List</p>
+      <h2 class="font-display text-5xl text-charcoal">Books That Shaped Us</h2>
+      <p class="mt-4 text-warm text-sm max-w-md mx-auto">The science and philosophy behind everything we teach — recommended reading for your wellness journey.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-      <!-- How to Be Well -->
-      <div class="card-hover reveal d1 flex gap-6 bg-gray-50 rounded-3xl p-8 border border-gray-100">
-        <div class="shrink-0 w-20 h-28 bg-gradient-to-br from-green-100 to-teal/30 rounded-2xl flex items-center justify-center text-4xl shadow-sm">📗</div>
+      <div class="lift reveal d1 flex gap-6 bg-cream rounded-2xl p-8 border border-black/5">
+        <div class="shrink-0 w-16 h-24 bg-sage-light rounded-xl flex items-center justify-center text-3xl shadow-sm">📗</div>
         <div>
-          <p class="text-xs text-mint-dark font-semibold uppercase tracking-widest mb-1">Essential Read</p>
-          <h3 class="font-display font-bold text-xl text-gray-900 mb-1">How to Be Well</h3>
-          <p class="text-gray-500 text-sm mb-3">Dr. Frank Lipman</p>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            Your ultimate guide to mastering wellness through 6 powerful pillars: Sleep, Eat, Move, Protect, Unwind, Connect.
-            Makes it simple, actionable, and life-changing for busy professionals.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="bg-mint/10 text-mint-dark text-xs px-3 py-1 rounded-full font-medium">Sleep</span>
-            <span class="bg-teal/10 text-teal-dark text-xs px-3 py-1 rounded-full font-medium">Nutrition</span>
-            <span class="bg-violet/8 text-violet text-xs px-3 py-1 rounded-full font-medium">Lifestyle</span>
+          <p class="tag bg-sage-light text-sage-dark mb-2">Essential Read</p>
+          <h3 class="font-display font-semibold text-2xl text-charcoal mb-1">How to Be Well</h3>
+          <p class="text-warm text-xs mb-3 uppercase tracking-widest">Dr. Frank Lipman</p>
+          <p class="text-warm text-sm leading-relaxed">Your guide to mastering wellness through 6 powerful pillars: Sleep, Eat, Move, Protect, Unwind, Connect. Simple, actionable, life-changing.</p>
+          <div class="mt-4 flex gap-2 flex-wrap">
+            <span class="tag bg-sage-light text-sage-dark">Sleep</span>
+            <span class="tag bg-cream-dark text-warm">Nutrition</span>
+            <span class="tag bg-terra-light text-terra">Lifestyle</span>
           </div>
         </div>
       </div>
 
-      <!-- The Ageless Brain -->
-      <div class="card-hover reveal d2 flex gap-6 bg-gray-50 rounded-3xl p-8 border border-gray-100">
-        <div class="shrink-0 w-20 h-28 bg-gradient-to-br from-amber/20 to-orange-100 rounded-2xl flex items-center justify-center text-4xl shadow-sm">📙</div>
+      <div class="lift reveal d2 flex gap-6 bg-cream rounded-2xl p-8 border border-black/5">
+        <div class="shrink-0 w-16 h-24 bg-gold-light rounded-xl flex items-center justify-center text-3xl shadow-sm">📙</div>
         <div>
-          <p class="text-xs text-amber-600 font-semibold uppercase tracking-widest mb-1">Brain Health</p>
-          <h3 class="font-display font-bold text-xl text-gray-900 mb-1">The Ageless Brain</h3>
-          <p class="text-gray-500 text-sm mb-3">Dr. Dale Bredesen</p>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            Cognitive decline isn't inevitable. Dr. Bredesen's science-backed protocol shows how food, sleep, exercise,
-            and mental challenge can regenerate your brain at any age.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="bg-amber/10 text-amber-700 text-xs px-3 py-1 rounded-full font-medium">Brain Health</span>
-            <span class="bg-violet/8 text-violet text-xs px-3 py-1 rounded-full font-medium">Cognitive Clarity</span>
-            <span class="bg-coral/10 text-coral text-xs px-3 py-1 rounded-full font-medium">Longevity</span>
+          <p class="tag bg-gold-light text-warm mb-2">Brain Health</p>
+          <h3 class="font-display font-semibold text-2xl text-charcoal mb-1">The Ageless Brain</h3>
+          <p class="text-warm text-xs mb-3 uppercase tracking-widest">Dr. Dale Bredesen</p>
+          <p class="text-warm text-sm leading-relaxed">Cognitive decline isn't inevitable. Bredesen's science-backed protocol shows how food, sleep, and exercise can regenerate your brain at any age.</p>
+          <div class="mt-4 flex gap-2 flex-wrap">
+            <span class="tag bg-gold-light text-warm">Brain Health</span>
+            <span class="tag bg-sage-light text-sage-dark">Clarity</span>
+            <span class="tag bg-terra-light text-terra">Longevity</span>
           </div>
         </div>
       </div>
 
-      <!-- Gut book placeholder -->
-      <div class="card-hover reveal d3 flex gap-6 bg-gray-50 rounded-3xl p-8 border border-gray-100">
-        <div class="shrink-0 w-20 h-28 bg-gradient-to-br from-rose-100 to-pink-50 rounded-2xl flex items-center justify-center text-4xl shadow-sm">📕</div>
+      <div class="lift reveal d3 flex gap-6 bg-cream rounded-2xl p-8 border border-black/5">
+        <div class="shrink-0 w-16 h-24 bg-terra-light rounded-xl flex items-center justify-center text-3xl shadow-sm">📕</div>
         <div>
-          <p class="text-xs text-coral font-semibold uppercase tracking-widest mb-1">Gut Health</p>
-          <h3 class="font-display font-bold text-xl text-gray-900 mb-1">Gut: The Inside Story</h3>
-          <p class="text-gray-500 text-sm mb-3">Giulia Enders</p>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            A revolutionary look at the digestive system — how your gut shapes your immunity, mood, and mental health.
-            Written with wit and warmth that makes science feel alive.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="bg-coral/10 text-coral text-xs px-3 py-1 rounded-full font-medium">Microbiome</span>
-            <span class="bg-mint/10 text-mint-dark text-xs px-3 py-1 rounded-full font-medium">Gut Health</span>
-            <span class="bg-teal/10 text-teal-dark text-xs px-3 py-1 rounded-full font-medium">Immunity</span>
+          <p class="tag bg-terra-light text-terra mb-2">Gut Health</p>
+          <h3 class="font-display font-semibold text-2xl text-charcoal mb-1">Gut: The Inside Story</h3>
+          <p class="text-warm text-xs mb-3 uppercase tracking-widest">Giulia Enders</p>
+          <p class="text-warm text-sm leading-relaxed">A revolutionary look at the digestive system — how your gut shapes your immunity, mood, and mental health. Written with wit that makes science feel alive.</p>
+          <div class="mt-4 flex gap-2 flex-wrap">
+            <span class="tag bg-terra-light text-terra">Microbiome</span>
+            <span class="tag bg-sage-light text-sage-dark">Immunity</span>
           </div>
         </div>
       </div>
 
-      <!-- Why We Sleep -->
-      <div class="card-hover reveal d4 flex gap-6 bg-gray-50 rounded-3xl p-8 border border-gray-100">
-        <div class="shrink-0 w-20 h-28 bg-gradient-to-br from-violet/15 to-blue-50 rounded-2xl flex items-center justify-center text-4xl shadow-sm">📘</div>
+      <div class="lift reveal d4 flex gap-6 bg-cream rounded-2xl p-8 border border-black/5">
+        <div class="shrink-0 w-16 h-24 bg-sage-light rounded-xl flex items-center justify-center text-3xl shadow-sm">📘</div>
         <div>
-          <p class="text-xs text-violet font-semibold uppercase tracking-widest mb-1">Sleep Science</p>
-          <h3 class="font-display font-bold text-xl text-gray-900 mb-1">Why We Sleep</h3>
-          <p class="text-gray-500 text-sm mb-3">Matthew Walker</p>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            The definitive science of sleep — why it is the single most important health behaviour,
-            and what happens to every organ in your body when you don't get enough.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="bg-violet/8 text-violet text-xs px-3 py-1 rounded-full font-medium">Sleep</span>
-            <span class="bg-teal/10 text-teal-dark text-xs px-3 py-1 rounded-full font-medium">Recovery</span>
-            <span class="bg-amber/10 text-amber-700 text-xs px-3 py-1 rounded-full font-medium">Longevity</span>
+          <p class="tag bg-sage-light text-sage-dark mb-2">Sleep Science</p>
+          <h3 class="font-display font-semibold text-2xl text-charcoal mb-1">Why We Sleep</h3>
+          <p class="text-warm text-xs mb-3 uppercase tracking-widest">Matthew Walker</p>
+          <p class="text-warm text-sm leading-relaxed">The definitive science of sleep — why it is the single most important health behaviour, and what happens to every organ when you don't get enough.</p>
+          <div class="mt-4 flex gap-2 flex-wrap">
+            <span class="tag bg-sage-light text-sage-dark">Sleep</span>
+            <span class="tag bg-cream-dark text-warm">Recovery</span>
+            <span class="tag bg-gold-light text-warm">Longevity</span>
           </div>
         </div>
       </div>
@@ -235,18 +215,21 @@
   </div>
 </section>
 
-<!-- CLOSING QUOTE + CTA -->
-<section class="py-20 px-6 bg-gradient-to-r from-amber-500 to-orange-400">
-  <div class="max-w-3xl mx-auto text-center reveal">
-    <p class="font-display font-extrabold text-3xl md:text-4xl text-white leading-snug mb-6">
-      "Wellness is not a destination. It is the practice of choosing yourself — every single day."
+<!-- CLOSING CTA -->
+<section class="relative py-28 px-6 overflow-hidden">
+  <div class="absolute inset-0 bg-charcoal"></div>
+  <div class="absolute inset-0 opacity-20" style="background-image:url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1400&q=60&fit=crop');background-size:cover;background-position:center;"></div>
+  <div class="relative z-10 max-w-3xl mx-auto text-center reveal">
+    <div class="divider mx-auto mb-8" style="background:#C9A44B"></div>
+    <p class="font-display italic text-4xl md:text-5xl text-white leading-snug mb-5">
+      "Wellness is not a destination.<br />It is the practice of choosing yourself<br />every single day."
     </p>
-    <p class="text-white/70 font-semibold mb-10">— True Wellness School</p>
+    <p class="text-white/40 text-xs font-semibold uppercase tracking-widest mb-12">— True Wellness School</p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="programs.html" class="bg-white text-amber-600 font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-transform">
+      <a href="programs.html" class="inline-block bg-white text-charcoal font-semibold px-10 py-4 rounded-full hover:bg-cream transition-all shadow-xl text-sm tracking-wide">
         Start Your Practice →
       </a>
-      <a href="pillars.html" class="border-2 border-white text-white font-semibold px-8 py-4 rounded-full hover:bg-white/20 transition-all">
+      <a href="pillars.html" class="inline-block border border-white/30 text-white font-medium px-10 py-4 rounded-full hover:bg-white/10 transition-all text-sm">
         Learn the 6 Pillars
       </a>
     </div>
@@ -254,16 +237,16 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-gray-900 text-white py-12 px-6">
+<footer class="bg-charcoal text-white py-12 px-6">
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-    <p class="font-display font-extrabold text-xl"><span class="grad-text">True Wellness</span> School</p>
-    <div class="flex gap-8 text-sm text-gray-400">
+    <p class="font-display font-semibold text-xl">True Wellness <span class="text-sage">School</span></p>
+    <div class="flex gap-8 text-sm text-white/40">
       <a href="index.html"    class="hover:text-white transition-colors">Home</a>
       <a href="pillars.html"  class="hover:text-white transition-colors">6 Pillars</a>
       <a href="programs.html" class="hover:text-white transition-colors">Programs</a>
       <a href="recipes.html"  class="hover:text-white transition-colors">Recipes</a>
     </div>
-    <p class="text-gray-600 text-xs">© 2025 True Wellness School</p>
+    <p class="text-white/20 text-xs">© 2025 True Wellness School</p>
   </div>
 </footer>
 

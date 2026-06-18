@@ -6,223 +6,299 @@
   <title>True Wellness School — Nurture Every Part of Yourself</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { display: ['Bricolage Grotesque','sans-serif'], body: ['Inter','sans-serif'] },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'serif'],
+            body: ['Inter', 'sans-serif'],
+          },
           colors: {
-            coral:  { DEFAULT:'#FF6B6B', light:'#FFE5E5', dark:'#E84545' },
-            teal:   { DEFAULT:'#4ECDC4', light:'#E0FAF8', dark:'#2BB5AB' },
-            violet: { DEFAULT:'#7C3AED', light:'#EDE9FE', dark:'#5B21B6' },
-            amber:  { DEFAULT:'#FFD93D', light:'#FFFBEB', dark:'#F59E0B' },
-            mint:   { DEFAULT:'#6BCB77', light:'#ECFDF5', dark:'#16A34A' },
+            sage:       { DEFAULT: '#7A8C6E', light: '#F2F5EF', dark: '#4A5C40' },
+            cream:      { DEFAULT: '#FAF7F2', dark: '#F0EBE0' },
+            terra:      { DEFAULT: '#B5704F', light: '#F5EDE8', dark: '#8C4E31' },
+            gold:       { DEFAULT: '#C9A44B', light: '#FBF5E6' },
+            charcoal:   { DEFAULT: '#1C2018' },
+            warm:       { DEFAULT: '#5C5247' },
           }
         }
       }
     }
   </script>
   <style>
-    *{scroll-behavior:smooth}
-    body{font-family:'Inter',sans-serif;overflow-x:hidden}
-    h1,h2,h3,h4,h5{font-family:'Bricolage Grotesque',sans-serif}
+    * { scroll-behavior: smooth; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #FAF7F2; color: #1C2018; overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
 
-    @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-    .hero-bg{background:linear-gradient(135deg,#7C3AED,#FF6B6B,#4ECDC4,#FFD93D,#6BCB77,#7C3AED);background-size:400% 400%;animation:gradientShift 14s ease infinite}
+    /* Nav */
+    .nav-glass { background: rgba(250,247,242,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
 
-    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-    .reveal{opacity:0}.reveal.visible{animation:fadeUp .6s ease forwards}
-    .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}.d5{animation-delay:.5s}.d6{animation-delay:.6s}
+    /* Reveal */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    .reveal { opacity: 0; }
+    .reveal.visible { animation: fadeUp 0.7s ease forwards; }
+    .d1{animation-delay:.1s} .d2{animation-delay:.2s} .d3{animation-delay:.3s} .d4{animation-delay:.4s}
 
-    .glass{background:rgba(255,255,255,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.35)}
-    .nav-blur{background:rgba(255,255,255,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-    .grad-text{background:linear-gradient(90deg,#7C3AED,#FF6B6B,#4ECDC4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    /* Card lift */
+    .lift { transition: transform .3s ease, box-shadow .3s ease; }
+    .lift:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(28,32,24,.1); }
 
-    .card-hover{transition:transform .25s ease,box-shadow .25s ease}
-    .card-hover:hover{transform:translateY(-8px);box-shadow:0 24px 56px rgba(0,0,0,.13)}
+    /* Hero parallax feel */
+    .hero-img {
+      background-image:
+        linear-gradient(to bottom, rgba(28,32,24,.45) 0%, rgba(28,32,24,.25) 60%, rgba(28,32,24,.6) 100%),
+        url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1800&q=85&fit=crop');
+      background-size: cover;
+      background-position: center 30%;
+      background-attachment: fixed;
+    }
 
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
-    .float{animation:float 6s ease-in-out infinite}
-    .float2{animation:float 8s ease-in-out infinite}
+    /* Ticker */
+    @keyframes ticker { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+    .ticker-inner { animation: ticker 30s linear infinite; }
 
-    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .marquee{animation:marquee 24s linear infinite}
+    /* Divider leaf */
+    .divider { width: 48px; height: 2px; background: #7A8C6E; margin: 0 auto 24px; }
 
-    @keyframes pulse-ring{0%{transform:scale(1);opacity:1}100%{transform:scale(2.2);opacity:0}}
-    .pulse-dot::after{content:'';position:absolute;inset:0;border-radius:9999px;background:inherit;animation:pulse-ring 2s ease-out infinite}
+    /* Pill tag */
+    .tag { display:inline-block; font-size:.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:4px 12px; border-radius:999px; }
   </style>
 </head>
-<body class="bg-white text-gray-800">
+<body>
 
-<!-- ══════════ NAV ══════════ -->
-<nav class="fixed top-0 w-full z-50 nav-blur border-b border-gray-100/60 transition-all duration-300" id="nav">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="index.html" class="font-display font-extrabold text-xl">
-      <span class="grad-text">True Wellness</span><span class="text-gray-700"> School</span>
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav id="nav" class="fixed top-0 w-full z-50 nav-glass border-b border-black/5 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
+    <a href="index.html" class="font-display font-semibold text-2xl text-charcoal tracking-wide">
+      True Wellness <span class="text-sage">School</span>
     </a>
-    <div class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-600">
-      <a href="pillars.html"  class="hover:text-violet  transition-colors">6 Pillars</a>
-      <a href="programs.html" class="hover:text-coral   transition-colors">Programs</a>
-      <a href="recipes.html"  class="hover:text-mint-dark transition-colors">Recipes</a>
-      <a href="wisdom.html"   class="hover:text-amber-600 transition-colors">Wisdom</a>
-      <a href="programs.html#book" class="bg-violet text-white px-5 py-2 rounded-full shadow hover:bg-violet-dark transition-all">Book a Session</a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-warm">
+      <a href="pillars.html"  class="hover:text-sage transition-colors">6 Pillars</a>
+      <a href="programs.html" class="hover:text-terra transition-colors">Programs</a>
+      <a href="recipes.html"  class="hover:text-sage-dark transition-colors">Recipes</a>
+      <a href="wisdom.html"   class="hover:text-gold transition-colors">Wisdom</a>
+      <a href="programs.html#book"
+         class="bg-terra text-white text-sm px-6 py-2.5 rounded-full hover:bg-terra-dark transition-all shadow-sm">
+        Book a Session
+      </a>
     </div>
   </div>
 </nav>
 
-<!-- ══════════ HERO ══════════ -->
-<section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-  <div class="float  absolute top-28 left-10  w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
-  <div class="float2 absolute bottom-24 right-14 w-56 h-56 bg-white/10 rounded-full blur-3xl"></div>
-  <div class="float  absolute top-1/2 right-6  w-24 h-24 bg-amber/30 rounded-full blur-xl"></div>
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero-img min-h-screen flex items-end pb-24 pt-32 px-6">
+  <div class="max-w-5xl mx-auto">
 
-  <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-    <div class="inline-flex items-center gap-2 glass text-white px-5 py-2 rounded-full text-sm font-medium mb-8">
-      <span class="relative w-2 h-2 bg-mint rounded-full pulse-dot"></span>
-      Holistic · Ayurveda · Mindfulness · Nutrition
+    <div class="reveal mb-6">
+      <span class="tag bg-white/20 text-white border border-white/30">Est. 2024 · @truewellnessschool</span>
     </div>
 
-    <h1 class="font-display font-extrabold text-white text-5xl md:text-7xl lg:text-8xl leading-[1.05] mb-6 drop-shadow-xl">
+    <h1 class="reveal d1 font-display font-semibold text-white text-6xl md:text-8xl leading-[1.05] mb-6 drop-shadow-md">
       True Wellness<br />
       Comes From<br />
-      <em class="not-italic underline decoration-amber decoration-[5px] underline-offset-4">Nurturing You</em>
+      <em class="text-amber-100">Nurturing You</em>
     </h1>
 
-    <p class="text-white/90 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-      Wellness isn't a trend — it's a way of life. We make it simple, actionable,
-      and life‑changing for every person ready to thrive.
+    <p class="reveal d2 text-white/85 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
+      Holistic wellness for body, mind, emotions, and spirit.
+      Simple. Actionable. Life-changing.
     </p>
 
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="programs.html" class="bg-white text-violet font-semibold px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-transform text-base">Explore Programs →</a>
-      <a href="pillars.html"  class="glass text-white font-semibold px-8 py-4 rounded-full hover:bg-white/30 transition-all text-base border border-white/50">The 6 Pillars</a>
+    <div class="reveal d3 flex flex-col sm:flex-row gap-4">
+      <a href="programs.html"
+         class="inline-block bg-white text-charcoal font-semibold px-8 py-4 rounded-full hover:bg-cream transition-all shadow-xl text-sm tracking-wide">
+        Explore Programs →
+      </a>
+      <a href="pillars.html"
+         class="inline-block border border-white/50 text-white font-medium px-8 py-4 rounded-full hover:bg-white/15 transition-all text-sm">
+        The 6 Pillars
+      </a>
     </div>
 
-    <div class="mt-16 flex justify-center">
-      <div class="w-6 h-10 rounded-full border-2 border-white/60 flex justify-center pt-2">
-        <div class="w-1 h-2 bg-white/80 rounded-full animate-bounce"></div>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ══════════ TICKER ══════════ -->
-<div class="bg-gray-900 py-4 overflow-hidden">
-  <div class="marquee flex gap-14 whitespace-nowrap text-xs font-semibold tracking-widest uppercase text-gray-400">
-    <span>Sleep · Eat · Move · Protect · Unwind · Connect</span><span>✦</span>
-    <span>Body · Mind · Emotions · Spirit</span><span>✦</span>
-    <span>Holistic · Ayurveda · Nutrition · Mindfulness</span><span>✦</span>
-    <span>Sleep · Eat · Move · Protect · Unwind · Connect</span><span>✦</span>
-    <span>Body · Mind · Emotions · Spirit</span><span>✦</span>
-    <span>Holistic · Ayurveda · Nutrition · Mindfulness</span><span>✦</span>
+<!-- ══════════════════ TICKER ══════════════════ -->
+<div class="bg-charcoal py-3.5 overflow-hidden">
+  <div class="ticker-inner flex gap-16 whitespace-nowrap">
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-sage">Sleep</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-white/50">Eat</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-sage">Move</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-white/50">Protect</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-sage">Unwind</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-white/50">Connect</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-terra">Holistic</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-white/50">Ayurveda</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-terra">Nutrition</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-white/50">Mindfulness</span>
+    <span class="text-sage/40">·</span>
+    <!-- repeat for seamless loop -->
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-sage">Sleep</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-white/50">Eat</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-sage">Move</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-white/50">Protect</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-sage">Unwind</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-white/50">Connect</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-terra">Holistic</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-white/50">Ayurveda</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-terra">Nutrition</span>
+    <span class="text-sage/40">·</span>
+    <span class="text-xs font-medium tracking-[.18em] uppercase text-white/50">Mindfulness</span>
   </div>
 </div>
 
-<!-- ══════════ INTRO STRIP ══════════ -->
-<section class="py-20 px-6">
-  <div class="max-w-5xl mx-auto text-center">
+<!-- ══════════════════ PHILOSOPHY ══════════════════ -->
+<section class="py-28 px-6 bg-cream">
+  <div class="max-w-4xl mx-auto text-center">
     <div class="reveal">
-      <p class="text-violet font-semibold text-sm uppercase tracking-widest mb-4">Our Philosophy</p>
-      <h2 class="font-display font-extrabold text-4xl md:text-5xl text-gray-900 leading-tight">
-        Wellness is <span class="grad-text">not one thing</span> —<br />it is everything, working together.
+      <div class="divider"></div>
+      <p class="tag bg-sage-light text-sage-dark mb-6">Our Philosophy</p>
+      <h2 class="font-display text-5xl md:text-6xl text-charcoal leading-tight mb-8">
+        Wellness is not one thing —<br />
+        <em>it is everything, working together.</em>
       </h2>
-      <p class="mt-6 text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
+      <p class="text-warm text-lg leading-relaxed max-w-2xl mx-auto">
         True wellness emerges when you nurture your body, mind, emotions, and spirit simultaneously.
         Not through willpower alone, but through knowledge, community, and daily practice.
+        When all four align, you unlock a fulfilled and harmonious life.
       </p>
     </div>
 
-    <!-- 4 stats -->
-    <div class="reveal mt-14 grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="bg-violet/5 rounded-2xl p-6 border border-violet/15">
-        <p class="font-display font-extrabold text-4xl text-violet">6</p>
-        <p class="text-gray-500 text-sm mt-1">Wellness Pillars</p>
+    <!-- 4 numbers -->
+    <div class="reveal mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="py-8 border-t-2 border-sage text-left pl-4">
+        <p class="font-display font-semibold text-5xl text-charcoal">6</p>
+        <p class="text-warm text-sm mt-2 leading-snug">Wellness<br />Pillars</p>
       </div>
-      <div class="bg-coral/5 rounded-2xl p-6 border border-coral/15">
-        <p class="font-display font-extrabold text-4xl text-coral">4</p>
-        <p class="text-gray-500 text-sm mt-1">Health Dimensions</p>
+      <div class="py-8 border-t-2 border-terra text-left pl-4">
+        <p class="font-display font-semibold text-5xl text-charcoal">4</p>
+        <p class="text-warm text-sm mt-2 leading-snug">Health<br />Dimensions</p>
       </div>
-      <div class="bg-teal/5 rounded-2xl p-6 border border-teal/15">
-        <p class="font-display font-extrabold text-4xl text-teal-dark">5</p>
-        <p class="text-gray-500 text-sm mt-1">Live Programs</p>
+      <div class="py-8 border-t-2 border-gold text-left pl-4">
+        <p class="font-display font-semibold text-5xl text-charcoal">5</p>
+        <p class="text-warm text-sm mt-2 leading-snug">Live<br />Programs</p>
       </div>
-      <div class="bg-mint/5 rounded-2xl p-6 border border-mint/15">
-        <p class="font-display font-extrabold text-4xl text-mint-dark">∞</p>
-        <p class="text-gray-500 text-sm mt-1">Your Potential</p>
+      <div class="py-8 border-t-2 border-sage-dark text-left pl-4">
+        <p class="font-display font-semibold text-5xl text-charcoal">∞</p>
+        <p class="text-warm text-sm mt-2 leading-snug">Your<br />Potential</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ 4 PAGE CARDS ══════════ -->
-<section class="py-16 px-6 bg-gray-50">
+<!-- ══════════════════ NATURE IMAGE BREAK ══════════════════ -->
+<div class="relative h-[420px] overflow-hidden">
+  <img
+    src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=1600&q=80&fit=crop&crop=center"
+    alt="Family wellness outdoors"
+    class="w-full h-full object-cover object-center"
+  />
+  <div class="absolute inset-0 bg-gradient-to-r from-charcoal/70 to-charcoal/20 flex items-center">
+    <div class="max-w-7xl mx-auto px-10 reveal">
+      <p class="font-display italic text-3xl md:text-5xl text-white max-w-lg leading-snug">
+        "Wellness isn't a trend —<br />it's a way of life."
+      </p>
+      <p class="text-white/60 mt-4 text-sm font-medium tracking-widest uppercase">— Dr. Frank Lipman</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 4 SECTION CARDS ══════════════════ -->
+<section class="py-24 px-6 bg-white">
   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-14 reveal">
-      <p class="text-gray-500 font-semibold text-sm uppercase tracking-widest mb-3">Explore</p>
-      <h2 class="font-display font-extrabold text-4xl md:text-5xl text-gray-900">Everything We Offer</h2>
+    <div class="text-center mb-16 reveal">
+      <div class="divider"></div>
+      <p class="tag bg-sage-light text-sage-dark mb-4">Explore</p>
+      <h2 class="font-display text-5xl md:text-6xl text-charcoal">Everything We Offer</h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
       <!-- Pillars -->
-      <a href="pillars.html" class="card-hover reveal d1 block relative rounded-3xl overflow-hidden min-h-[320px] group">
-        <div class="absolute inset-0 bg-gradient-to-br from-violet to-violet-dark"></div>
-        <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle at 30% 70%, white 1px, transparent 1px);background-size:32px 32px"></div>
-        <div class="relative z-10 p-10 flex flex-col justify-between h-full min-h-[320px]">
-          <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center text-2xl">🌿</div>
-          <div>
-            <p class="text-white/70 text-xs uppercase tracking-widest mb-2 font-semibold">Framework</p>
-            <h3 class="font-display font-extrabold text-3xl text-white mb-3">The 6 Pillars<br />of True Wellness</h3>
-            <p class="text-white/80 text-sm leading-relaxed mb-6">Sleep, Eat, Move, Protect, Unwind, Connect — the proven framework for lasting health.</p>
-            <span class="inline-flex items-center gap-2 text-white font-semibold text-sm group-hover:gap-4 transition-all">Explore the Pillars <span>→</span></span>
+      <a href="pillars.html" class="lift reveal d1 block group overflow-hidden rounded-2xl">
+        <div class="relative h-72 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80&fit=crop"
+               alt="Nature pillars" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8">
+            <span class="tag bg-sage/80 text-white mb-3">Framework</span>
+            <h3 class="font-display font-semibold text-3xl text-white leading-tight">The 6 Pillars<br />of True Wellness</h3>
           </div>
+        </div>
+        <div class="bg-cream p-6 flex items-center justify-between">
+          <p class="text-warm text-sm leading-relaxed max-w-xs">Sleep, Eat, Move, Protect, Unwind, Connect — the proven framework for lasting health.</p>
+          <span class="shrink-0 ml-4 text-sage font-semibold text-sm group-hover:translate-x-2 transition-transform inline-block">Explore →</span>
         </div>
       </a>
 
       <!-- Programs -->
-      <a href="programs.html" class="card-hover reveal d2 block relative rounded-3xl overflow-hidden min-h-[320px] group">
-        <div class="absolute inset-0 bg-gradient-to-br from-coral to-orange-500"></div>
-        <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle at 70% 30%, white 1px, transparent 1px);background-size:28px 28px"></div>
-        <div class="relative z-10 p-10 flex flex-col justify-between h-full min-h-[320px]">
-          <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center text-2xl">🎯</div>
-          <div>
-            <p class="text-white/70 text-xs uppercase tracking-widest mb-2 font-semibold">Live Sessions</p>
-            <h3 class="font-display font-extrabold text-3xl text-white mb-3">Wellness Programs<br />& Coaching</h3>
-            <p class="text-white/80 text-sm leading-relaxed mb-6">Online & in-person sessions tailored to your unique wellness journey — mind, body, and spirit.</p>
-            <span class="inline-flex items-center gap-2 text-white font-semibold text-sm group-hover:gap-4 transition-all">See All Programs <span>→</span></span>
+      <a href="programs.html" class="lift reveal d2 block group overflow-hidden rounded-2xl">
+        <div class="relative h-72 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=900&q=80&fit=crop&crop=center"
+               alt="Wellness program" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8">
+            <span class="tag bg-terra/80 text-white mb-3">Live Sessions</span>
+            <h3 class="font-display font-semibold text-3xl text-white leading-tight">Wellness Programs<br />& Coaching</h3>
           </div>
+        </div>
+        <div class="bg-cream p-6 flex items-center justify-between">
+          <p class="text-warm text-sm leading-relaxed max-w-xs">Online & in-person sessions tailored to your unique wellness journey — mind, body, and spirit.</p>
+          <span class="shrink-0 ml-4 text-terra font-semibold text-sm group-hover:translate-x-2 transition-transform inline-block">See Programs →</span>
         </div>
       </a>
 
       <!-- Recipes -->
-      <a href="recipes.html" class="card-hover reveal d3 block relative rounded-3xl overflow-hidden min-h-[320px] group">
-        <div class="absolute inset-0 bg-gradient-to-br from-mint-dark to-teal"></div>
-        <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle at 50% 50%, white 1px, transparent 1px);background-size:24px 24px"></div>
-        <div class="relative z-10 p-10 flex flex-col justify-between h-full min-h-[320px]">
-          <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center text-2xl">🥗</div>
-          <div>
-            <p class="text-white/70 text-xs uppercase tracking-widest mb-2 font-semibold">The Wellness Kitchen</p>
-            <h3 class="font-display font-extrabold text-3xl text-white mb-3">Recipes That<br />Heal & Nourish</h3>
-            <p class="text-white/80 text-sm leading-relaxed mb-6">Food is medicine. Beautiful, simple recipes built around whole ingredients and real nutrition.</p>
-            <span class="inline-flex items-center gap-2 text-white font-semibold text-sm group-hover:gap-4 transition-all">Browse Recipes <span>→</span></span>
+      <a href="recipes.html" class="lift reveal d3 block group overflow-hidden rounded-2xl">
+        <div class="relative h-72 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&q=80&fit=crop"
+               alt="Wellness food" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8">
+            <span class="tag bg-sage-dark/80 text-white mb-3">Wellness Kitchen</span>
+            <h3 class="font-display font-semibold text-3xl text-white leading-tight">Recipes That<br />Heal & Nourish</h3>
           </div>
+        </div>
+        <div class="bg-cream p-6 flex items-center justify-between">
+          <p class="text-warm text-sm leading-relaxed max-w-xs">Food is medicine. Beautiful, simple recipes built around whole ingredients and real nutrition.</p>
+          <span class="shrink-0 ml-4 text-sage-dark font-semibold text-sm group-hover:translate-x-2 transition-transform inline-block">Browse Recipes →</span>
         </div>
       </a>
 
       <!-- Wisdom -->
-      <a href="wisdom.html" class="card-hover reveal d4 block relative rounded-3xl overflow-hidden min-h-[320px] group">
-        <div class="absolute inset-0 bg-gradient-to-br from-amber-500 to-yellow-400"></div>
-        <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle at 20% 80%, white 1px, transparent 1px);background-size:30px 30px"></div>
-        <div class="relative z-10 p-10 flex flex-col justify-between h-full min-h-[320px]">
-          <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center text-2xl">📖</div>
-          <div>
-            <p class="text-white/70 text-xs uppercase tracking-widest mb-2 font-semibold">Wisdom Library</p>
-            <h3 class="font-display font-extrabold text-3xl text-white mb-3">Words That<br />Change Lives</h3>
-            <p class="text-white/80 text-sm leading-relaxed mb-6">Curated wisdom, book insights, and timeless quotes to anchor your daily wellness practice.</p>
-            <span class="inline-flex items-center gap-2 text-white font-semibold text-sm group-hover:gap-4 transition-all">Enter the Library <span>→</span></span>
+      <a href="wisdom.html" class="lift reveal d4 block group overflow-hidden rounded-2xl">
+        <div class="relative h-72 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1529693662653-9d480530a697?w=900&q=80&fit=crop"
+               alt="Wellness wisdom books" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8">
+            <span class="tag bg-gold/80 text-charcoal mb-3">Wisdom Library</span>
+            <h3 class="font-display font-semibold text-3xl text-white leading-tight">Words That<br />Change Lives</h3>
           </div>
+        </div>
+        <div class="bg-cream p-6 flex items-center justify-between">
+          <p class="text-warm text-sm leading-relaxed max-w-xs">Curated wisdom, book insights, and timeless quotes to anchor your daily wellness practice.</p>
+          <span class="shrink-0 ml-4 text-gold-dark font-semibold text-sm group-hover:translate-x-2 transition-transform inline-block">Enter Library →</span>
         </div>
       </a>
 
@@ -230,46 +306,93 @@
   </div>
 </section>
 
-<!-- ══════════ QUOTE BAND ══════════ -->
-<section class="py-20 px-6 bg-gradient-to-r from-violet to-coral">
-  <div class="max-w-4xl mx-auto text-center reveal">
-    <p class="font-display font-extrabold text-3xl md:text-4xl text-white leading-snug">
-      "Let food be thy medicine and medicine be thy food."
-    </p>
-    <p class="mt-4 text-white/70 font-semibold tracking-wide">— Hippocrates</p>
-    <a href="wisdom.html" class="inline-block mt-8 bg-white text-violet font-semibold px-7 py-3 rounded-full hover:scale-105 transition-transform shadow-xl">
-      More Wellness Wisdom →
-    </a>
-  </div>
-</section>
-
-<!-- ══════════ INSTAGRAM STRIP ══════════ -->
-<section class="py-20 px-6 bg-white">
-  <div class="max-w-5xl mx-auto text-center">
+<!-- ══════════════════ FAMILY / NATURE SECTION ══════════════════ -->
+<section class="py-24 px-6 bg-cream">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
     <div class="reveal">
-      <p class="text-gray-500 text-sm uppercase tracking-widest font-semibold mb-3">Find Us On Instagram</p>
-      <h2 class="font-display font-extrabold text-3xl md:text-4xl text-gray-900 mb-6">@truewellnessschool</h2>
-      <p class="text-gray-500 max-w-lg mx-auto mb-10">Daily wellness tips, recipes, book insights, and community love — join thousands nurturing their whole selves.</p>
-      <a href="https://www.instagram.com/truewellnessschool" target="_blank"
-         class="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white font-semibold px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-transform">
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        Follow @truewellnessschool
+      <div class="divider" style="margin:0 0 20px 0;"></div>
+      <p class="tag bg-terra-light text-terra mb-5">Who We're For</p>
+      <h2 class="font-display text-5xl md:text-6xl text-charcoal leading-tight mb-7">
+        For anyone ready<br />to <em>truly thrive</em>
+      </h2>
+      <p class="text-warm text-base leading-relaxed mb-6">
+        Whether you're a busy professional fighting fatigue, a parent wanting more energy for your family,
+        or someone who simply knows they could feel better — this is your starting point.
+      </p>
+      <p class="text-warm text-base leading-relaxed mb-10">
+        We believe wellness is not a privilege. It is a skill. And like every skill,
+        it can be learned, practised, and mastered — at any age, in any season of life.
+      </p>
+      <a href="programs.html#book"
+         class="inline-block bg-terra text-white font-medium px-8 py-4 rounded-full hover:bg-terra-dark transition-all text-sm tracking-wide shadow-md">
+        Begin Your Journey →
       </a>
+    </div>
+    <div class="reveal d2 grid grid-cols-2 gap-4">
+      <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=600&q=80&fit=crop&crop=center"
+           alt="Woman in green field"
+           class="rounded-2xl w-full h-56 object-cover shadow-md" />
+      <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80&fit=crop&crop=top"
+           alt="Family smiling outdoors"
+           class="rounded-2xl w-full h-56 object-cover shadow-md mt-8" />
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80&fit=crop"
+           alt="Healthy food wellness"
+           class="rounded-2xl w-full h-56 object-cover shadow-md" />
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&fit=crop&crop=center"
+           alt="Meditation nature"
+           class="rounded-2xl w-full h-56 object-cover shadow-md mt-8" />
     </div>
   </div>
 </section>
 
-<!-- ══════════ FOOTER ══════════ -->
-<footer class="bg-gray-900 text-white py-14 px-6">
+<!-- ══════════════════ QUOTE / CTA ══════════════════ -->
+<section class="relative py-28 px-6 overflow-hidden bg-sage-dark">
+  <div class="absolute inset-0 opacity-20"
+       style="background-image:url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1400&q=60&fit=crop');background-size:cover;background-position:center;"></div>
+  <div class="relative z-10 max-w-3xl mx-auto text-center reveal">
+    <p class="font-display italic text-4xl md:text-5xl text-white leading-snug mb-6">
+      "Let food be thy medicine<br />and medicine be thy food."
+    </p>
+    <p class="text-white/60 font-medium text-sm tracking-widest uppercase mb-12">— Hippocrates</p>
+    <a href="programs.html"
+       class="inline-block bg-white text-charcoal font-semibold px-10 py-4 rounded-full hover:bg-cream transition-all shadow-xl text-sm tracking-wide">
+      See All Programs →
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════ INSTAGRAM ══════════════════ -->
+<section class="py-20 px-6 bg-white">
+  <div class="max-w-3xl mx-auto text-center reveal">
+    <div class="divider"></div>
+    <p class="tag bg-sage-light text-sage-dark mb-4">Join the Community</p>
+    <h2 class="font-display text-4xl md:text-5xl text-charcoal mb-4">@truewellnessschool</h2>
+    <p class="text-warm text-base mb-8 max-w-md mx-auto">Daily wellness tips, recipes, book insights — join us on Instagram.</p>
+    <a href="https://www.instagram.com/truewellnessschool" target="_blank"
+       class="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:opacity-90 hover:scale-105 transition-all text-sm">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+      Follow on Instagram
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="bg-charcoal text-white py-16 px-6">
   <div class="max-w-7xl mx-auto">
-    <div class="grid md:grid-cols-4 gap-10 mb-12">
+    <div class="grid md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
       <div class="md:col-span-2">
-        <p class="font-display font-extrabold text-2xl mb-3"><span class="grad-text">True Wellness</span> School</p>
-        <p class="text-gray-400 text-sm leading-relaxed max-w-xs">Nurturing body, mind, emotions, and spirit — one day at a time. Wellness is a way of life, not a destination.</p>
+        <p class="font-display font-semibold text-2xl mb-3">True Wellness <span class="text-sage">School</span></p>
+        <p class="text-white/40 text-sm leading-relaxed max-w-xs">Nurturing body, mind, emotions, and spirit — one day at a time. Wellness is a way of life, not a destination.</p>
+        <a href="https://www.instagram.com/truewellnessschool" target="_blank"
+           class="inline-block mt-5 text-xs text-sage hover:text-white transition-colors font-medium tracking-widest uppercase">
+          @truewellnessschool ↗
+        </a>
       </div>
       <div>
-        <p class="font-semibold text-sm mb-4 text-gray-300 uppercase tracking-widest">Explore</p>
-        <ul class="space-y-2 text-sm text-gray-400">
+        <p class="text-white/30 text-xs font-semibold uppercase tracking-widest mb-5">Explore</p>
+        <ul class="space-y-3 text-sm text-white/50">
           <li><a href="pillars.html"  class="hover:text-white transition-colors">6 Pillars</a></li>
           <li><a href="programs.html" class="hover:text-white transition-colors">Programs</a></li>
           <li><a href="recipes.html"  class="hover:text-white transition-colors">Recipes</a></li>
@@ -277,24 +400,26 @@
         </ul>
       </div>
       <div>
-        <p class="font-semibold text-sm mb-4 text-gray-300 uppercase tracking-widest">Connect</p>
-        <ul class="space-y-2 text-sm text-gray-400">
-          <li><a href="https://www.instagram.com/truewellnessschool" target="_blank" class="hover:text-white transition-colors">Instagram</a></li>
+        <p class="text-white/30 text-xs font-semibold uppercase tracking-widest mb-5">Connect</p>
+        <ul class="space-y-3 text-sm text-white/50">
           <li><a href="programs.html#book" class="hover:text-white transition-colors">Book a Session</a></li>
+          <li><a href="https://www.instagram.com/truewellnessschool" target="_blank" class="hover:text-white transition-colors">Instagram</a></li>
         </ul>
       </div>
     </div>
-    <div class="border-t border-gray-800 pt-8 text-center text-gray-600 text-xs">
+    <div class="pt-8 text-center text-white/20 text-xs">
       © 2025 True Wellness School. All rights reserved.
     </div>
   </div>
 </footer>
 
 <script>
-  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)} }), {threshold:.1});
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   window.addEventListener('scroll', () => {
-    document.getElementById('nav').style.boxShadow = scrollY > 20 ? '0 4px 24px rgba(0,0,0,.08)' : 'none';
+    document.getElementById('nav').style.boxShadow = scrollY > 30 ? '0 2px 20px rgba(0,0,0,.08)' : 'none';
   });
 </script>
 </body>
