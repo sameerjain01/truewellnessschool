@@ -1,242 +1,140 @@
-{{ define "main" }}
-<style>
-  @keyframes ticker{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
-  .ticker-inner{ animation:ticker 30s linear infinite; }
-  .chakra-card{ transition:transform .3s ease,box-shadow .3s ease; }
-  .chakra-card:hover{ transform:translateY(-4px) scale(1.02); box-shadow:0 16px 40px rgba(0,0,0,.15); }
-  .hero-img{
-    background-image:linear-gradient(to bottom,rgba(28,26,15,.35) 0%,rgba(28,26,15,.1) 55%,rgba(28,26,15,.5) 100%),
-      url('https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=1800&q=85&fit=crop');
-    background-size:cover; background-position:center 40%; background-attachment:fixed;
-  }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>True Wellness School — Something Beautiful is Coming</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<!-- HERO -->
-<section class="hero-img min-h-screen flex items-end pb-24 pt-32 px-6">
-  <div class="max-w-5xl mx-auto">
-    <div class="reveal mb-6">
-      <span class="tag bg-white/20 text-white border border-white/30">Est. 2024 · @truewellnessschool</span>
-    </div>
-    <h1 class="reveal d1 font-display font-semibold text-white text-6xl md:text-8xl leading-[1.05] mb-6 drop-shadow-md">
-      Bright. Balanced.<br /><em style="color:#FFE87C">Beautifully Well.</em>
-    </h1>
-    <p class="reveal d2 text-white/85 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
-      Holistic wellness across mind, body, emotions, and spirit — for every stage of life. Simple. Actionable. Life-changing.
-    </p>
-    <div class="reveal d3 flex flex-col sm:flex-row gap-4">
-      <a href="{{ "/programs/" | relURL }}"
-         class="inline-block font-semibold px-8 py-4 rounded-full transition-all shadow-xl text-sm tracking-wide text-charcoal"
-         style="background:#F5C518">Explore Programs →</a>
-      <a href="{{ "/pillars/" | relURL }}"
-         class="inline-block border border-white/50 text-white font-medium px-8 py-4 rounded-full hover:bg-white/15 transition-all text-sm">
-        The 4 Pillars
-      </a>
-    </div>
-  </div>
-</section>
+    body {
+      font-family: Inter, sans-serif;
+      background: #FFFDF5;
+      color: #1C1A0F;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
 
-<!-- TICKER -->
-<div class="py-3.5 overflow-hidden" style="background:#1C1A0F">
-  <div class="ticker-inner flex gap-16 whitespace-nowrap">
-    {{ $items := slice
-      (dict "text" "Mental Health"      "color" "#F5C518")
-      (dict "text" "Physical Wellness"  "color" "rgba(255,255,255,.5)")
-      (dict "text" "Emotional Wellness" "color" "#F5C518")
-      (dict "text" "Spiritual Growth"   "color" "rgba(255,255,255,.5)")
-      (dict "text" "Youth"              "color" "#E65100")
-      (dict "text" "Mid-Age"            "color" "rgba(255,255,255,.5)")
-      (dict "text" "Senior"             "color" "#E65100")
-      (dict "text" "Chakra"             "color" "rgba(255,255,255,.5)")
-      (dict "text" "Reiki"              "color" "#F5C518")
-      (dict "text" "Mindfulness"        "color" "rgba(255,255,255,.5)")
-    }}
-    {{ range $i := (seq 2) }}
-      {{ range $items }}
-        <span class="text-xs font-medium tracking-[.18em] uppercase" style="color:{{ .color }}">{{ .text }}</span>
-        <span style="color:#F5C518;opacity:.4">·</span>
-      {{ end }}
-    {{ end }}
-  </div>
-</div>
+    .glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,197,24,.18) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: pulse 6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: .7; }
+      50%       { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) { .glow { animation: none; } }
 
-<!-- PHILOSOPHY -->
-<section class="py-28 px-6 bg-sun-pale">
-  <div class="max-w-4xl mx-auto text-center">
-    <div class="reveal">
-      <div class="divider mx-auto mb-6"></div>
-      <p class="tag mb-6" style="background:#FFF8DC;color:#C9A000">Our Philosophy</p>
-      <h2 class="font-display text-5xl md:text-6xl text-charcoal leading-tight mb-8">
-        Wellness is not one thing —<br /><em style="color:#C9A000">it is everything, working together.</em>
-      </h2>
-      <p class="text-warm text-lg leading-relaxed max-w-2xl mx-auto">
-        True wellness emerges when you nurture your mind, body, emotions, and spirit simultaneously —
-        across every stage of life, from youth to your golden years.
-      </p>
-    </div>
-    <div class="reveal mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-      {{ range slice
-        (dict "n" "4"  "label" "Wellness\nPillars"   "color" "#F5C518")
-        (dict "n" "3"  "label" "Life\nStages"        "color" "#E65100")
-        (dict "n" "7"  "label" "Chakra\nEnergies"    "color" "#388E3C")
-        (dict "n" "∞"  "label" "Your\nPotential"     "color" "#6A1B9A")
-      }}
-      <div class="py-8 border-t-4 text-left pl-4" style="border-color:{{ .color }}">
-        <p class="font-display font-semibold text-5xl text-charcoal">{{ .n }}</p>
-        <p class="text-warm text-sm mt-2 leading-snug" style="white-space:pre-line">{{ .label }}</p>
-      </div>
-      {{ end }}
-    </div>
-  </div>
-</section>
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 560px;
+    }
 
-<!-- 7 CHAKRA STRIP -->
-<section class="py-20 px-6 bg-white">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-14 reveal">
-      <div class="divider mx-auto mb-5"></div>
-      <p class="tag mb-4" style="background:#FFF8DC;color:#C9A000">Reiki & Chakra Energy</p>
-      <h2 class="font-display text-5xl md:text-6xl text-charcoal">The 7 Chakras</h2>
-      <p class="mt-4 text-warm max-w-xl mx-auto text-base">Each chakra is an energy centre within your body — a living rainbow connecting physical vitality to spiritual essence.</p>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-3 reveal">
-      {{ range slice
-        (dict "n" "1" "name" "Root"        "sanskrit" "Muladhara"    "color" "#D32F2F" "bg" "#FFEBEE" "desc" "Safety, grounding & physical vitality. Your foundation in the body."          "pillar" "physical"  "pillarLabel" "Physical Wellness")
-        (dict "n" "2" "name" "Sacral"      "sanskrit" "Svadhisthana" "color" "#E65100" "bg" "#FBE9E7" "desc" "Creativity, joy & emotional flow. The seat of pleasure and feeling."          "pillar" "emotional" "pillarLabel" "Emotional Wellness")
-        (dict "n" "3" "name" "Solar Plexus" "sanskrit" "Manipura"   "color" "#F5C518" "bg" "#FFF8DC" "desc" "Confidence, clarity & personal power. The radiant sun within you."           "pillar" "mental"    "pillarLabel" "Mental Health")
-        (dict "n" "4" "name" "Heart"       "sanskrit" "Anahata"      "color" "#388E3C" "bg" "#E8F5E9" "desc" "Love, compassion & connection. The bridge between body and spirit."          "pillar" "emotional" "pillarLabel" "Emotional Wellness")
-        (dict "n" "5" "name" "Throat"      "sanskrit" "Vishuddha"    "color" "#1565C0" "bg" "#E3F2FD" "desc" "Expression, truth & clear communication. Voice your authentic self."         "pillar" "mental"    "pillarLabel" "Mental Health")
-        (dict "n" "6" "name" "Third Eye"   "sanskrit" "Ajna"         "color" "#283593" "bg" "#E8EAF6" "desc" "Intuition, insight & inner vision. Seeing beyond the physical world."        "pillar" "spiritual" "pillarLabel" "Spiritual Growth")
-        (dict "n" "7" "name" "Crown"       "sanskrit" "Sahasrara"    "color" "#6A1B9A" "bg" "#F3E5F5" "desc" "Divine connection, unity & higher consciousness. Pure awareness."            "pillar" "spiritual" "pillarLabel" "Spiritual Growth")
-      }}
-      <div class="chakra-card rounded-2xl overflow-hidden cursor-pointer{{ if eq .n "3" }} ring-2 ring-offset-2{{ end }}" style="{{ if eq .n "3" }}box-shadow:0 0 0 3px #F5C518;{{ end }}">
-        <div class="h-3" style="background:{{ .color }}"></div>
-        <div class="p-5 text-center" style="background:{{ .bg }}">
-          <div class="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center font-bold text-xl shadow-md{{ if eq .n "3" }} text-charcoal{{ else }} text-white{{ end }}" style="background:{{ .color }}">{{ .n }}</div>
-          <p class="font-display font-semibold text-lg text-charcoal">{{ .name }}</p>
-          <p class="text-xs text-warm mt-1 mb-2 font-medium uppercase tracking-wider">{{ .sanskrit }}</p>
-          <p class="text-xs text-warm leading-relaxed">{{ .desc }}</p>
-          <a href="{{ "/pillars/" | relURL }}#{{ .pillar }}" class="inline-block mt-3 text-xs font-semibold" style="color:{{ .color }}">→ {{ .pillarLabel }}</a>
-        </div>
-      </div>
-      {{ end }}
-    </div>
-    <p class="text-center text-warm text-sm mt-8 reveal">
-      Each chakra maps to one of our 4 Wellness Pillars —
-      <a href="{{ "/pillars/" | relURL }}" class="font-semibold underline" style="color:#C9A000">explore the connection →</a>
-    </p>
-  </div>
-</section>
+    .wordmark {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #C9A000;
+      margin-bottom: 3.5rem;
+    }
 
-<!-- IMAGE BREAK -->
-<div class="relative h-[400px] overflow-hidden">
-  <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600&q=80&fit=crop&crop=center" alt="Sunlit meadow" class="w-full h-full object-cover" />
-  <div class="absolute inset-0 flex items-center" style="background:linear-gradient(to right,rgba(245,197,24,.75) 0%,rgba(245,197,24,.2) 60%,transparent 100%)">
-    <div class="max-w-7xl mx-auto px-10 reveal">
-      <p class="font-display italic text-3xl md:text-5xl text-charcoal max-w-lg leading-snug">"Let your light shine — wellness begins from within."</p>
-      <p class="text-charcoal/60 mt-4 text-sm font-medium tracking-widest uppercase">— True Wellness School</p>
-    </div>
-  </div>
-</div>
+    .sun {
+      width: 56px;
+      height: 56px;
+      background: #F5C518;
+      border-radius: 50%;
+      margin: 0 auto 2.5rem;
+      box-shadow: 0 0 0 12px rgba(245,197,24,.12), 0 0 0 28px rgba(245,197,24,.06);
+    }
 
-<!-- 4 PILLAR CARDS -->
-<section class="py-24 px-6 bg-sun-pale">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16 reveal">
-      <div class="divider mx-auto mb-5"></div>
-      <p class="tag mb-4" style="background:#FFF8DC;color:#C9A000">The Framework</p>
-      <h2 class="font-display text-5xl md:text-6xl text-charcoal">4 Pillars of True Wellness</h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {{ range slice
-        (dict "slug" "mental"    "label" "Mental\nHealth"        "tag" "Chakras 3 & 5" "tagColor" "rgba(245,197,24,.85)" "tagText" "#1C1A0F" "arrowColor" "#C9A000" "img" "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=900&q=80&fit=crop&crop=center" "desc" "Clarity, confidence, and calm. Tools to strengthen your mind across every stage of life."  "dots" "#F9A825,#1565C0"  "delay" "d1")
-        (dict "slug" "physical"  "label" "Physical\nWellness"    "tag" "Chakra 1"      "tagColor" "rgba(211,47,47,.8)"  "tagText" "#fff"    "arrowColor" "#D32F2F" "img" "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80&fit=crop&crop=center" "desc" "Movement, nutrition, sleep, and vitality — the grounded foundation of everything you do." "dots" "#D32F2F"         "delay" "d2")
-        (dict "slug" "emotional" "label" "Emotional\nWellness"   "tag" "Chakras 2 & 4" "tagColor" "rgba(56,142,60,.8)"  "tagText" "#fff"    "arrowColor" "#388E3C" "img" "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80&fit=crop&crop=center" "desc" "Feel, process, and grow. Emotional resilience, self-compassion, and joyful connection."  "dots" "#E65100,#388E3C" "delay" "d3")
-        (dict "slug" "spiritual" "label" "Spiritual\nGrowth"     "tag" "Chakras 6 & 7" "tagColor" "rgba(106,27,154,.8)" "tagText" "#fff"    "arrowColor" "#6A1B9A" "img" "https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=900&q=80&fit=crop&crop=center" "desc" "Purpose, intuition, and divine connection — the deepest layer of a well-lived life."    "dots" "#283593,#6A1B9A" "delay" "d4")
-      }}
-      <a href="{{ "/pillars/" | relURL }}#{{ .slug }}" class="lift reveal {{ .delay }} block group overflow-hidden rounded-2xl">
-        <div class="relative h-72 overflow-hidden">
-          <img src="{{ .img }}" alt="{{ .label }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(28,26,15,.85) 0%,rgba(28,26,15,.2) 60%,transparent 100%)"></div>
-          <div class="absolute bottom-0 left-0 p-8">
-            <span class="tag text-sm mb-3 block" style="background:{{ .tagColor }};color:{{ .tagText }}">{{ .tag }}</span>
-            <h3 class="font-display font-semibold text-3xl text-white leading-tight" style="white-space:pre-line">{{ .label }}</h3>
-          </div>
-        </div>
-        <div class="p-6 flex items-center justify-between bg-white">
-          <p class="text-warm text-sm leading-relaxed max-w-xs">{{ .desc }}</p>
-          <span class="shrink-0 ml-4 font-semibold text-sm group-hover:translate-x-2 transition-transform inline-block" style="color:{{ .arrowColor }}">Explore →</span>
-        </div>
-      </a>
-      {{ end }}
-    </div>
-  </div>
-</section>
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.75rem, 6vw, 4.5rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: #1C1A0F;
+      margin-bottom: 1.5rem;
+    }
 
-<!-- 3 LIFE STAGES -->
-<section class="py-24 px-6 bg-white">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16 reveal">
-      <div class="divider mx-auto mb-5"></div>
-      <p class="tag mb-4" style="background:#FFF8DC;color:#C9A000">For Every Stage of Life</p>
-      <h2 class="font-display text-5xl md:text-6xl text-charcoal">Wellness at Every Age</h2>
-      <p class="mt-4 text-warm max-w-lg mx-auto">Wherever you are in life's journey — we meet you exactly there.</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {{ range slice
-        (dict "anchor" "youth"  "ages" "Ages 13–25" "label" "Youth"   "img" "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=700&q=80&fit=crop&crop=center" "overlayColor" "rgba(230,81,0,.85)"   "bg" "#FBE9E7" "btnColor" "#E65100" "btnText" "#fff" "desc" "Building the foundation. Identity, resilience, energy, and purpose — the habits formed now shape a lifetime." "delay" "d1" "titleColor" "text-white")
-        (dict "anchor" "midage" "ages" "Ages 26–55" "label" "Mid-Age" "img" "https://images.unsplash.com/photo-1545389336-cf090694435e?w=700&q=80&fit=crop&crop=center" "overlayColor" "rgba(245,197,24,.9)"   "bg" "#FFF8DC" "btnColor" "#F5C518" "btnText" "#1C1A0F" "desc" "Thriving under pressure. Balance, clarity, hormonal health, and energy management for life's most demanding chapter." "delay" "d2" "titleColor" "text-charcoal")
-        (dict "anchor" "senior" "ages" "Ages 55+"   "label" "Senior"  "img" "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80&fit=crop&crop=center" "overlayColor" "rgba(106,27,154,.8)"  "bg" "#F3E5F5" "btnColor" "#6A1B9A" "btnText" "#fff" "desc" "Ageing with vitality. Brain health, gentle movement, emotional depth, and spiritual richness for your golden years." "delay" "d3" "titleColor" "text-white")
-      }}
-      <div class="lift reveal {{ .delay }} rounded-2xl overflow-hidden">
-        <div class="relative h-64 overflow-hidden">
-          <img src="{{ .img }}" alt="{{ .label }} wellness" class="w-full h-full object-cover" />
-          <div class="absolute inset-0" style="background:linear-gradient(to top,{{ .overlayColor }} 0%,transparent 60%)"></div>
-          <div class="absolute bottom-0 left-0 p-6">
-            <p class="text-xs font-semibold uppercase tracking-widest mb-1 {{ if eq .label "Mid-Age" }}text-charcoal/70{{ else }}text-white/70{{ end }}">{{ .ages }}</p>
-            <h3 class="font-display font-semibold text-3xl {{ .titleColor }}">{{ .label }}</h3>
-          </div>
-        </div>
-        <div class="p-7" style="background:{{ .bg }}">
-          <p class="text-warm text-sm leading-relaxed mb-4">{{ .desc }}</p>
-          <a href="{{ "/programs/" | relURL }}#{{ .anchor }}"
-             class="inline-block font-semibold text-sm px-5 py-2.5 rounded-full transition-all"
-             style="background:{{ .btnColor }};color:{{ .btnText }}">
-            {{ .label }} Programs →
-          </a>
-        </div>
-      </div>
-      {{ end }}
-    </div>
-  </div>
-</section>
+    h1 em {
+      font-style: italic;
+      color: #C9A000;
+    }
 
-<!-- QUOTE CTA -->
-<section class="relative py-28 px-6 overflow-hidden" style="background:#1C1A0F">
-  <div class="absolute inset-0 opacity-15" style="background-image:url('https://images.unsplash.com/photo-1500651230702-0e2d8a49d4e7?w=1400&q=60&fit=crop');background-size:cover;background-position:center;"></div>
-  <div class="relative z-10 max-w-3xl mx-auto text-center reveal">
-    <p class="font-display italic text-4xl md:text-5xl text-white leading-snug mb-6">
-      "You are a living, breathing <em style="color:#F5C518">sunflower</em> — turn toward the light."
-    </p>
-    <p class="font-medium text-sm tracking-widest uppercase mb-12" style="color:rgba(255,255,255,.4)">— True Wellness School</p>
-    <a href="{{ "/programs/" | relURL }}"
-       class="inline-block font-semibold px-10 py-4 rounded-full transition-all shadow-xl text-sm tracking-wide text-charcoal"
-       style="background:#F5C518">See All Programs →</a>
-  </div>
-</section>
+    .divider {
+      width: 2.5rem;
+      height: 2px;
+      background: #F5C518;
+      margin: 0 auto 1.5rem;
+    }
 
-<!-- INSTAGRAM -->
-<section class="py-20 px-6 bg-sun-pale">
-  <div class="max-w-3xl mx-auto text-center reveal">
-    <div class="divider mx-auto mb-5"></div>
-    <p class="tag mb-4" style="background:#FFF8DC;color:#C9A000">Join the Community</p>
-    <h2 class="font-display text-4xl md:text-5xl text-charcoal mb-4">@truewellnessschool</h2>
-    <p class="text-warm text-base mb-8 max-w-md mx-auto">Daily wellness tips, chakra insights, recipes, and wisdom — join us on Instagram.</p>
-    <a href="{{ .Site.Params.instagram }}" target="_blank"
-       class="inline-flex items-center gap-3 text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:opacity-90 hover:scale-105 transition-all text-sm"
-       style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)">
-      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      Follow on Instagram
+    p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #6b6645;
+      font-weight: 300;
+      max-width: 380px;
+      margin: 0 auto 3rem;
+    }
+
+    .instagram {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: #1C1A0F;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(28,26,15,.2);
+      padding-bottom: 2px;
+      transition: border-color .2s, color .2s;
+    }
+    .instagram:hover { color: #C9A000; border-color: #C9A000; }
+
+    footer {
+      position: fixed;
+      bottom: 1.5rem;
+      font-size: 0.7rem;
+      color: rgba(28,26,15,.3);
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+
+  <div class="container">
+    <p class="wordmark">True Wellness School</p>
+    <div class="sun"></div>
+    <h1>Something <em>beautiful</em><br />is on its way.</h1>
+    <div class="divider"></div>
+    <p>A new chapter in holistic wellness — for mind, body, emotions, and spirit. We are putting the finishing touches on something that will change how you experience wellbeing.</p>
+    <a class="instagram" href="{{ .Site.Params.instagram }}" target="_blank">
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Follow us @truewellnessschool
     </a>
   </div>
-</section>
-{{ end }}
+
+  <footer>&copy; {{ now.Year }} True Wellness School</footer>
+</body>
+</html>
