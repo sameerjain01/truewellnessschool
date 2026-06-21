@@ -1,0 +1,8 @@
+baseURL = 'https://truewellnessschool.com/'
+locale = 'en-GB'
+title = 'True Wellness School'
+
+[params]
+  description = "Holistic wellness for mind, body, emotions, and spirit — at every stage of life."
+  instagram   = "https://www.instagram.com/truewellnessschool"
+  tagline     = "Nurture Every Part of Yourself"

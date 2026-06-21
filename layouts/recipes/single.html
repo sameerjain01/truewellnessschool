@@ -1,0 +1,66 @@
+{{ define "main" }}
+<style>
+  .recipe-hero{ background:linear-gradient(135deg,#FFF8DC,#E8F5E9); min-height:40vh; }
+</style>
+
+<div class="pt-24 pb-4 px-6 recipe-hero flex items-end">
+  <div class="max-w-4xl mx-auto w-full pb-8">
+    <a href="{{ "/recipes/" | relURL }}" class="inline-block text-xs font-semibold tracking-widest uppercase mb-4" style="color:#C9A000">← All Recipes</a>
+    <div class="flex gap-2 flex-wrap mb-3">
+      {{ range .Params.tags }}<span class="tag bg-white/70 text-warm">{{ .emoji }} {{ .label }}</span>{{ end }}
+    </div>
+    <h1 class="font-display font-semibold text-5xl md:text-7xl text-charcoal leading-tight">{{ .Title }}</h1>
+    {{ with .Params.subtitle }}<p class="font-display italic text-2xl text-warm mt-2">{{ . }}</p>{{ end }}
+  </div>
+</div>
+
+<section class="py-16 px-6 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <div class="grid md:grid-cols-2 rounded-2xl overflow-hidden shadow-sm border border-black/5 bg-white">
+
+      <!-- Ingredients visual -->
+      <div class="relative bg-gradient-to-br from-yellow-50 via-lime-50 to-green-50 p-12 flex flex-col items-center justify-center min-h-[460px]">
+        <div class="absolute top-6 right-6 w-20 h-20 rounded-full bg-green-100/80"></div>
+        <div class="absolute bottom-6 left-6 w-14 h-14 rounded-full bg-lime-100/80"></div>
+        {{ with .Params.tagline }}<p class="font-display italic text-xl text-charcoal text-center mb-8">{{ . }}</p>{{ end }}
+        <div class="grid grid-cols-3 gap-3 w-full max-w-xs mb-5">
+          {{ range .Params.ingredients }}
+          <div class="bg-white rounded-xl p-3 text-center shadow-sm">
+            <div class="text-xl">{{ .emoji }}</div>
+            <p class="text-xs font-semibold text-charcoal mt-1">{{ .name }}</p>
+            <p class="text-warm text-xs">{{ .amount }}</p>
+          </div>
+          {{ end }}
+        </div>
+        <div class="flex flex-wrap gap-2 justify-center text-xs text-warm">
+          {{ range .Params.extras }}<span class="bg-white/80 rounded-full px-3 py-1">{{ . }}</span>{{ end }}
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="p-10 flex flex-col justify-center">
+        {{ with .Description }}<p class="text-warm leading-relaxed mb-6">{{ . }}</p>{{ end }}
+        {{ with .Content }}<div class="prose prose-sm text-warm mb-6">{{ . }}</div>{{ end }}
+
+        <div class="rounded-xl p-6 mb-6 bg-sun-pale">
+          <p class="font-semibold text-charcoal text-sm mb-3">How to make it</p>
+          <ol class="space-y-1.5 text-sm text-warm list-decimal list-inside">
+            {{ range .Params.steps }}<li>{{ . }}</li>{{ end }}
+          </ol>
+        </div>
+
+        {{ range .Params.benefits }}
+        <div class="flex gap-3 items-start mb-3">
+          <span class="w-5 h-5 rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5" style="background:#FFF8DC;color:#C9A000">✓</span>
+          <p class="text-sm text-warm"><strong class="text-charcoal">{{ .label }}:</strong> {{ .text }}</p>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="{{ "/recipes/" | relURL }}" class="inline-block font-medium px-8 py-4 rounded-full text-sm text-charcoal transition-all" style="background:#F5C518">← Back to All Recipes</a>
+    </div>
+  </div>
+</section>
+{{ end }}

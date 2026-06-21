@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+{{ partial "nav.html" . }}
+{{ block "main" . }}{{ end }}
+{{ partial "footer.html" . }}
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  const nav = document.getElementById('sitenav');
+  if (nav) window.addEventListener('scroll', () => {
+    nav.style.boxShadow = scrollY > 30 ? '0 2px 20px rgba(0,0,0,.08)' : 'none';
+  });
+</script>
+{{ block "scripts" . }}{{ end }}
+</body>
+</html>

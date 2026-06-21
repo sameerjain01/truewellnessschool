@@ -1,0 +1,44 @@
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { display: ['Cormorant Garamond','serif'], body: ['Inter','sans-serif'] },
+          colors: {
+            sun:     { DEFAULT:'#F5C518', dark:'#C9A000', light:'#FFF8DC', pale:'#FFFDF5' },
+            cream:   { DEFAULT:'#FFFDF5', dark:'#FFF0CC' },
+            charcoal:{ DEFAULT:'#1C1A0F' },
+            warm:    { DEFAULT:'#5C4A20' },
+            root:    { DEFAULT:'#D32F2F', light:'#FFEBEE' },
+            sacral:  { DEFAULT:'#E65100', light:'#FBE9E7' },
+            solar:   { DEFAULT:'#F9A825', light:'#FFF8E1' },
+            heart:   { DEFAULT:'#388E3C', light:'#E8F5E9' },
+            throat:  { DEFAULT:'#1565C0', light:'#E3F2FD' },
+            eye:     { DEFAULT:'#283593', light:'#E8EAF6' },
+            crown:   { DEFAULT:'#6A1B9A', light:'#F3E5F5' },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *{ scroll-behavior:smooth; box-sizing:border-box; }
+    body{ font-family:'Inter',sans-serif; background:#FFFDF5; color:#1C1A0F; overflow-x:hidden; }
+    h1,h2,h3,h4{ font-family:'Cormorant Garamond',serif; }
+    .nav-glass{ background:rgba(255,253,245,.94); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+    @keyframes fadeUp{ from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    .reveal{ opacity:0; }
+    .reveal.visible{ animation:fadeUp .7s ease forwards; }
+    .d1{animation-delay:.1s} .d2{animation-delay:.2s} .d3{animation-delay:.3s} .d4{animation-delay:.4s}
+    .lift{ transition:transform .3s ease, box-shadow .3s ease; }
+    .lift:hover{ transform:translateY(-6px); box-shadow:0 20px 60px rgba(28,26,15,.12); }
+    .divider{ width:48px; height:3px; background:#F5C518; }
+    .tag{ display:inline-block; font-size:.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:4px 12px; border-radius:999px; }
+  </style>

@@ -1,0 +1,293 @@
+{{ define "main" }}
+<style>
+  .hero-img{
+    background-image:linear-gradient(to bottom,rgba(28,26,15,.45) 0%,rgba(28,26,15,.15) 50%,rgba(28,26,15,.6) 100%),
+      url('https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=1800&q=85&fit=crop');
+    background-size:cover; background-position:center 40%; background-attachment:fixed;
+  }
+  .pillar-section{ scroll-margin-top:80px; }
+  .tab-btn{ cursor:pointer; transition:all .2s ease; }
+  .tab-content{ display:none; }
+  .tab-content.active{ display:grid; }
+</style>
+
+<!-- HERO -->
+<section class="hero-img min-h-[60vh] flex items-end pb-20 pt-36 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-4"><span class="tag bg-white/20 text-white border border-white/30">Framework</span></div>
+    <h1 class="reveal d1 font-display font-semibold text-white text-6xl md:text-8xl leading-[1.05] mb-5 drop-shadow-md">
+      4 Pillars of<br /><em style="color:#FFE87C">True Wellness</em>
+    </h1>
+    <p class="reveal d2 text-white/80 text-lg max-w-xl leading-relaxed">
+      Mind, body, emotions, spirit — a complete framework for radiant health at every age, woven through the energy of the 7 chakras.
+    </p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="py-20 px-6 bg-white">
+  <div class="max-w-3xl mx-auto text-center reveal">
+    <div class="divider mx-auto mb-5"></div>
+    <p class="text-warm text-lg leading-relaxed mb-6">
+      True wellness isn't a single action — it's a living system. When all four pillars are tended to,
+      your body heals, your mind clears, your emotions settle, and your spirit soars.
+    </p>
+    <p class="font-display italic text-2xl text-charcoal">"When you align your energy, you align your life."</p>
+    <div class="flex mt-8 rounded-full overflow-hidden h-3 max-w-sm mx-auto shadow-sm">
+      {{ range slice "#D32F2F" "#E65100" "#F5C518" "#388E3C" "#1565C0" "#283593" "#6A1B9A" }}
+      <div class="flex-1" style="background:{{ . }}"></div>
+      {{ end }}
+    </div>
+    <p class="text-xs text-warm mt-3 tracking-widest uppercase font-medium">7 Chakra Energies · 4 Pillars · 3 Life Stages</p>
+  </div>
+</section>
+
+<!-- PILLAR 1: MENTAL HEALTH -->
+<section id="mental" class="pillar-section pb-8 px-6 bg-sun-light">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal pt-16 pb-10 flex flex-col md:flex-row gap-8 items-start">
+      <div class="relative h-64 md:h-80 md:w-80 w-full shrink-0 rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=700&q=80&fit=crop&crop=center" alt="Mental Health" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6" style="background:rgba(245,197,24,.6)">
+          <div class="flex gap-2 mb-3">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-charcoal font-bold text-sm shadow" style="background:#F5C518">3</span>
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm shadow" style="background:#1565C0">5</span>
+          </div>
+          <p class="font-display font-semibold text-3xl text-charcoal">Mental Health</p>
+          <p class="text-charcoal/70 text-xs uppercase tracking-widest mt-1">Pillar One · Solar Plexus & Throat Chakra</p>
+        </div>
+      </div>
+      <div>
+        <div class="divider mb-4"></div>
+        <span class="tag mb-4 inline-block text-charcoal" style="background:#FFF8DC">Pillar One</span>
+        <h2 class="font-display font-semibold text-4xl md:text-5xl text-charcoal mb-4">Mental Health</h2>
+        <p class="text-warm leading-relaxed mb-4">Your mind is the command centre of your entire life. Mental health is not the absence of struggle — it is the presence of clarity, confidence, and the tools to navigate whatever arises. The Solar Plexus chakra fuels your personal power; the Throat chakra empowers you to express your truth.</p>
+        <div class="flex gap-3 flex-wrap">
+          <span class="tag text-charcoal" style="background:#FFF8DC">Clarity</span>
+          <span class="tag text-white" style="background:#1565C0">Self-Expression</span>
+          <span class="tag text-charcoal" style="background:#F5C518">Confidence</span>
+          <span class="tag" style="background:#E8EAF6;color:#283593">Resilience</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal bg-white rounded-2xl overflow-hidden shadow-sm border border-black/5">
+      <div class="flex border-b border-black/5">
+        <button onclick="switchTab('mental','youth')"  id="mental-youth-btn"  class="tab-btn active flex-1 py-4 text-sm font-semibold text-center" style="border-bottom:3px solid #F5C518;color:#C9A000">Ages 13–25</button>
+        <button onclick="switchTab('mental','midage')" id="mental-midage-btn" class="tab-btn flex-1 py-4 text-sm font-semibold text-center text-warm" style="border-bottom:3px solid transparent">Ages 26–55</button>
+        <button onclick="switchTab('mental','senior')" id="mental-senior-btn" class="tab-btn flex-1 py-4 text-sm font-semibold text-center text-warm" style="border-bottom:3px solid transparent">Ages 55+</button>
+      </div>
+      <div id="mental-youth" class="tab-content active p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl p-5 bg-sun-light"><p class="font-semibold text-charcoal mb-1">Identity & Self-Worth</p><p class="text-warm text-sm">Building a solid sense of self in a world of constant comparison. Learning that your value is not your performance or follower count.</p></div>
+        <div class="rounded-xl p-5 bg-sun-light"><p class="font-semibold text-charcoal mb-1">Managing Anxiety & Pressure</p><p class="text-warm text-sm">Tools for exam stress, social anxiety, and the pressure to have it all figured out. Breathwork, journalling, and grounding techniques.</p></div>
+        <div class="rounded-xl p-5 bg-sun-light"><p class="font-semibold text-charcoal mb-1">Digital Wellness</p><p class="text-warm text-sm">Understanding how screens and social media affect your mental state — and building healthy boundaries without feeling left out.</p></div>
+        <div class="rounded-xl p-5 bg-sun-light"><p class="font-semibold text-charcoal mb-1">Focus & Study Skills</p><p class="text-warm text-sm">Simple mindfulness and cognitive tools that improve concentration, reduce brain fog, and make learning feel less like a battle.</p></div>
+      </div>
+      <div id="mental-midage" class="tab-content p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl p-5 bg-sun-light"><p class="font-semibold text-charcoal mb-1">Burnout Prevention</p><p class="text-warm text-sm">Recognising the early warning signs and building a sustainable rhythm between ambition and rest before breakdown forces the pause.</p></div>
+        <div class="rounded-xl p-5 bg-sun-light"><p class="font-semibold text-charcoal mb-1">Mindfulness at Work</p><p class="text-warm text-sm">Practical techniques — from micro-breaks to attention training — that improve performance without adding to your to-do list.</p></div>
+        <div class="rounded-xl p-5 bg-sun-light"><p class="font-semibold text-charcoal mb-1">Cognitive Clarity</p><p class="text-warm text-sm">Nutrition, sleep, and daily habits that keep the mid-life brain sharp, decisive, and resistant to stress-related decline.</p></div>
+        <div class="rounded-xl p-5 bg-sun-light"><p class="font-semibold text-charcoal mb-1">Emotional Intelligence</p><p class="text-warm text-sm">Understanding your triggers, patterns, and responses — so you lead your life rather than react to it.</p></div>
+      </div>
+      <div id="mental-senior" class="tab-content p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl p-5" style="background:#E8EAF6"><p class="font-semibold text-charcoal mb-1">Brain Longevity</p><p class="text-warm text-sm">Evidence-based practices — movement, nutrition, social connection, and sleep — that reduce cognitive decline and keep your mind vibrant.</p></div>
+        <div class="rounded-xl p-5" style="background:#E8EAF6"><p class="font-semibold text-charcoal mb-1">Purpose in Later Life</p><p class="text-warm text-sm">Redefining identity after career, raising children, or loss. Finding meaning that energises you every morning.</p></div>
+        <div class="rounded-xl p-5" style="background:#E8EAF6"><p class="font-semibold text-charcoal mb-1">Memory & Focus</p><p class="text-warm text-sm">Specific tools — learning new skills, puzzles, language, music — that create new neural pathways and keep memory strong.</p></div>
+        <div class="rounded-xl p-5" style="background:#E8EAF6"><p class="font-semibold text-charcoal mb-1">Managing Life Transitions</p><p class="text-warm text-sm">Navigating retirement, grandparenthood, or bereavement with psychological tools that build rather than deplete your reserves.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLAR 2: PHYSICAL WELLNESS -->
+<section id="physical" class="pillar-section pb-8 px-6 bg-white">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal pt-16 pb-10 flex flex-col md:flex-row gap-8 items-start">
+      <div class="relative h-64 md:h-80 md:w-80 w-full shrink-0 rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&q=80&fit=crop&crop=center" alt="Physical Wellness" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6" style="background:rgba(211,47,47,.55)">
+          <span class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg shadow mb-3" style="background:#D32F2F">1</span>
+          <p class="font-display font-semibold text-3xl text-white">Physical Wellness</p>
+          <p class="text-white/70 text-xs uppercase tracking-widest mt-1">Pillar Two · Root Chakra</p>
+        </div>
+      </div>
+      <div>
+        <div class="divider mb-4" style="background:#D32F2F"></div>
+        <span class="tag mb-4 inline-block text-white" style="background:#D32F2F">Pillar Two</span>
+        <h2 class="font-display font-semibold text-4xl md:text-5xl text-charcoal mb-4">Physical Wellness</h2>
+        <p class="text-warm leading-relaxed mb-4">The body is your home — the only one you will ever truly live in. Physical wellness is not about looking a certain way; it is about having the energy, strength, and vitality to fully inhabit your life. The Root chakra grounds you in your body, anchoring safety and physical aliveness.</p>
+        <div class="flex gap-3 flex-wrap">
+          <span class="tag text-white" style="background:#D32F2F">Movement</span>
+          <span class="tag text-white" style="background:#388E3C">Nutrition</span>
+          <span class="tag text-charcoal" style="background:#FFF8DC">Sleep</span>
+          <span class="tag text-warm" style="background:#FFEBEE">Vitality</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal bg-white rounded-2xl overflow-hidden shadow-sm border border-black/5">
+      <div class="flex border-b border-black/5">
+        <button onclick="switchTab('physical','youth')"  id="physical-youth-btn"  class="tab-btn active flex-1 py-4 text-sm font-semibold text-center" style="border-bottom:3px solid #D32F2F;color:#D32F2F">Ages 13–25</button>
+        <button onclick="switchTab('physical','midage')" id="physical-midage-btn" class="tab-btn flex-1 py-4 text-sm font-semibold text-center text-warm" style="border-bottom:3px solid transparent">Ages 26–55</button>
+        <button onclick="switchTab('physical','senior')" id="physical-senior-btn" class="tab-btn flex-1 py-4 text-sm font-semibold text-center text-warm" style="border-bottom:3px solid transparent">Ages 55+</button>
+      </div>
+      <div id="physical-youth" class="tab-content active p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl p-5" style="background:#FFEBEE"><p class="font-semibold text-charcoal mb-1">Building Movement Habits Early</p><p class="text-warm text-sm">Finding joyful movement — sport, dance, yoga, walking — before it feels like obligation. The habits formed at 15 last a lifetime.</p></div>
+        <div class="rounded-xl p-5" style="background:#FFEBEE"><p class="font-semibold text-charcoal mb-1">Nutrition for Growth</p><p class="text-warm text-sm">Fuelling a developing body with whole foods, adequate protein, and iron — without diet culture, restriction, or guilt.</p></div>
+        <div class="rounded-xl p-5" style="background:#FFEBEE"><p class="font-semibold text-charcoal mb-1">Sleep & Energy</p><p class="text-warm text-sm">Why teenagers genuinely need 9 hours, how to protect your sleep rhythm against late nights, and why it transforms mood and focus.</p></div>
+        <div class="rounded-xl p-5" style="background:#FFEBEE"><p class="font-semibold text-charcoal mb-1">Positive Body Image</p><p class="text-warm text-sm">Understanding that your body is not an ornament but an instrument. Rejecting comparison culture in favour of functional strength.</p></div>
+      </div>
+      <div id="physical-midage" class="tab-content p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl p-5" style="background:#FFEBEE"><p class="font-semibold text-charcoal mb-1">Strength & Hormonal Balance</p><p class="text-warm text-sm">Resistance training becomes essential after 30 — for bone density, metabolic health, and managing hormonal shifts in both men and women.</p></div>
+        <div class="rounded-xl p-5" style="background:#FFEBEE"><p class="font-semibold text-charcoal mb-1">Anti-Inflammatory Nutrition</p><p class="text-warm text-sm">Whole foods, omega-3s, and microbiome support that reduce the chronic inflammation behind fatigue, pain, and brain fog.</p></div>
+        <div class="rounded-xl p-5" style="background:#FFEBEE"><p class="font-semibold text-charcoal mb-1">Mobility & Injury Prevention</p><p class="text-warm text-sm">Daily flexibility and posture work that keeps your body pain-free and functional — not just for sport, but for life.</p></div>
+        <div class="rounded-xl p-5" style="background:#FFEBEE"><p class="font-semibold text-charcoal mb-1">Energy Management</p><p class="text-warm text-sm">Understanding your circadian rhythm, energy peaks, and how to structure your day around how your body actually works.</p></div>
+      </div>
+      <div id="physical-senior" class="tab-content p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl p-5" style="background:#FFEBEE"><p class="font-semibold text-charcoal mb-1">Gentle Movement & Flexibility</p><p class="text-warm text-sm">Yoga, tai chi, swimming, and walking — movement practices that build strength without strain, and keep the body fluid and capable.</p></div>
+        <div class="rounded-xl p-5" style="background:#FFEBEE"><p class="font-semibold text-charcoal mb-1">Bone & Joint Health</p><p class="text-warm text-sm">Calcium, vitamin D, weight-bearing exercise, and anti-inflammatory foods that protect bones and joints through your 70s and beyond.</p></div>
+        <div class="rounded-xl p-5" style="background:#FFEBEE"><p class="font-semibold text-charcoal mb-1">Nutrition for Longevity</p><p class="text-warm text-sm">Protein, healthy fats, and phytonutrients that support muscle retention, heart health, and brain vitality in later life.</p></div>
+        <div class="rounded-xl p-5" style="background:#FFEBEE"><p class="font-semibold text-charcoal mb-1">Balance & Fall Prevention</p><p class="text-warm text-sm">Simple balance exercises and home environment changes that dramatically reduce fall risk and preserve independence.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLAR 3: EMOTIONAL WELLNESS -->
+<section id="emotional" class="pillar-section pb-8 px-6" style="background:#E8F5E9">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal pt-16 pb-10 flex flex-col md:flex-row gap-8 items-start">
+      <div class="relative h-64 md:h-80 md:w-80 w-full shrink-0 rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80&fit=crop&crop=center" alt="Emotional Wellness" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6" style="background:rgba(56,142,60,.55)">
+          <div class="flex gap-2 mb-3">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm shadow" style="background:#E65100">2</span>
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm shadow" style="background:#388E3C">4</span>
+          </div>
+          <p class="font-display font-semibold text-3xl text-white">Emotional Wellness</p>
+          <p class="text-white/70 text-xs uppercase tracking-widest mt-1">Pillar Three · Sacral & Heart Chakra</p>
+        </div>
+      </div>
+      <div>
+        <div class="divider mb-4" style="background:#388E3C"></div>
+        <span class="tag mb-4 inline-block text-white" style="background:#388E3C">Pillar Three</span>
+        <h2 class="font-display font-semibold text-4xl md:text-5xl text-charcoal mb-4">Emotional Wellness</h2>
+        <p class="text-warm leading-relaxed mb-4">Emotions are not problems to solve — they are messages to understand. Emotional wellness is your capacity to feel fully, process honestly, and connect deeply. The Sacral chakra opens your creative, joyful self; the Heart chakra is where love, compassion, and genuine connection live.</p>
+        <div class="flex gap-3 flex-wrap">
+          <span class="tag text-white" style="background:#388E3C">Self-Compassion</span>
+          <span class="tag text-white" style="background:#E65100">Joy</span>
+          <span class="tag text-charcoal" style="background:#FBE9E7">Connection</span>
+          <span class="tag text-charcoal" style="background:#E8F5E9">Resilience</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal bg-white rounded-2xl overflow-hidden shadow-sm border border-black/5">
+      <div class="flex border-b border-black/5">
+        <button onclick="switchTab('emotional','youth')"  id="emotional-youth-btn"  class="tab-btn active flex-1 py-4 text-sm font-semibold text-center" style="border-bottom:3px solid #388E3C;color:#388E3C">Ages 13–25</button>
+        <button onclick="switchTab('emotional','midage')" id="emotional-midage-btn" class="tab-btn flex-1 py-4 text-sm font-semibold text-center text-warm" style="border-bottom:3px solid transparent">Ages 26–55</button>
+        <button onclick="switchTab('emotional','senior')" id="emotional-senior-btn" class="tab-btn flex-1 py-4 text-sm font-semibold text-center text-warm" style="border-bottom:3px solid transparent">Ages 55+</button>
+      </div>
+      <div id="emotional-youth" class="tab-content active p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl p-5" style="background:#E8F5E9"><p class="font-semibold text-charcoal mb-1">Naming & Understanding Emotions</p><p class="text-warm text-sm">Expanding your emotional vocabulary beyond "fine" and "stressed" — so you can actually locate what you're feeling and why.</p></div>
+        <div class="rounded-xl p-5" style="background:#E8F5E9"><p class="font-semibold text-charcoal mb-1">Navigating Friendships & Relationships</p><p class="text-warm text-sm">Healthy boundaries, recognising toxic dynamics, and building the kind of friendships that genuinely nourish you.</p></div>
+        <div class="rounded-xl p-5" style="background:#E8F5E9"><p class="font-semibold text-charcoal mb-1">Building Self-Compassion</p><p class="text-warm text-sm">Treating yourself with the same kindness you give others. Learning that self-criticism rarely motivates — it only depletes.</p></div>
+        <div class="rounded-xl p-5" style="background:#E8F5E9"><p class="font-semibold text-charcoal mb-1">Joy, Play & Creative Expression</p><p class="text-warm text-sm">Reclaiming activities that fill you up — art, music, sport, nature — as essential medicine, not optional extras.</p></div>
+      </div>
+      <div id="emotional-midage" class="tab-content p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl p-5" style="background:#E8F5E9"><p class="font-semibold text-charcoal mb-1">Emotional Regulation Under Pressure</p><p class="text-warm text-sm">When work, family, and personal needs all pull at once — specific tools to stay centred without suppressing what you feel.</p></div>
+        <div class="rounded-xl p-5" style="background:#E8F5E9"><p class="font-semibold text-charcoal mb-1">Nurturing Close Relationships</p><p class="text-warm text-sm">Keeping intimacy alive in long-term partnerships and deepening friendships during the years when life makes everything transactional.</p></div>
+        <div class="rounded-xl p-5" style="background:#E8F5E9"><p class="font-semibold text-charcoal mb-1">Processing Grief & Disappointment</p><p class="text-warm text-sm">Moving through loss without it hardening into chronic bitterness or shutdown.</p></div>
+        <div class="rounded-xl p-5" style="background:#E8F5E9"><p class="font-semibold text-charcoal mb-1">True Self-Care</p><p class="text-warm text-sm">Beyond bubble baths — the real practices that actually restore your emotional reserves.</p></div>
+      </div>
+      <div id="emotional-senior" class="tab-content p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl p-5" style="background:#E8F5E9"><p class="font-semibold text-charcoal mb-1">Gratitude & Life Review</p><p class="text-warm text-sm">Embracing the full arc of your journey with a sense of meaning that only comes with perspective.</p></div>
+        <div class="rounded-xl p-5" style="background:#E8F5E9"><p class="font-semibold text-charcoal mb-1">Connection Across Generations</p><p class="text-warm text-sm">Deep emotional bonds with grandchildren, younger family members, and community — the relationships that make senior life rich.</p></div>
+        <div class="rounded-xl p-5" style="background:#E8F5E9"><p class="font-semibold text-charcoal mb-1">Processing Loss With Grace</p><p class="text-warm text-sm">Tools for navigating bereavement, changing roles, and the natural losses of ageing with emotional dignity and support.</p></div>
+        <div class="rounded-xl p-5" style="background:#E8F5E9"><p class="font-semibold text-charcoal mb-1">Joy & Playfulness at Any Age</p><p class="text-warm text-sm">Laughter, art, music, dance, and curiosity are deeply healing. Permission to play is lifelong.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLAR 4: SPIRITUAL GROWTH -->
+<section id="spiritual" class="pillar-section pb-8 px-6" style="background:#F3E5F5">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal pt-16 pb-10 flex flex-col md:flex-row gap-8 items-start">
+      <div class="relative h-64 md:h-80 md:w-80 w-full shrink-0 rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=700&q=80&fit=crop&crop=center" alt="Spiritual Growth" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6" style="background:rgba(106,27,154,.55)">
+          <div class="flex gap-2 mb-3">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm shadow" style="background:#283593">6</span>
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm shadow" style="background:#6A1B9A">7</span>
+          </div>
+          <p class="font-display font-semibold text-3xl text-white">Spiritual Growth</p>
+          <p class="text-white/70 text-xs uppercase tracking-widest mt-1">Pillar Four · Third Eye & Crown Chakra</p>
+        </div>
+      </div>
+      <div>
+        <div class="divider mb-4" style="background:#6A1B9A"></div>
+        <span class="tag mb-4 inline-block text-white" style="background:#6A1B9A">Pillar Four</span>
+        <h2 class="font-display font-semibold text-4xl md:text-5xl text-charcoal mb-4">Spiritual Growth</h2>
+        <p class="text-warm leading-relaxed mb-4">Spirituality is not religion — it is the deeply human need for meaning, purpose, and connection to something larger than yourself. The Third Eye chakra awakens your intuition and inner wisdom; the Crown chakra opens you to unity, presence, and pure consciousness.</p>
+        <div class="flex gap-3 flex-wrap">
+          <span class="tag text-white" style="background:#6A1B9A">Purpose</span>
+          <span class="tag text-white" style="background:#283593">Intuition</span>
+          <span class="tag text-charcoal" style="background:#E8EAF6">Meditation</span>
+          <span class="tag text-charcoal" style="background:#F3E5F5">Gratitude</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal bg-white rounded-2xl overflow-hidden shadow-sm border border-black/5">
+      <div class="flex border-b border-black/5">
+        <button onclick="switchTab('spiritual','youth')"  id="spiritual-youth-btn"  class="tab-btn active flex-1 py-4 text-sm font-semibold text-center" style="border-bottom:3px solid #6A1B9A;color:#6A1B9A">Ages 13–25</button>
+        <button onclick="switchTab('spiritual','midage')" id="spiritual-midage-btn" class="tab-btn flex-1 py-4 text-sm font-semibold text-center text-warm" style="border-bottom:3px solid transparent">Ages 26–55</button>
+        <button onclick="switchTab('spiritual','senior')" id="spiritual-senior-btn" class="tab-btn flex-1 py-4 text-sm font-semibold text-center text-warm" style="border-bottom:3px solid transparent">Ages 55+</button>
+      </div>
+      <div id="spiritual-youth" class="tab-content active p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl p-5" style="background:#F3E5F5"><p class="font-semibold text-charcoal mb-1">Discovering Your Values</p><p class="text-warm text-sm">What truly matters to you — beyond what you're told to want. Identifying your values is the first step in building a life that feels genuinely yours.</p></div>
+        <div class="rounded-xl p-5" style="background:#F3E5F5"><p class="font-semibold text-charcoal mb-1">Connection with Nature</p><p class="text-warm text-sm">Time outdoors reduces anxiety and cultivates awe — the natural starting point for any spiritual practice. No belief system required.</p></div>
+        <div class="rounded-xl p-5" style="background:#F3E5F5"><p class="font-semibold text-charcoal mb-1">Mindfulness & Stillness</p><p class="text-warm text-sm">Breathing exercises, body scans, and simple meditation — tools to find inner quiet in a world designed for constant noise.</p></div>
+        <div class="rounded-xl p-5" style="background:#F3E5F5"><p class="font-semibold text-charcoal mb-1">Journalling & Self-Inquiry</p><p class="text-warm text-sm">Writing as a spiritual practice — asking the questions that schools don't teach: Who am I? What do I stand for? What lights me up?</p></div>
+      </div>
+      <div id="spiritual-midage" class="tab-content p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl p-5" style="background:#F3E5F5"><p class="font-semibold text-charcoal mb-1">Deepening Your Meditation Practice</p><p class="text-warm text-sm">Moving beyond stress-reduction into genuine stillness — where intuition, creativity, and deeper knowing become accessible.</p></div>
+        <div class="rounded-xl p-5" style="background:#F3E5F5"><p class="font-semibold text-charcoal mb-1">Purpose & Meaning</p><p class="text-warm text-sm">The mid-life question is not "am I successful?" but "am I fulfilled?" Exploring what lights you up — and aligning your life accordingly.</p></div>
+        <div class="rounded-xl p-5" style="background:#F3E5F5"><p class="font-semibold text-charcoal mb-1">Wisdom Traditions</p><p class="text-warm text-sm">Drawing from Ayurveda, Stoicism, mindfulness, and contemplative practices — the distilled wisdom of thousands of years.</p></div>
+        <div class="rounded-xl p-5" style="background:#F3E5F5"><p class="font-semibold text-charcoal mb-1">Service & Contribution</p><p class="text-warm text-sm">Giving back to community, mentoring others — the most consistently reported source of meaning in midlife.</p></div>
+      </div>
+      <div id="spiritual-senior" class="tab-content p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl p-5" style="background:#F3E5F5"><p class="font-semibold text-charcoal mb-1">Integration & Legacy</p><p class="text-warm text-sm">Weaving the threads of your life into wisdom — and reflecting on what you want to leave behind for those who come after you.</p></div>
+        <div class="rounded-xl p-5" style="background:#F3E5F5"><p class="font-semibold text-charcoal mb-1">Deep Meditation & Contemplation</p><p class="text-warm text-sm">Longer, deeper practices that become more natural and nourishing with age — when the mind finally slows enough to listen.</p></div>
+        <div class="rounded-xl p-5" style="background:#F3E5F5"><p class="font-semibold text-charcoal mb-1">Faith & Sacred Connection</p><p class="text-warm text-sm">Whether through religion, nature, community, or personal practice — honouring the dimension of life that transcends the everyday.</p></div>
+        <div class="rounded-xl p-5" style="background:#F3E5F5"><p class="font-semibold text-charcoal mb-1">Accepting & Embracing the Journey</p><p class="text-warm text-sm">Finding peace with impermanence and the full cycle of life — not as resignation, but as profound spiritual maturity.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-6 bg-sun-pale">
+  <div class="max-w-2xl mx-auto text-center reveal">
+    <div class="divider mx-auto mb-5"></div>
+    <h2 class="font-display text-5xl text-charcoal mb-5">Ready to build all four pillars?</h2>
+    <p class="text-warm mb-10">Our programs are personalised by life stage, rooted in chakra energy, and built for real life.</p>
+    <a href="{{ "/programs/" | relURL }}" class="inline-block font-medium px-10 py-4 rounded-full transition-all shadow-md text-sm tracking-wide text-charcoal" style="background:#F5C518">See Our Programs →</a>
+  </div>
+</section>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+  function switchTab(pillar, age) {
+    const colors = { mental:'#F5C518', physical:'#D32F2F', emotional:'#388E3C', spiritual:'#6A1B9A' };
+    ['youth','midage','senior'].forEach(a => {
+      const c = document.getElementById(pillar+'-'+a);
+      const b = document.getElementById(pillar+'-'+a+'-btn');
+      if(c) c.classList.remove('active');
+      if(b){ b.style.borderBottom='3px solid transparent'; b.style.color=''; }
+    });
+    const ac = document.getElementById(pillar+'-'+age);
+    const ab = document.getElementById(pillar+'-'+age+'-btn');
+    if(ac) ac.classList.add('active');
+    if(ab){ ab.style.borderBottom='3px solid '+colors[pillar]; ab.style.color=colors[pillar]; }
+  }
+</script>
+{{ end }}

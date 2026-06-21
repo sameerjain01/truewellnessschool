@@ -1,0 +1,32 @@
+{{ $section := .Section }}
+{{ $isHome  := .IsHome }}
+<nav id="sitenav" class="fixed top-0 w-full z-50 nav-glass border-b border-black/5 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
+    <a href="{{ "/" | relURL }}" class="font-display font-semibold text-2xl text-charcoal tracking-wide">
+      True Wellness <span style="color:#F5C518">School</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-warm">
+      <a href="{{ "/pillars/" | relURL }}"
+         class="{{ if eq $section "pillars" }}font-semibold text-charcoal{{ else }}hover:text-charcoal transition-colors{{ end }}">
+        4 Pillars
+      </a>
+      <a href="{{ "/programs/" | relURL }}"
+         class="{{ if eq $section "programs" }}font-semibold text-charcoal{{ else }}hover:text-charcoal transition-colors{{ end }}">
+        Programs
+      </a>
+      <a href="{{ "/recipes/" | relURL }}"
+         class="{{ if eq $section "recipes" }}font-semibold text-charcoal{{ else }}hover:text-charcoal transition-colors{{ end }}">
+        Recipes
+      </a>
+      <a href="{{ "/wisdom/" | relURL }}"
+         class="{{ if eq $section "wisdom" }}font-semibold text-charcoal{{ else }}hover:text-charcoal transition-colors{{ end }}">
+        Wisdom
+      </a>
+      <a href="{{ "/programs/#book" | relURL }}"
+         class="text-charcoal font-semibold text-sm px-6 py-2.5 rounded-full hover:opacity-90 transition-all shadow-sm"
+         style="background:#F5C518">
+        Book a Session
+      </a>
+    </div>
+  </div>
+</nav>

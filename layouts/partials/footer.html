@@ -1,0 +1,33 @@
+<footer class="py-16 px-6 text-white" style="background:#1C1A0F">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+      <div class="md:col-span-2">
+        <p class="font-display font-semibold text-2xl mb-3">True Wellness <span style="color:#F5C518">School</span></p>
+        <p class="text-white/40 text-sm leading-relaxed max-w-xs">Nurturing mind, body, emotions, and spirit — across every stage of life. Wellness is a way of life, not a destination.</p>
+        <a href="{{ .Site.Params.instagram }}" target="_blank"
+           class="inline-block mt-5 text-xs font-medium tracking-widest uppercase transition-colors hover:text-white" style="color:#F5C518">
+          @truewellnessschool ↗
+        </a>
+      </div>
+      <div>
+        <p class="text-white/30 text-xs font-semibold uppercase tracking-widest mb-5">Explore</p>
+        <ul class="space-y-3 text-sm text-white/50">
+          <li><a href="{{ "/pillars/"  | relURL }}" class="hover:text-white transition-colors">4 Pillars</a></li>
+          <li><a href="{{ "/programs/" | relURL }}" class="hover:text-white transition-colors">Programs</a></li>
+          <li><a href="{{ "/recipes/"  | relURL }}" class="hover:text-white transition-colors">Recipes</a></li>
+          <li><a href="{{ "/wisdom/"   | relURL }}" class="hover:text-white transition-colors">Wisdom</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-white/30 text-xs font-semibold uppercase tracking-widest mb-5">Connect</p>
+        <ul class="space-y-3 text-sm text-white/50">
+          <li><a href="{{ "/programs/#book" | relURL }}" class="hover:text-white transition-colors">Book a Session</a></li>
+          <li><a href="{{ .Site.Params.instagram }}" target="_blank" class="hover:text-white transition-colors">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 text-center text-white/20 text-xs">
+      © {{ now.Year }} True Wellness School. All rights reserved.
+    </div>
+  </div>
+</footer>
