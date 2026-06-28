@@ -20,6 +20,7 @@
           <div class="form-group">
             <label for="c-email">Email</label>
             <input type="email" id="c-email" name="email" placeholder="your@email.com" required autocomplete="email">
+            <p id="c-email-err" role="alert" style="display:none;font-size:var(--text-sm);color:#c0392b;margin-top:4px">Please enter a valid email address.</p>
           </div>
           <div class="form-group">
             <label for="c-phone">Phone <span style="font-weight:400;color:var(--color-text-light)">(optional)</span></label>
@@ -116,26 +117,37 @@
     if (subj && !subj.value) subj.value = 'Interest in ' + programParam;
   }
 
+  function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
   function validPhone(v) { return !v || /^[\d\s()\-+.]{7,20}$/.test(v); }
 
-  var form     = document.getElementById('contact-form');
-  var phoneIn  = document.getElementById('c-phone');
-  var phoneErr = document.getElementById('c-phone-err');
+  var form      = document.getElementById('contact-form');
+  var emailIn   = document.getElementById('c-email');
+  var emailErr  = document.getElementById('c-email-err');
+  var phoneIn   = document.getElementById('c-phone');
+  var phoneErr  = document.getElementById('c-phone-err');
   if (!form) return;
 
+  function showEmailErr(show) { if (emailErr) emailErr.style.display = show ? 'block' : 'none'; }
+  function showPhoneErr(show) { if (phoneErr) phoneErr.style.display = show ? 'block' : 'none'; }
+
+  if (emailIn) {
+    emailIn.addEventListener('blur', function() { showEmailErr(!validEmail(this.value.trim())); });
+    emailIn.addEventListener('input', function() { if (emailErr && emailErr.style.display !== 'none') showEmailErr(!validEmail(this.value.trim())); });
+  }
   if (phoneIn) {
-    phoneIn.addEventListener('blur', function() {
-      phoneErr.style.display = validPhone(this.value.trim()) ? 'none' : 'block';
-    });
+    phoneIn.addEventListener('blur', function() { showPhoneErr(!validPhone(this.value.trim())); });
+    phoneIn.addEventListener('input', function() { if (phoneErr && phoneErr.style.display !== 'none') showPhoneErr(!validPhone(this.value.trim())); });
   }
 
   var submitted = false;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    if (phoneIn && !validPhone(phoneIn.value.trim())) {
-      phoneErr.style.display = 'block'; phoneIn.focus(); return;
-    }
-    if (phoneErr) phoneErr.style.display = 'none';
+    var emailOk = emailIn && validEmail(emailIn.value.trim());
+    var phoneOk = !phoneIn || validPhone(phoneIn.value.trim());
+    showEmailErr(!emailOk);
+    showPhoneErr(!phoneOk);
+    if (!emailOk) { emailIn.focus(); return; }
+    if (!phoneOk) { phoneIn.focus(); return; }
     if (submitted) return;
     submitted = true;
     var btn = form.querySelector('button[type=submit]');
