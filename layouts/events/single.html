@@ -1,19 +1,20 @@
 {{ define "main" }}
-<div class="page-hero">
+<header class="page-hero">
   <div class="container">
     {{ partial "breadcrumb.html" . }}
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p>{{ . }}</p>{{ end }}
   </div>
-</div>
-<section class="section">
+</header>
+<section class="section" aria-labelledby="event-detail-heading">
+  <h2 id="event-detail-heading" class="visually-hidden">Event Details</h2>
   <div class="container" style="max-width:47.5rem">
-    <div style="display:flex;flex-wrap:wrap;gap:0.625rem;margin-bottom:2rem">
-      <span class="tag">{{ .Date.Format "January 2, 2006" }}</span>
-      {{ with .Params.location }}<span class="tag">{{ . }}</span>{{ end }}
-      {{ with .Params.audience }}<span class="tag">{{ . }}</span>{{ end }}
-      {{ with .Params.category }}<span class="tag">{{ . }}</span>{{ end }}
-    </div>
+    <ul style="display:flex;flex-wrap:wrap;gap:0.625rem;margin-bottom:2rem;list-style:none;padding:0">
+      <li><span class="tag">{{ .Date.Format "January 2, 2006" }}</span></li>
+      {{ with .Params.location }}<li><span class="tag">{{ . }}</span></li>{{ end }}
+      {{ with .Params.audience }}<li><span class="tag">{{ . }}</span></li>{{ end }}
+      {{ with .Params.category }}<li><span class="tag">{{ . }}</span></li>{{ end }}
+    </ul>
     {{ .Content }}
     <div style="margin-top:2rem">
       <a href="{{ with .Params.registration_url }}{{ . }}{{ else }}{{ printf "%s?%s" ("/contact/" | relURL) (querify "program" .Title) | safeURL }}{{ end }}" class="btn btn-primary">Register for This Event</a>
@@ -23,4 +24,26 @@
     </div>
   </div>
 </section>
+{{ end }}
+
+{{ define "schema" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "{{ .Title }}",
+  "description": "{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}",
+  "startDate": "{{ .Date.Format "2006-01-02" }}",
+  "url": "{{ .Permalink }}",
+  {{ with .Params.location }}"location": {
+    "@type": "Place",
+    "name": "{{ . }}"
+  },{{ end }}
+  "organizer": {
+    "@type": "Organization",
+    "name": "True Wellness",
+    "url": "{{ .Site.BaseURL }}"
+  }
+}
+</script>
 {{ end }}

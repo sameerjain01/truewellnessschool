@@ -1,18 +1,19 @@
 {{ define "main" }}
-<div class="page-hero">
+<header class="page-hero">
   <div class="container">
     {{ partial "breadcrumb.html" . }}
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p>{{ . }}</p>{{ end }}
   </div>
-</div>
-<section class="section">
+</header>
+<section class="section" aria-labelledby="resource-content-heading">
+  <h2 id="resource-content-heading" class="visually-hidden">Article</h2>
   <div class="container" style="max-width:47.5rem">
-    <div style="display:flex;flex-wrap:wrap;gap:0.625rem;margin-bottom:2rem">
-      {{ with .Params.pillar }}<span class="tag" style="background:var(--pillar-{{ . }})">{{ . | title }} Wellness</span>{{ end }}
-      {{ with .Params.category }}<span class="tag">{{ . }}</span>{{ end }}
-      {{ with .Params.audience }}<span class="tag">{{ . }}</span>{{ end }}
-    </div>
+    <ul style="display:flex;flex-wrap:wrap;gap:0.625rem;margin-bottom:2rem;list-style:none;padding:0">
+      {{ with .Params.pillar }}<li><span class="tag" style="background:var(--pillar-{{ . }})">{{ . | title }} Wellness</span></li>{{ end }}
+      {{ with .Params.category }}<li><span class="tag">{{ . }}</span></li>{{ end }}
+      {{ with .Params.audience }}<li><span class="tag">{{ . }}</span></li>{{ end }}
+    </ul>
     <div style="line-height:1.85;color:var(--color-text-light)">
       {{ .Content }}
     </div>
@@ -28,4 +29,27 @@
     </div>
   </div>
 </section>
+{{ end }}
+
+{{ define "schema" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ .Title }}",
+  "description": "{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}",
+  "url": "{{ .Permalink }}",
+  "datePublished": "{{ .Date.Format "2006-01-02" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "True Wellness",
+    "url": "{{ .Site.BaseURL }}"
+  }{{ with .Params.pillar }},
+  "about": {
+    "@type": "Thing",
+    "name": "{{ . | title }} Wellness"
+  }{{ end }}
+}
+</script>
 {{ end }}

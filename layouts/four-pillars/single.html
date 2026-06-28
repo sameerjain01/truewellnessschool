@@ -1,14 +1,15 @@
 {{ define "main" }}
 {{ $pillar := .Params.pillar | default "mental" }}
-<div class="page-hero">
+<header class="page-hero">
   <div class="container">
     {{ partial "breadcrumb.html" . }}
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p>{{ . }}</p>{{ end }}
   </div>
-</div>
+</header>
 
-<section class="section">
+<section class="section" aria-labelledby="pillar-content-heading">
+  <h2 id="pillar-content-heading" class="visually-hidden">{{ .Title }} Overview</h2>
   <div class="container" style="max-width:50rem">
 
     <!-- Definition -->
@@ -18,38 +19,38 @@
 
     <!-- Key Components -->
     {{ with .Params.components }}
-    <div class="content-section">
-      <h2 style="font-size:var(--text-2xl);margin-bottom:1rem">Key Components</h2>
-      <div class="components-list">
+    <section class="content-section" aria-labelledby="components-heading">
+      <h2 id="components-heading" style="font-size:var(--text-2xl);margin-bottom:1rem">Key Components</h2>
+      <ul class="components-list" role="list">
         {{ range . }}
-        <span class="component-tag">{{ . }}</span>
+        <li class="component-tag" role="listitem">{{ . }}</li>
         {{ end }}
-      </div>
-    </div>
+      </ul>
+    </section>
     {{ end }}
 
     <!-- Recommended Practices -->
     {{ with .Params.practices }}
-    <div class="content-section">
-      <h2 style="font-size:var(--text-2xl);margin-bottom:1rem">Recommended Practices</h2>
-      <div class="components-list">
+    <section class="content-section" aria-labelledby="practices-heading">
+      <h2 id="practices-heading" style="font-size:var(--text-2xl);margin-bottom:1rem">Recommended Practices</h2>
+      <ul class="components-list" role="list">
         {{ range . }}
-        <span class="component-tag">{{ . }}</span>
+        <li class="component-tag" role="listitem">{{ . }}</li>
         {{ end }}
-      </div>
-    </div>
+      </ul>
+    </section>
     {{ end }}
 
     <!-- Topics in True Wellness Programs -->
     {{ with .Params.topics }}
-    <div class="content-section">
-      <h2 style="font-size:var(--text-2xl);margin-bottom:1rem">Topics in True Wellness Programs</h2>
-      <div class="components-list">
+    <section class="content-section" aria-labelledby="topics-heading">
+      <h2 id="topics-heading" style="font-size:var(--text-2xl);margin-bottom:1rem">Topics in True Wellness Programs</h2>
+      <ul class="components-list" role="list">
         {{ range . }}
-        <span class="component-tag">{{ . }}</span>
+        <li class="component-tag" role="listitem">{{ . }}</li>
         {{ end }}
-      </div>
-    </div>
+      </ul>
+    </section>
     {{ end }}
 
     <!-- Any additional markdown content -->

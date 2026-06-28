@@ -4,16 +4,16 @@
       <div>
         <p class="footer-brand-name">True Wellness</p>
         <p class="footer-tagline">{{ .Site.Params.tagline }}</p>
-        <div class="footer-social">
-          <a href="{{ .Site.Params.instagram }}" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="{{ .Site.Params.facebook }}"  target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="{{ .Site.Params.youtube }}"   target="_blank" rel="noopener noreferrer">YouTube</a>
-          <a href="{{ .Site.Params.linkedin }}"  target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </div>
+        <nav class="footer-social" aria-label="True Wellness on social media">
+          <a href="{{ .Site.Params.instagram }}" target="_blank" rel="noopener noreferrer" aria-label="True Wellness on Instagram (opens in new tab)">Instagram</a>
+          <a href="{{ .Site.Params.facebook }}"  target="_blank" rel="noopener noreferrer" aria-label="True Wellness on Facebook (opens in new tab)">Facebook</a>
+          <a href="{{ .Site.Params.youtube }}"   target="_blank" rel="noopener noreferrer" aria-label="True Wellness on YouTube (opens in new tab)">YouTube</a>
+          <a href="{{ .Site.Params.linkedin }}"  target="_blank" rel="noopener noreferrer" aria-label="True Wellness on LinkedIn (opens in new tab)">LinkedIn</a>
+        </nav>
       </div>
 
-      <div>
-        <p class="footer-col-title">Programs</p>
+      <nav aria-labelledby="footer-programs-heading">
+        <h3 id="footer-programs-heading" class="footer-col-title">Programs</h3>
         <ul class="footer-links">
           <li><a href="{{ "/programs/family/"    | relURL }}">Family Wellness</a></li>
           <li><a href="{{ "/programs/youth/"     | relURL }}">Youth Wellness</a></li>
@@ -22,20 +22,20 @@
           <li><a href="{{ "/programs/corporate/" | relURL }}">Corporate Wellness</a></li>
           <li><a href="{{ "/programs/camps/"     | relURL }}">Wellness Camps</a></li>
         </ul>
-      </div>
+      </nav>
 
-      <div>
-        <p class="footer-col-title">Learn</p>
+      <nav aria-labelledby="footer-learn-heading">
+        <h3 id="footer-learn-heading" class="footer-col-title">Learn</h3>
         <ul class="footer-links">
           <li><a href="{{ "/four-pillars/" | relURL }}">Four Pillars</a></li>
           <li><a href="{{ "/resources/"    | relURL }}">Resources</a></li>
           <li><a href="{{ "/assessment/"   | relURL }}">Assessment</a></li>
           <li><a href="{{ "/events/"       | relURL }}">Events</a></li>
         </ul>
-      </div>
+      </nav>
 
-      <div>
-        <p class="footer-col-title">Connect</p>
+      <nav aria-labelledby="footer-connect-heading">
+        <h3 id="footer-connect-heading" class="footer-col-title">Connect</h3>
         <ul class="footer-links">
           <li><a href="{{ "/about/"       | relURL }}">About</a></li>
           <li><a href="{{ "/partnership/" | relURL }}">Partnership</a></li>
@@ -43,7 +43,7 @@
           <li><a href="{{ "/membership/"  | relURL }}">Membership</a></li>
           <li><a href="{{ "/contact/"     | relURL }}">Contact</a></li>
         </ul>
-      </div>
+      </nav>
     </div>
 
     <div class="footer-bottom">

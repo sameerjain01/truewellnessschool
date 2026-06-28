@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="hero-illustration">
-        <img src="{{ "/images/hero-logo.png" | relURL }}" alt="True Wellness School" style="max-width:min(21.25rem,100%);height:auto">
+        <img src="{{ "/images/hero-logo.png" | relURL }}" alt="True Wellness School" width="340" height="340" style="max-width:min(21.25rem,100%);height:auto">
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@
 
     <div class="pillars-grid">
       <a href="{{ "/four-pillars/mental/" | relURL }}" class="pillar-card pillar-card--mental">
-        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
           <circle cx="24" cy="22" r="13" stroke="#2D3028" stroke-width="2" fill="none"/>
           <path d="M24 9 C24 9 18 14 18 22 C18 28 21 32 24 35" stroke="#2D3028" stroke-width="1.5" fill="none" stroke-linecap="round"/>
           <path d="M24 9 C24 9 30 14 30 22 C30 28 27 32 24 35" stroke="#2D3028" stroke-width="1.5" fill="none" stroke-linecap="round"/>
@@ -40,20 +40,20 @@
         </svg>
         <span class="pillar-card-name">Mental Wellness</span>
         <span class="pillar-card-desc">Clear thinking, focus, resilience, and stress management</span>
-        <span class="pillar-card-arrow">Learn more →</span>
+        <span class="pillar-card-arrow" aria-hidden="true">Learn more →</span>
       </a>
 
       <a href="{{ "/four-pillars/emotional/" | relURL }}" class="pillar-card pillar-card--emotional">
-        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
           <path d="M24 38 C24 38 8 28 8 18 C8 12 13 8 18 8 C21 8 24 10 24 10 C24 10 27 8 30 8 C35 8 40 12 40 18 C40 28 24 38 24 38Z" stroke="#2D3028" stroke-width="2" fill="none" stroke-linejoin="round"/>
         </svg>
         <span class="pillar-card-name">Emotional Wellness</span>
         <span class="pillar-card-desc">Self-awareness, emotional regulation, and healthy relationships</span>
-        <span class="pillar-card-arrow">Learn more →</span>
+        <span class="pillar-card-arrow" aria-hidden="true">Learn more →</span>
       </a>
 
       <a href="{{ "/four-pillars/physical/" | relURL }}" class="pillar-card pillar-card--physical">
-        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
           <path d="M24 8 C18 8 14 12 14 18 C14 26 24 36 24 36 C24 36 34 26 34 18 C34 12 30 8 24 8Z" stroke="#2D3028" stroke-width="2" fill="none"/>
           <path d="M24 36 L24 42" stroke="#2D3028" stroke-width="2" stroke-linecap="round"/>
           <path d="M18 40 L30 40" stroke="#2D3028" stroke-width="2" stroke-linecap="round"/>
@@ -61,18 +61,18 @@
         </svg>
         <span class="pillar-card-name">Physical Wellness</span>
         <span class="pillar-card-desc">Nutrition, movement, sleep, and preventive health habits</span>
-        <span class="pillar-card-arrow">Learn more →</span>
+        <span class="pillar-card-arrow" aria-hidden="true">Learn more →</span>
       </a>
 
       <a href="{{ "/four-pillars/spiritual/" | relURL }}" class="pillar-card pillar-card--spiritual">
-        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
           <path d="M24 40 C24 40 14 32 14 22 C14 16 18 12 24 10 C30 12 34 16 34 22 C34 32 24 40 24 40Z" stroke="#2D3028" stroke-width="2" fill="none"/>
           <path d="M24 10 C24 10 20 14 20 20 C20 25 22 28 24 30" stroke="#2D3028" stroke-width="1.5" fill="none" stroke-linecap="round"/>
           <line x1="24" y1="6" x2="24" y2="10" stroke="#2D3028" stroke-width="2" stroke-linecap="round"/>
         </svg>
         <span class="pillar-card-name">Spiritual Wellness</span>
         <span class="pillar-card-desc">Purpose, meaning, mindfulness, and inner connection</span>
-        <span class="pillar-card-arrow">Learn more →</span>
+        <span class="pillar-card-arrow" aria-hidden="true">Learn more →</span>
       </a>
     </div>
   </div>
@@ -84,26 +84,26 @@
     <div class="section-header centered">
       <h2>Wellness Education for Every Stage of Life</h2>
     </div>
-    <div class="audience-grid">
-      <div class="audience-tile">
+    <ul class="audience-grid" role="list">
+      <li class="audience-tile">
         <div class="audience-tile-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D3028" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D3028" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
         <span class="audience-tile-label">Families</span>
-      </div>
-      <div class="audience-tile">
+      </li>
+      <li class="audience-tile">
         <div class="audience-tile-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D3028" stroke-width="2" stroke-linecap="round"><path d="M12 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/><path d="M12 14c-6 0-10 3-10 5v1h20v-1c0-2-4-5-10-5z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D3028" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M12 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/><path d="M12 14c-6 0-10 3-10 5v1h20v-1c0-2-4-5-10-5z"/></svg>
         </div>
         <span class="audience-tile-label">Youth</span>
-      </div>
-      <div class="audience-tile">
+      </li>
+      <li class="audience-tile">
         <div class="audience-tile-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D3028" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0 1 12 0v2"/><path d="M4 9.5a8 8 0 0 0 16 0"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D3028" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0 1 12 0v2"/><path d="M4 9.5a8 8 0 0 0 16 0"/></svg>
         </div>
         <span class="audience-tile-label">Seniors</span>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -116,33 +116,33 @@
       <p>All programs are built on the Four Pillars framework and designed for real life — not just the gym.</p>
     </div>
     <div class="grid-3">
-      <div class="program-card">
+      <article class="program-card">
         <div class="program-card-meta">
           <span class="tag">Families</span>
           <span class="tag">8 Weeks</span>
         </div>
         <h3 class="program-card-title">Family Wellness Foundations</h3>
         <p class="program-card-desc">A practical eight-week program helping parents and children build healthier routines, improve communication, and create a family wellness plan together.</p>
-        <a href="{{ "/programs/family/" | relURL }}" class="program-card-link">Learn more →</a>
-      </div>
-      <div class="program-card">
+        <a href="{{ "/programs/family/" | relURL }}" class="program-card-link" aria-label="Learn more about Family Wellness Foundations">Learn more →</a>
+      </article>
+      <article class="program-card">
         <div class="program-card-meta">
           <span class="tag">Youth</span>
           <span class="tag">8 Modules</span>
         </div>
         <h3 class="program-card-title">Youth Wellness &amp; Resilience</h3>
         <p class="program-card-desc">School-based program teaching middle and high schoolers stress management, healthy habits, mindfulness, and leadership skills for everyday life.</p>
-        <a href="{{ "/programs/youth/" | relURL }}" class="program-card-link">Learn more →</a>
-      </div>
-      <div class="program-card">
+        <a href="{{ "/programs/youth/" | relURL }}" class="program-card-link" aria-label="Learn more about Youth Wellness &amp; Resilience">Learn more →</a>
+      </article>
+      <article class="program-card">
         <div class="program-card-meta">
           <span class="tag">Adults 50+</span>
           <span class="tag">6 Weeks</span>
         </div>
         <h3 class="program-card-title">Senior Wellness &amp; Healthy Aging</h3>
         <p class="program-card-desc">A six-week senior center program focused on brain health, mobility, nutrition, social connection, and purposeful living for adults 50 and older.</p>
-        <a href="{{ "/programs/seniors/" | relURL }}" class="program-card-link">Learn more →</a>
-      </div>
+        <a href="{{ "/programs/seniors/" | relURL }}" class="program-card-link" aria-label="Learn more about Senior Wellness &amp; Healthy Aging">Learn more →</a>
+      </article>
     </div>
     <div style="margin-top:2rem;text-align:center">
       <a href="{{ "/programs/" | relURL }}" class="btn btn-secondary">View All Programs</a>
@@ -173,7 +173,7 @@
             <h3 class="event-card-title">{{ .Title }}</h3>
             <p class="event-card-meta">{{ .Params.location }} · {{ .Params.audience }}</p>
             <p class="event-card-desc">{{ .Description }}</p>
-            <a href="{{ with .Params.registration_url }}{{ . }}{{ else }}{{ "/events/" | relURL }}{{ end }}" class="btn btn-primary">Register</a>
+            <a href="{{ with .Params.registration_url }}{{ . }}{{ else }}{{ "/events/" | relURL }}{{ end }}" class="btn btn-primary" aria-label="Register for {{ .Title }}">Register</a>
           </div>
         </article>
         {{ end }}
@@ -187,7 +187,7 @@
             <h3 class="event-card-title">{{ .Title }}</h3>
             <p class="event-card-meta">{{ .Params.location }} · {{ .Params.audience }}</p>
             <p class="event-card-desc">{{ .Description }}</p>
-            <a href="{{ "/events/" | relURL }}" class="btn btn-primary">Learn More</a>
+            <a href="{{ "/events/" | relURL }}" class="btn btn-primary" aria-label="Learn more about {{ .Title }}">Learn More</a>
           </div>
         </article>
         {{ end }}

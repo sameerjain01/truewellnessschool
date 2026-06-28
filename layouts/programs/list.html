@@ -1,102 +1,103 @@
 {{ define "main" }}
-<div class="page-hero">
+<header class="page-hero">
   <div class="container">
     <h1>Wellness Education Programs for Every Stage of Life</h1>
     <p>All True Wellness programs are built around the Four Pillars framework. Every participant leaves with knowledge, practical tools, a personalized action plan, and community support.</p>
   </div>
-</div>
+</header>
 
-<section class="section">
+<section class="section" aria-labelledby="programs-list-heading">
+  <h2 id="programs-list-heading" class="visually-hidden">All Programs</h2>
   <div class="container">
     <div class="grid-3">
 
-      <div class="program-card">
+      <article class="program-card">
         <div class="program-card-meta">
           <span class="tag">Parents + Children 8–18</span>
           <span class="tag">8 Weeks</span>
         </div>
-        <h2 class="program-card-title">Family Wellness Foundations</h2>
+        <h3 class="program-card-title">Family Wellness Foundations</h3>
         <p class="program-card-desc">Parents and children build healthier routines, improve stress management, and create a shared family wellness plan over eight practical weeks.</p>
-        <a href="{{ "/programs/family/" | relURL }}" class="program-card-link">Learn more →</a>
-      </div>
+        <a href="{{ "/programs/family/" | relURL }}" class="program-card-link" aria-label="Learn more about Family Wellness Foundations">Learn more →</a>
+      </article>
 
-      <div class="program-card">
+      <article class="program-card">
         <div class="program-card-meta">
           <span class="tag">Middle &amp; High School</span>
           <span class="tag">8 Modules</span>
         </div>
-        <h2 class="program-card-title">Youth Wellness &amp; Resilience</h2>
+        <h3 class="program-card-title">Youth Wellness &amp; Resilience</h3>
         <p class="program-card-desc">School-based program equipping students with tools for stress management, focus, healthy habits, and personal leadership skills.</p>
-        <a href="{{ "/programs/youth/" | relURL }}" class="program-card-link">Learn more →</a>
-      </div>
+        <a href="{{ "/programs/youth/" | relURL }}" class="program-card-link" aria-label="Learn more about Youth Wellness &amp; Resilience">Learn more →</a>
+      </article>
 
-      <div class="program-card">
+      <article class="program-card">
         <div class="program-card-meta">
           <span class="tag">Parents &amp; Caregivers</span>
           <span class="tag">6 Modules</span>
         </div>
-        <h2 class="program-card-title">Parent Wellness Program</h2>
+        <h3 class="program-card-title">Parent Wellness Program</h3>
         <p class="program-card-desc">Six-module workshop series helping parents reduce burnout, build realistic self-care habits, and improve family emotional wellbeing.</p>
-        <a href="{{ "/programs/parents/" | relURL }}" class="program-card-link">Learn more →</a>
-      </div>
+        <a href="{{ "/programs/parents/" | relURL }}" class="program-card-link" aria-label="Learn more about Parent Wellness Program">Learn more →</a>
+      </article>
 
-      <div class="program-card">
+      <article class="program-card">
         <div class="program-card-meta">
           <span class="tag">Adults 50+</span>
           <span class="tag">6 Weeks</span>
         </div>
-        <h2 class="program-card-title">Senior Wellness &amp; Healthy Aging</h2>
+        <h3 class="program-card-title">Senior Wellness &amp; Healthy Aging</h3>
         <p class="program-card-desc">A six-week program for adults 50+ covering brain health, mobility, nutrition, social connection, and purposeful living — delivered at senior centers.</p>
-        <a href="{{ "/programs/seniors/" | relURL }}" class="program-card-link">Learn more →</a>
-      </div>
+        <a href="{{ "/programs/seniors/" | relURL }}" class="program-card-link" aria-label="Learn more about Senior Wellness &amp; Healthy Aging">Learn more →</a>
+      </article>
 
-      <div class="program-card">
+      <article class="program-card">
         <div class="program-card-meta">
           <span class="tag">Employers 25–500</span>
           <span class="tag">Flexible</span>
         </div>
-        <h2 class="program-card-title">Corporate Wellness</h2>
+        <h3 class="program-card-title">Corporate Wellness</h3>
         <p class="program-card-desc">Customized wellness programs for employers — options include lunch-and-learns, resilience training, mindful leadership, and quarterly wellness days.</p>
-        <a href="{{ "/programs/corporate/" | relURL }}" class="program-card-link">Learn more →</a>
-      </div>
+        <a href="{{ "/programs/corporate/" | relURL }}" class="program-card-link" aria-label="Learn more about Corporate Wellness">Learn more →</a>
+      </article>
 
-      <div class="program-card">
+      <article class="program-card">
         <div class="program-card-meta">
           <span class="tag">Children 8–14</span>
           <span class="tag">4 Weeks Summer</span>
         </div>
-        <h2 class="program-card-title">Summer Wellness Camps</h2>
+        <h3 class="program-card-title">Summer Wellness Camps</h3>
         <p class="program-card-desc">Four-week summer camp featuring yoga, mindfulness, healthy cooking, nature exploration, and team building for children ages 8–14.</p>
-        <a href="{{ "/programs/camps/" | relURL }}" class="program-card-link">Learn more →</a>
-      </div>
+        <a href="{{ "/programs/camps/" | relURL }}" class="program-card-link" aria-label="Learn more about Summer Wellness Camps">Learn more →</a>
+      </article>
 
     </div>
   </div>
 </section>
 
-<section class="section" style="background:var(--color-surface)">
+<section class="section" style="background:var(--color-surface)" aria-labelledby="delivery-heading">
   <div class="container">
     <div class="section-header centered">
-      <h2>Flexible Delivery Options</h2>
+      <h2 id="delivery-heading">Flexible Delivery Options</h2>
       <p>We meet your community where it is.</p>
     </div>
-    <div class="components-list" style="justify-content:center">
-      <span class="component-tag">In-Person</span>
-      <span class="component-tag">Virtual</span>
-      <span class="component-tag">Hybrid</span>
-      <span class="component-tag">School-Based</span>
-      <span class="component-tag">Senior Center-Based</span>
-      <span class="component-tag">Corporate Onsite</span>
-      <span class="component-tag">Community Center-Based</span>
-    </div>
+    <ul class="components-list" role="list" style="justify-content:center">
+      <li class="component-tag" role="listitem">In-Person</li>
+      <li class="component-tag" role="listitem">Virtual</li>
+      <li class="component-tag" role="listitem">Hybrid</li>
+      <li class="component-tag" role="listitem">School-Based</li>
+      <li class="component-tag" role="listitem">Senior Center-Based</li>
+      <li class="component-tag" role="listitem">Corporate Onsite</li>
+      <li class="component-tag" role="listitem">Community Center-Based</li>
+    </ul>
   </div>
 </section>
 
 {{ partial "assessment-cta.html" . }}
 
-<section class="section" style="text-align:center">
+<section class="section" aria-labelledby="partner-cta-heading" style="text-align:center">
   <div class="container" style="max-width:35rem">
-    <h2 style="font-size:var(--text-2xl);margin-bottom:0.75rem">Bring a Program to Your Community</h2>
+    <h2 id="partner-cta-heading" style="font-size:var(--text-2xl);margin-bottom:0.75rem">Bring a Program to Your Community</h2>
     <p style="color:var(--color-text-light);margin-bottom:1.5rem">We partner with schools, senior centers, libraries, and community organizations to deliver wellness education where it's needed most.</p>
     <a href="{{ "/partnership/" | relURL }}" class="btn btn-primary">Request a Partnership Conversation</a>
   </div>

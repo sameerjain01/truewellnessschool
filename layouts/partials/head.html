@@ -3,19 +3,22 @@
 <title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }} — DMV Holistic Wellness Education{{ end }}</title>
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 {{ with .Site.Params.keywords }}<meta name="keywords" content="{{ . }}">{{ end }}
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="{{ .Permalink }}">
 
 <!-- Open Graph -->
+<meta property="og:site_name"   content="{{ .Site.Title }}">
 <meta property="og:title"       content="{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-<meta property="og:type"        content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+<meta property="og:type"        content="{{ if and (not .IsHome) (eq .Kind "page") }}article{{ else }}website{{ end }}">
 <meta property="og:url"         content="{{ .Permalink }}">
 {{ with .Site.Params.og_image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
 
 <!-- Twitter Card -->
-<meta name="twitter:card"        content="summary">
+<meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
 <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+{{ with .Site.Params.og_image }}<meta name="twitter:image" content="{{ . | absURL }}">{{ end }}
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,21 +28,93 @@
 <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
+<!-- Structured Data -->
 {{ if .IsHome }}
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}",
+    "description": "{{ .Site.Params.description }}",
+    "areaServed": "{{ .Site.Params.region }}",
+    "sameAs": [
+      "{{ .Site.Params.instagram }}",
+      "{{ .Site.Params.facebook }}",
+      "{{ .Site.Params.youtube }}",
+      "{{ .Site.Params.linkedin }}"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "{{ .Site.Title }} — {{ .Site.Params.tagline }}",
+    "description": "{{ .Site.Params.description }}",
+    "url": "{{ .Permalink }}"
+  }
+]
+</script>
+{{ else }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "True Wellness",
-  "url": "{{ .Site.BaseURL }}",
-  "description": "{{ .Site.Params.description }}",
-  "areaServed": "{{ .Site.Params.region }}",
-  "sameAs": [
-    "{{ .Site.Params.instagram }}",
-    "{{ .Site.Params.facebook }}",
-    "{{ .Site.Params.youtube }}",
-    "{{ .Site.Params.linkedin }}"
-  ]
+  "@type": "WebPage",
+  "name": "{{ .Title }} | {{ .Site.Title }}",
+  "description": "{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}",
+  "url": "{{ .Permalink }}",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}"
+  }{{ if .Parent }},
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ .Site.BaseURL }}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ .Parent.Title }}",
+        "item": "{{ .Parent.Permalink }}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{ .Title }}",
+        "item": "{{ .Permalink }}"
+      }
+    ]
+  }{{ else }},
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ .Site.BaseURL }}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ .Title }}",
+        "item": "{{ .Permalink }}"
+      }
+    ]
+  }{{ end }}
 }
 </script>
 {{ end }}
+{{ block "schema" . }}{{ end }}

@@ -1,13 +1,14 @@
 {{ define "main" }}
-<div class="page-hero">
+<header class="page-hero">
   <div class="container">
     <h1>Why True Wellness Exists</h1>
     <p>Too many families, students, seniors, and working adults are navigating stress, burnout, loneliness, and unhealthy routines without practical tools or community support. True Wellness exists to change that.</p>
   </div>
-</div>
+</header>
 
 <!-- Mission & Vision -->
-<section class="section">
+<section class="section" aria-labelledby="mission-vision-heading">
+  <h2 id="mission-vision-heading" class="visually-hidden">Mission and Vision</h2>
   <div class="container">
     <div class="grid-2" style="gap:2rem;align-items:start">
       <div class="card">
@@ -23,11 +24,11 @@
 </section>
 
 <!-- Philosophy -->
-<section class="section" style="background:var(--color-surface)">
+<section class="section" style="background:var(--color-surface)" aria-labelledby="philosophy-heading">
   <div class="container" style="max-width:50rem">
     <div class="section-header">
       <span class="eyebrow">Our Approach</span>
-      <h2>How We Teach Wellness</h2>
+      <h2 id="philosophy-heading">How We Teach Wellness</h2>
     </div>
     <p style="font-size:var(--text-lg);font-weight:300;color:var(--color-text-light);line-height:1.85;margin-bottom:1.25rem">True Wellness combines modern science with traditional wellness systems. Our programs integrate lifestyle medicine, nutrition science, behavior change, sleep science, exercise science, mindfulness, meditation, yoga, breathwork, Ayurveda, and traditional wellness practices — in a responsible, educational, and evidence-informed way.</p>
     <div class="assessment-disclaimer" role="note">
@@ -37,52 +38,52 @@
 </section>
 
 <!-- What We Believe -->
-<section class="section">
+<section class="section" aria-labelledby="beliefs-heading">
   <div class="container">
     <div class="section-header centered">
       <span class="eyebrow">Our Values</span>
-      <h2>What We Believe</h2>
+      <h2 id="beliefs-heading">What We Believe</h2>
     </div>
-    <div class="beliefs-grid">
-      <div class="belief-card">Wellness is more than fitness — it's how you think, feel, move, rest, connect, and find purpose.</div>
-      <div class="belief-card">Every person deserves access to practical, affordable wellness education.</div>
-      <div class="belief-card">Sustainable habits matter more than quick fixes.</div>
-      <div class="belief-card">Community makes wellness stick.</div>
-      <div class="belief-card">Science and tradition together are more powerful than either alone.</div>
-      <div class="belief-card">Wellness education should be inclusive, non-judgmental, and family-friendly.</div>
-    </div>
+    <ul class="beliefs-grid">
+      <li class="belief-card">Wellness is more than fitness — it's how you think, feel, move, rest, connect, and find purpose.</li>
+      <li class="belief-card">Every person deserves access to practical, affordable wellness education.</li>
+      <li class="belief-card">Sustainable habits matter more than quick fixes.</li>
+      <li class="belief-card">Community makes wellness stick.</li>
+      <li class="belief-card">Science and tradition together are more powerful than either alone.</li>
+      <li class="belief-card">Wellness education should be inclusive, non-judgmental, and family-friendly.</li>
+    </ul>
   </div>
 </section>
 
 <!-- Year One Goals -->
-<section class="section" style="background:var(--color-surface)">
+<section class="section" style="background:var(--color-surface)" aria-labelledby="goals-heading">
   <div class="container">
     <div class="section-header centered">
       <span class="eyebrow">Year One</span>
-      <h2>Our First-Year Goals</h2>
+      <h2 id="goals-heading">Our First-Year Goals</h2>
     </div>
-    <div class="goals-grid">
-      <div class="goal-item">
+    <ul class="goals-grid">
+      <li class="goal-item">
         <span class="goal-number">1,000</span>
         <p class="goal-label">Email Subscribers</p>
-      </div>
-      <div class="goal-item">
+      </li>
+      <li class="goal-item">
         <span class="goal-number">100</span>
         <p class="goal-label">Paid Members</p>
-      </div>
-      <div class="goal-item">
+      </li>
+      <li class="goal-item">
         <span class="goal-number">10</span>
         <p class="goal-label">School Partnerships</p>
-      </div>
-      <div class="goal-item">
+      </li>
+      <li class="goal-item">
         <span class="goal-number">5</span>
         <p class="goal-label">Senior Center Partners</p>
-      </div>
-      <div class="goal-item">
+      </li>
+      <li class="goal-item">
         <span class="goal-number">12</span>
         <p class="goal-label">Community Events</p>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </section>
 

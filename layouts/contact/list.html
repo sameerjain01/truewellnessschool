@@ -1,31 +1,32 @@
 {{ define "main" }}
-<div class="page-hero">
+<header class="page-hero">
   <div class="container">
     <h1>Contact True Wellness</h1>
     <p>We'd love to hear from you. We respond to all inquiries within 2 business days.</p>
   </div>
-</div>
+</header>
 
-<section class="section">
+<section class="section" aria-labelledby="contact-form-heading">
   <div class="container">
     <div class="grid-2" style="gap:3.75rem;align-items:start">
       <div>
+        <h2 id="contact-form-heading" class="visually-hidden">Send a Message</h2>
         {{ $siteKey := os.Getenv "TURNSTILE_SITE_KEY" }}
         <form class="contact-form" id="contact-form" aria-label="Contact form" novalidate>
           <input type="text" name="website" style="position:absolute;left:-9999px;pointer-events:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-group">
             <label for="c-name">Name</label>
-            <input type="text" id="c-name" name="name" placeholder="Your full name" required>
+            <input type="text" id="c-name" name="name" placeholder="Your full name" required autocomplete="name">
           </div>
           <div class="form-group">
             <label for="c-email">Email</label>
-            <input type="email" id="c-email" name="email" placeholder="your@email.com" required autocomplete="email">
-            <p id="c-email-err" role="alert" style="display:none;font-size:var(--text-sm);color:#c0392b;margin-top:0.25rem">Please enter a valid email address.</p>
+            <input type="email" id="c-email" name="email" placeholder="your@email.com" required autocomplete="email" aria-describedby="c-email-err">
+            <p id="c-email-err" role="alert" style="display:none;font-size:var(--text-sm);color:var(--color-error);margin-top:0.25rem">Please enter a valid email address.</p>
           </div>
           <div class="form-group">
             <label for="c-phone">Phone <span style="font-weight:400;color:var(--color-text-light)">(optional)</span></label>
-            <input type="tel" id="c-phone" name="phone" placeholder="(555) 555-5555" autocomplete="tel">
-            <p id="c-phone-err" role="alert" style="display:none;font-size:var(--text-sm);color:#c0392b;margin-top:0.25rem">Please enter a valid phone number.</p>
+            <input type="tel" id="c-phone" name="phone" placeholder="(555) 555-5555" autocomplete="tel" aria-describedby="c-phone-err">
+            <p id="c-phone-err" role="alert" style="display:none;font-size:var(--text-sm);color:var(--color-error);margin-top:0.25rem">Please enter a valid phone number.</p>
           </div>
           <div class="form-group">
             <label for="c-program">Program of Interest <span style="font-weight:400;color:var(--color-text-light)">(optional)</span></label>
@@ -46,7 +47,7 @@
           </div>
           <div class="form-group">
             <label for="c-subject">Subject</label>
-            <input type="text" id="c-subject" name="subject" placeholder="How can we help?" required>
+            <input type="text" id="c-subject" name="subject" placeholder="How can we help?" required autocomplete="off">
           </div>
           <div class="form-group">
             <label for="c-message">Message</label>
@@ -71,7 +72,7 @@
         </form>
       </div>
 
-      <div>
+      <aside aria-label="Contact information">
         <div style="margin-bottom:2rem">
           <p class="eyebrow" style="margin-bottom:0.5rem">Response Time</p>
           <p style="font-size:var(--text-base);color:var(--color-text-light)">We respond to all inquiries within 2 business days.</p>
@@ -83,8 +84,8 @@
         <div style="margin-bottom:2rem">
           <p class="eyebrow" style="margin-bottom:0.5rem">Follow Us</p>
           <div class="btn-group">
-            <a href="{{ .Site.Params.instagram }}" target="_blank" rel="noopener" class="btn btn-secondary" style="padding:0.625rem 1.25rem;font-size:var(--text-sm)">Instagram</a>
-            <a href="{{ .Site.Params.facebook }}"  target="_blank" rel="noopener" class="btn btn-secondary" style="padding:0.625rem 1.25rem;font-size:var(--text-sm)">Facebook</a>
+            <a href="{{ .Site.Params.instagram }}" target="_blank" rel="noopener" class="btn btn-secondary" style="padding:0.625rem 1.25rem;font-size:var(--text-sm)" aria-label="True Wellness on Instagram (opens in new tab)">Instagram</a>
+            <a href="{{ .Site.Params.facebook }}"  target="_blank" rel="noopener" class="btn btn-secondary" style="padding:0.625rem 1.25rem;font-size:var(--text-sm)" aria-label="True Wellness on Facebook (opens in new tab)">Facebook</a>
           </div>
         </div>
         <div>
@@ -92,7 +93,7 @@
           <p style="font-size:var(--text-sm);color:var(--color-text-light);margin-bottom:0.75rem">Looking to bring True Wellness to your school, senior center, or organization?</p>
           <a href="{{ "/partnership/" | relURL }}" class="btn btn-secondary">Partner With Us</a>
         </div>
-      </div>
+      </aside>
     </div>
   </div>
 </section>
@@ -127,8 +128,14 @@
   var phoneErr  = document.getElementById('c-phone-err');
   if (!form) return;
 
-  function showEmailErr(show) { if (emailErr) emailErr.style.display = show ? 'block' : 'none'; }
-  function showPhoneErr(show) { if (phoneErr) phoneErr.style.display = show ? 'block' : 'none'; }
+  function showEmailErr(show) {
+    if (emailErr) emailErr.style.display = show ? 'block' : 'none';
+    if (emailIn)  emailIn.setAttribute('aria-invalid', show ? 'true' : 'false');
+  }
+  function showPhoneErr(show) {
+    if (phoneErr) phoneErr.style.display = show ? 'block' : 'none';
+    if (phoneIn)  phoneIn.setAttribute('aria-invalid', show ? 'true' : 'false');
+  }
 
   if (emailIn) {
     emailIn.addEventListener('blur', function() { showEmailErr(!validEmail(this.value.trim())); });
@@ -179,11 +186,11 @@
     var btn = form.querySelector('button[type=submit]');
     if (d.success) {
       msg.style.color = 'var(--color-sage-dark)';
-      msg.textContent = '✓ Message sent! We\'ll be in touch within 2 business days.';
+      msg.textContent = 'Message sent! We\'ll be in touch within 2 business days.';
       msg.style.display = 'block';
       btn.style.display = 'none';
     } else {
-      msg.style.color = '#c0392b';
+      msg.style.color = 'var(--color-error)';
       msg.textContent = 'Something went wrong. Please try again.';
       msg.style.display = 'block';
       btn.disabled = false; btn.textContent = 'Send Message';

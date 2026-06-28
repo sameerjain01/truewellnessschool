@@ -1,49 +1,48 @@
 {{ define "main" }}
-<div class="page-hero">
+<header class="page-hero">
   <div class="container">
     <h1>The True Wellness Community</h1>
     <p>Connect with families, educators, wellness advocates, and community organizations across the DMV region.</p>
   </div>
-</div>
+</header>
 
-<section class="section">
+<section class="section" aria-labelledby="community-content-heading">
   <div class="container" style="max-width:50rem">
     <p style="font-size:var(--text-lg);font-weight:300;color:var(--color-text-light);line-height:1.85;margin-bottom:2.5rem">We are building the True Wellness community — a network of families, educators, wellness advocates, seniors, and community leaders in the DMV region. Join our founding community and be among the first to access free resources, early event access, and community wellness challenges.</p>
 
-    <div class="section-header">
-      <h2>How to Get Involved</h2>
-    </div>
+    <section aria-labelledby="get-involved-heading">
+      <h2 id="get-involved-heading" class="section-header">How to Get Involved</h2>
+      <ul class="get-involved-list" style="margin-bottom:3rem">
+        {{ range slice "Join the Free Newsletter" "Attend a Local Workshop" "Become a Wellness Member" "Partner with True Wellness" "Bring a Program to Your Organization" }}
+        <li style="display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;background:var(--color-surface);border-radius:var(--radius-card);border:1px solid var(--color-border)">
+          <span style="font-size:var(--text-xl);color:var(--color-sage)" aria-hidden="true">●</span>
+          <span style="font-size:var(--text-base);font-weight:500">{{ . }}</span>
+        </li>
+        {{ end }}
+      </ul>
+    </section>
 
-    <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:3rem">
-      {{ range slice "Join the Free Newsletter" "Attend a Local Workshop" "Become a Wellness Member" "Partner with True Wellness" "Bring a Program to Your Organization" }}
-      <div style="display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;background:var(--color-surface);border-radius:var(--radius-card);border:1px solid var(--color-border)">
-        <span style="font-size:var(--text-xl);color:var(--color-sage)">●</span>
-        <span style="font-size:var(--text-base);font-weight:500">{{ . }}</span>
-      </div>
-      {{ end }}
-    </div>
-
-    <div style="text-align:center;margin-bottom:3rem">
-      <h2 style="font-size:var(--text-2xl);margin-bottom:1rem">Join the Newsletter</h2>
+    <section aria-labelledby="newsletter-heading" style="text-align:center;margin-bottom:3rem">
+      <h2 id="newsletter-heading" style="font-size:var(--text-2xl);margin-bottom:1rem">Join the Newsletter</h2>
       <p style="color:var(--color-text-light);margin-bottom:1.25rem;font-size:var(--text-base)">Free resources, event invitations, and wellness insights — delivered weekly.</p>
       {{ partial "newsletter-form.html" . }}
-    </div>
+    </section>
 
-    <div>
+    <section aria-labelledby="coming-soon-heading">
       <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
-        <h2 style="font-size:var(--text-2xl)">Coming Soon</h2>
+        <h2 id="coming-soon-heading" style="font-size:var(--text-2xl)">Coming Soon</h2>
         <span class="coming-soon-badge">In Development</span>
       </div>
       <p style="color:var(--color-text-light);margin-bottom:1rem">We're building community features that will help you connect, grow, and stay accountable — together.</p>
-      <div class="coming-soon-grid">
-        <div class="coming-soon-item">Community Groups</div>
-        <div class="coming-soon-item">Wellness Challenges</div>
-        <div class="coming-soon-item">Accountability Circles</div>
-        <div class="coming-soon-item">Family Wellness Groups</div>
-        <div class="coming-soon-item">Senior Wellness Circles</div>
-        <div class="coming-soon-item">Youth Leadership Groups</div>
-      </div>
-    </div>
+      <ul class="coming-soon-grid">
+        <li class="coming-soon-item">Community Groups</li>
+        <li class="coming-soon-item">Wellness Challenges</li>
+        <li class="coming-soon-item">Accountability Circles</li>
+        <li class="coming-soon-item">Family Wellness Groups</li>
+        <li class="coming-soon-item">Senior Wellness Circles</li>
+        <li class="coming-soon-item">Youth Leadership Groups</li>
+      </ul>
+    </section>
   </div>
 </section>
 {{ end }}

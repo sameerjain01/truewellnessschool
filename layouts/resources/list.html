@@ -1,30 +1,31 @@
 {{ define "main" }}
-<div class="page-hero">
+<header class="page-hero">
   <div class="container">
     <h1>Wellness Resources &amp; Learning Library</h1>
     <p>Practical, evidence-informed articles, guides, and tools across all four pillars of wellness — free for the True Wellness community.</p>
   </div>
-</div>
+</header>
 
-<section class="section">
+<section class="section" aria-labelledby="resources-list-heading">
   <div class="container">
     <!-- Category filters -->
-    <div class="components-list" style="margin-bottom:2.5rem" role="list" aria-label="Resource categories">
-      <span class="component-tag">Mental Wellness</span>
-      <span class="component-tag">Emotional Wellness</span>
-      <span class="component-tag">Nutrition</span>
-      <span class="component-tag">Meditation</span>
-      <span class="component-tag">Breathwork</span>
-      <span class="component-tag">Sleep</span>
-      <span class="component-tag">Stress Management</span>
-      <span class="component-tag">Healthy Aging</span>
-      <span class="component-tag">Family Wellness</span>
-      <span class="component-tag">Youth Resilience</span>
-      <span class="component-tag">Physical Activity</span>
-    </div>
+    <ul class="components-list" role="list" aria-label="Resource categories" style="margin-bottom:2.5rem">
+      <li class="component-tag" role="listitem">Mental Wellness</li>
+      <li class="component-tag" role="listitem">Emotional Wellness</li>
+      <li class="component-tag" role="listitem">Nutrition</li>
+      <li class="component-tag" role="listitem">Meditation</li>
+      <li class="component-tag" role="listitem">Breathwork</li>
+      <li class="component-tag" role="listitem">Sleep</li>
+      <li class="component-tag" role="listitem">Stress Management</li>
+      <li class="component-tag" role="listitem">Healthy Aging</li>
+      <li class="component-tag" role="listitem">Family Wellness</li>
+      <li class="component-tag" role="listitem">Youth Resilience</li>
+      <li class="component-tag" role="listitem">Physical Activity</li>
+    </ul>
 
     {{ $resources := where .Site.RegularPages "Section" "resources" }}
     {{ if $resources }}
+    <h2 id="resources-list-heading" class="visually-hidden">All Resources</h2>
     <div class="grid-3">
       {{ range $resources }}
       <article class="card" style="display:flex;flex-direction:column;gap:0.75rem">
@@ -36,11 +37,12 @@
         </h2>
         {{ with .Params.summary }}<p style="font-size:var(--text-sm);color:var(--color-text-light);line-height:1.7;flex:1">{{ . }}</p>{{ end }}
         {{ with .Params.audience }}<span class="tag" style="align-self:flex-start">{{ . }}</span>{{ end }}
-        <a href="{{ .RelPermalink }}" class="program-card-link">Read more →</a>
+        <a href="{{ .RelPermalink }}" class="program-card-link" aria-label="Read {{ .Title }}">Read more →</a>
       </article>
       {{ end }}
     </div>
     {{ else }}
+    <h2 id="resources-list-heading" class="visually-hidden">Resources</h2>
     <div class="card" style="text-align:center;padding:3.75rem 2.5rem">
       <h2 style="font-size:var(--text-2xl);margin-bottom:0.75rem">Resources Coming Soon</h2>
       <p style="color:var(--color-text-light);margin-bottom:1.5rem;max-width:30rem;margin-left:auto;margin-right:auto">We are building a library of practical wellness articles, guides, and tools. Join our newsletter for early access.</p>

@@ -1,18 +1,19 @@
 {{ define "main" }}
-<div class="page-hero">
+<header class="page-hero">
   <div class="container">
     <h1>Become a True Wellness Member</h1>
     <p>Join a growing community of families, wellness learners, and healthy living advocates across the DMV region.</p>
   </div>
-</div>
+</header>
 
-<section class="section">
+<section class="section" aria-labelledby="membership-heading">
+  <h2 id="membership-heading" class="visually-hidden">Membership Plans</h2>
   <div class="container">
-    <div class="membership-grid">
+    <ul class="membership-grid">
 
-      <div class="tier-card">
-        <div class="tier-name">Free Community Member</div>
-        <div class="tier-price">Free</div>
+      <li class="tier-card">
+        <h3 class="tier-name">Free Community Member</h3>
+        <p class="tier-price">Free</p>
         <ul class="tier-features">
           <li>Weekly wellness newsletter</li>
           <li>Access to free resources library</li>
@@ -20,11 +21,11 @@
           <li>Community updates</li>
         </ul>
         <a href="{{ "/contact/" | relURL }}?program=Free+Community+Membership" class="btn btn-secondary" style="justify-content:center">Join Free</a>
-      </div>
+      </li>
 
-      <div class="tier-card featured">
-        <div class="tier-name">Wellness Member</div>
-        <div class="tier-price">$19–$29 <span>/ month</span></div>
+      <li class="tier-card featured">
+        <h3 class="tier-name">Wellness Member</h3>
+        <p class="tier-price">$19–$29 <span>/ month</span></p>
         <ul class="tier-features">
           <li>Everything in Free Membership</li>
           <li>Monthly live workshops (virtual + in-person)</li>
@@ -34,11 +35,11 @@
           <li>Member discounts on programs and events</li>
         </ul>
         <a href="{{ "/contact/" | relURL }}?program=Wellness+Membership" class="btn btn-primary" style="justify-content:center">Become a Wellness Member</a>
-      </div>
+      </li>
 
-      <div class="tier-card">
-        <div class="tier-name">Premium Member</div>
-        <div class="tier-price">$49–$99 <span>/ month</span></div>
+      <li class="tier-card">
+        <h3 class="tier-name">Premium Member</h3>
+        <p class="tier-price">$49–$99 <span>/ month</span></p>
         <ul class="tier-features">
           <li>Everything in Wellness Membership</li>
           <li>Four Pillars Wellness Assessment</li>
@@ -48,9 +49,9 @@
           <li>Member-only events and retreats</li>
         </ul>
         <a href="{{ "/contact/" | relURL }}?program=Premium+Membership" class="btn btn-secondary" style="justify-content:center">Join as Premium Member</a>
-      </div>
+      </li>
 
-    </div>
+    </ul>
 
     <div class="assessment-disclaimer" style="max-width:37.5rem;margin:2rem auto 0;text-align:center">
       Memberships are billed monthly and can be cancelled at any time. Programs and group coaching are separate from membership fees.

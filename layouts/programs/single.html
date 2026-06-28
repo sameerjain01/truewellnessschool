@@ -1,50 +1,51 @@
 {{ define "main" }}
-<div class="page-hero">
+<header class="page-hero">
   <div class="container">
     {{ partial "breadcrumb.html" . }}
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p>{{ . }}</p>{{ end }}
   </div>
-</div>
+</header>
 
-<section class="section">
+<section class="section" aria-labelledby="program-details-heading">
+  <h2 id="program-details-heading" class="visually-hidden">{{ .Title }} Details</h2>
   <div class="container" style="max-width:50rem">
 
     <!-- Program meta tags -->
-    <div style="display:flex;flex-wrap:wrap;gap:0.625rem;margin-bottom:2.5rem">
-      {{ with .Params.audience  }}<span class="tag">{{ . }}</span>{{ end }}
-      {{ with .Params.format    }}<span class="tag">{{ . }}</span>{{ end }}
-      {{ with .Params.duration  }}<span class="tag">{{ . }}</span>{{ end }}
-    </div>
+    <ul style="display:flex;flex-wrap:wrap;gap:0.625rem;margin-bottom:2.5rem;list-style:none;padding:0">
+      {{ with .Params.audience  }}<li><span class="tag">{{ . }}</span></li>{{ end }}
+      {{ with .Params.format    }}<li><span class="tag">{{ . }}</span></li>{{ end }}
+      {{ with .Params.duration  }}<li><span class="tag">{{ . }}</span></li>{{ end }}
+    </ul>
 
     <!-- Outcomes -->
     {{ with .Params.outcomes }}
-    <div class="content-section">
-      <h2 style="font-size:var(--text-2xl);margin-bottom:1.25rem">What You'll Gain</h2>
-      <ul style="display:flex;flex-direction:column;gap:0.625rem">
+    <section class="content-section" aria-labelledby="outcomes-heading">
+      <h2 id="outcomes-heading" style="font-size:var(--text-2xl);margin-bottom:1.25rem">What You'll Gain</h2>
+      <ul style="display:flex;flex-direction:column;gap:0.625rem;list-style:none;padding:0">
         {{ range . }}
         <li style="font-size:var(--text-base);color:var(--color-text-light);padding-left:1.5rem;position:relative">
-          <span style="position:absolute;left:0;color:var(--color-sage-dark);font-weight:700">✓</span>
+          <span aria-hidden="true" style="position:absolute;left:0;color:var(--color-sage-dark);font-weight:700">✓</span>
           {{ . }}
         </li>
         {{ end }}
       </ul>
-    </div>
+    </section>
     {{ end }}
 
     <!-- Curriculum -->
     {{ with .Params.curriculum }}
-    <div class="content-section">
-      <h2 style="font-size:var(--text-2xl);margin-bottom:1.25rem">Program Curriculum</h2>
-      <div class="curriculum-list">
+    <section class="content-section" aria-labelledby="curriculum-heading">
+      <h2 id="curriculum-heading" style="font-size:var(--text-2xl);margin-bottom:1.25rem">Program Curriculum</h2>
+      <ol class="curriculum-list" style="list-style:none;padding:0">
         {{ range $i, $week := . }}
-        <div class="curriculum-item">
+        <li class="curriculum-item">
           <span class="curriculum-num">{{ add $i 1 }}</span>
           <span class="curriculum-title">{{ . }}</span>
-        </div>
+        </li>
         {{ end }}
-      </div>
-    </div>
+      </ol>
+    </section>
     {{ end }}
 
     <!-- Extra content from markdown body -->
