@@ -35,7 +35,7 @@
             {{ with .Params.audience }} · {{ . }}{{ end }}
           </p>
           <p class="event-card-desc">{{ .Description }}</p>
-          <a href="{{ with .Params.registration_url }}{{ . }}{{ else }}{{ "/contact/" | relURL }}{{ end }}" class="btn btn-primary">Register</a>
+          <a href="{{ with .Params.registration_url }}{{ . }}{{ else }}{{ printf "%s?%s" ("/contact/" | relURL) (querify "program" .Title) | safeURL }}{{ end }}" class="btn btn-primary">Register</a>
         </div>
       </article>
       {{ end }}

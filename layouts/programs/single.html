@@ -58,9 +58,9 @@
     <div class="content-section">
       <div class="btn-group">
         {{ with .Params.cta_primary_text }}
-        <a href="{{ "/contact/" | relURL }}" class="btn btn-primary">{{ . }}</a>
+        <a href="{{ printf "%s?%s" ("/contact/" | relURL) (querify "program" $.Title) | safeURL }}" class="btn btn-primary">{{ . }}</a>
         {{ else }}
-        <a href="{{ "/contact/" | relURL }}" class="btn btn-primary">Register Interest</a>
+        <a href="{{ printf "%s?%s" ("/contact/" | relURL) (querify "program" $.Title) | safeURL }}" class="btn btn-primary">Register Interest</a>
         {{ end }}
         {{ with .Params.cta_secondary_text }}
         <a href="{{ "/partnership/" | relURL }}" class="btn btn-secondary">{{ . }}</a>

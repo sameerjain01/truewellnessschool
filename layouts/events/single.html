@@ -16,7 +16,7 @@
     </div>
     {{ .Content }}
     <div style="margin-top:32px">
-      <a href="{{ with .Params.registration_url }}{{ . }}{{ else }}{{ "/contact/" | relURL }}{{ end }}" class="btn btn-primary">Register for This Event</a>
+      <a href="{{ with .Params.registration_url }}{{ . }}{{ else }}{{ printf "%s?%s" ("/contact/" | relURL) (querify "program" .Title) | safeURL }}{{ end }}" class="btn btn-primary">Register for This Event</a>
     </div>
     <div style="margin-top:20px">
       <a href="{{ "/events/" | relURL }}" style="font-size:var(--text-sm);color:var(--color-text-light)">← All Events</a>
