@@ -1,0 +1,78 @@
+{{ define "main" }}
+<div class="page-hero">
+  <div class="container">
+    {{ partial "breadcrumb.html" . }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+  </div>
+</div>
+
+<section class="section">
+  <div class="container" style="max-width:800px">
+
+    <!-- Program meta tags -->
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px">
+      {{ with .Params.audience  }}<span class="tag">{{ . }}</span>{{ end }}
+      {{ with .Params.format    }}<span class="tag">{{ . }}</span>{{ end }}
+      {{ with .Params.duration  }}<span class="tag">{{ . }}</span>{{ end }}
+    </div>
+
+    <!-- Outcomes -->
+    {{ with .Params.outcomes }}
+    <div class="content-section">
+      <h2 style="font-size:var(--text-2xl);margin-bottom:20px">What You'll Gain</h2>
+      <ul style="display:flex;flex-direction:column;gap:10px">
+        {{ range . }}
+        <li style="font-size:var(--text-base);color:var(--color-text-light);padding-left:24px;position:relative">
+          <span style="position:absolute;left:0;color:var(--color-sage-dark);font-weight:700">✓</span>
+          {{ . }}
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+
+    <!-- Curriculum -->
+    {{ with .Params.curriculum }}
+    <div class="content-section">
+      <h2 style="font-size:var(--text-2xl);margin-bottom:20px">Program Curriculum</h2>
+      <div class="curriculum-list">
+        {{ range $i, $week := . }}
+        <div class="curriculum-item">
+          <span class="curriculum-num">{{ add $i 1 }}</span>
+          <span class="curriculum-title">{{ . }}</span>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    <!-- Extra content from markdown body -->
+    {{ with .Content }}
+    <div class="content-section" style="line-height:1.8;color:var(--color-text-light)">
+      {{ . }}
+    </div>
+    {{ end }}
+
+    <!-- CTAs -->
+    <div class="content-section">
+      <div class="btn-group">
+        {{ with .Params.cta_primary_text }}
+        <a href="{{ "/contact/" | relURL }}" class="btn btn-primary">{{ . }}</a>
+        {{ else }}
+        <a href="{{ "/contact/" | relURL }}" class="btn btn-primary">Register Interest</a>
+        {{ end }}
+        {{ with .Params.cta_secondary_text }}
+        <a href="{{ "/partnership/" | relURL }}" class="btn btn-secondary">{{ . }}</a>
+        {{ end }}
+      </div>
+    </div>
+
+    <div style="margin-top:16px">
+      <a href="{{ "/programs/" | relURL }}" style="font-size:var(--text-sm);color:var(--color-text-light)">← All Programs</a>
+    </div>
+  </div>
+</section>
+
+{{ partial "assessment-cta.html" . }}
+{{ end }}

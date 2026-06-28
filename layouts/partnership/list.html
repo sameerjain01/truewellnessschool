@@ -1,0 +1,143 @@
+{{ define "main" }}
+<div class="page-hero">
+  <div class="container">
+    <h1>Bring True Wellness to Your Community</h1>
+    <p>We partner with schools, senior centers, libraries, community organizations, employers, healthcare organizations, and local government agencies to bring wellness education directly to the people who need it.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="grid-2" style="gap:48px;align-items:start">
+      <div>
+        <div class="section-header">
+          <span class="eyebrow">Priority Partners</span>
+          <h2>Who We Partner With</h2>
+        </div>
+
+        <div class="partner-tier">
+          <span class="partner-tier-label">Tier 1</span>
+          <span class="partner-tier-orgs">Schools · Senior Centers · Libraries</span>
+        </div>
+        <div class="partner-tier">
+          <span class="partner-tier-label">Tier 2</span>
+          <span class="partner-tier-orgs">Community Centers · Faith Organizations</span>
+        </div>
+        <div class="partner-tier">
+          <span class="partner-tier-label">Tier 3</span>
+          <span class="partner-tier-orgs">Employers · Healthcare Organizations</span>
+        </div>
+
+        <div style="margin-top:32px">
+          <p class="eyebrow" style="margin-bottom:12px">Target Counties in Virginia</p>
+          <div class="components-list">
+            <span class="component-tag">Fairfax</span>
+            <span class="component-tag">Loudoun</span>
+            <span class="component-tag">Prince William</span>
+            <span class="component-tag">Arlington</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-header">
+          <span class="eyebrow">Partnership Benefits</span>
+          <h2>What Partners Receive</h2>
+        </div>
+        <ul style="display:flex;flex-direction:column;gap:10px">
+          {{ range slice "Customized wellness workshops" "Youth resilience programs" "Senior wellness education series" "Family wellness events" "Employee wellness sessions" "Community health initiatives" "Curriculum development support" "Wellness assessments for participants" "Program evaluation and impact reporting" }}
+          <li style="font-size:var(--text-base);color:var(--color-text-light);padding-left:24px;position:relative;line-height:1.5">
+            <span style="position:absolute;left:0;color:var(--color-sage-dark);font-weight:700">✓</span>
+            {{ . }}
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Partner -->
+<section class="section" style="background:var(--color-surface)">
+  <div class="container" style="max-width:800px">
+    <div class="section-header">
+      <span class="eyebrow">Why Partner</span>
+      <h2>Why Partner with True Wellness</h2>
+    </div>
+    <div class="grid-2" style="gap:16px">
+      {{ range slice "Evidence-informed, community-tested curriculum" "Programs aligned with federal and state wellness funding priorities" "Flexible delivery: in-person, virtual, hybrid" "Designed for families, youth, and seniors — not just individuals" "Supports school district wellness mandates, senior center programming, and employer wellness goals" "Inclusive, non-judgmental, and accessible to all communities" }}
+      <div class="belief-card" style="counter-increment:none">{{ . }}</div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- Inquiry Form -->
+<section class="section" id="inquiry">
+  <div class="container" style="max-width:640px">
+    <div class="section-header">
+      <span class="eyebrow">Get Started</span>
+      <h2>Request a Partnership Conversation</h2>
+      <p>Tell us about your organization and we'll follow up within 2 business days.</p>
+    </div>
+
+    <form class="contact-form" onsubmit="handlePartnerInquiry(event)" aria-label="Partnership inquiry form" style="max-width:100%">
+      <div class="form-group">
+        <label for="org-name">Organization Name</label>
+        <input type="text" id="org-name" name="org_name" placeholder="Your organization" required>
+      </div>
+      <div class="form-group">
+        <label for="contact-name">Contact Name</label>
+        <input type="text" id="contact-name" name="contact_name" placeholder="Your full name" required>
+      </div>
+      <div class="form-group">
+        <label for="p-email">Email</label>
+        <input type="email" id="p-email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label for="p-phone">Phone (optional)</label>
+        <input type="tel" id="p-phone" name="phone" placeholder="(555) 000-0000">
+      </div>
+      <div class="form-group">
+        <label for="org-type">Organization Type</label>
+        <select id="org-type" name="org_type" required>
+          <option value="">Select…</option>
+          <option>School</option>
+          <option>Senior Center</option>
+          <option>Library</option>
+          <option>Community Center</option>
+          <option>Employer</option>
+          <option>Healthcare Organization</option>
+          <option>Government Agency</option>
+          <option>Faith Organization</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="p-programs">Programs You're Interested In (optional)</label>
+        <input type="text" id="p-programs" name="programs" placeholder="e.g., Youth Wellness, Senior Programs…">
+      </div>
+      <div class="form-group">
+        <label for="p-referral">How did you hear about us?</label>
+        <input type="text" id="p-referral" name="referral" placeholder="Google, word of mouth, social media…">
+      </div>
+      <div class="form-group">
+        <label for="p-message">Tell us more about your organization and needs</label>
+        <textarea id="p-message" name="message" rows="4" placeholder="What's your community, how many people you serve, what wellness needs you have…"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Request a Partnership Conversation</button>
+      <p id="partner-success" style="display:none;color:var(--color-sage-dark);font-weight:500;text-align:center;margin-top:16px">✓ Thank you! We'll be in touch within 2 business days.</p>
+    </form>
+  </div>
+</section>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+function handlePartnerInquiry(e) {
+  e.preventDefault();
+  e.target.querySelector('button').style.display = 'none';
+  document.getElementById('partner-success').style.display = 'block';
+}
+</script>
+{{ end }}

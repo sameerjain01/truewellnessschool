@@ -1,8 +1,16 @@
 baseURL = 'https://truewellnessschool.com/'
-locale = 'en-GB'
-title = 'True Wellness School'
+locale = 'en-us'
+title = 'True Wellness'
+enableRobotsTXT = true
 
 [params]
-  description = "Holistic wellness for mind, body, emotions, and spirit — at every stage of life."
+  description = "True Wellness is a DMV holistic wellness education company helping families, youth, seniors, and communities build healthier lives through the Four Pillars of Wellness."
+  keywords    = "holistic wellness DMV, family wellness programs Virginia, youth wellness programs Maryland, senior wellness DC, wellness education Washington DC, wellness workshops near me"
+  tagline     = "Helping Families Thrive Through Mental, Emotional, Physical, and Spiritual Wellness."
+  region      = "Washington DC, Maryland, Virginia"
+  disclaimer  = "True Wellness programs are for educational purposes only and are not a substitute for medical care, diagnosis, or treatment."
+  og_image    = "/images/og-image.png"
   instagram   = "https://www.instagram.com/truewellnessschool"
-  tagline     = "Nurture Every Part of Yourself"
+  facebook    = "https://www.facebook.com/truewellnessschool"
+  youtube     = "https://www.youtube.com/@truewellnessschool"
+  linkedin    = "https://www.linkedin.com/company/truewellnessschool"

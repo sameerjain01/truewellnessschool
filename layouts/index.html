@@ -1,190 +1,273 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>True Wellness School — Something Beautiful is Coming</title>
-  <meta name="description" content="A new chapter in holistic wellness — for mind, body, emotions, and spirit. Coming soon." />
-  <meta property="og:title" content="True Wellness School — Something Beautiful is Coming" />
-  <meta property="og:description" content="A new chapter in holistic wellness — for mind, body, emotions, and spirit. Coming soon." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://truewellnessschool.com/" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="True Wellness School — Something Beautiful is Coming" />
-  <meta name="twitter:description" content="A new chapter in holistic wellness — for mind, body, emotions, and spirit. Coming soon." />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+{{ define "main" }}
 
-    body {
-      font-family: Inter, sans-serif;
-      background: #FFFDF5;
-      color: #1C1A0F;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      overflow: hidden;
-    }
-
-    .glow {
-      position: fixed;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(245,197,24,.18) 0%, transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      animation: pulse 6s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: .7; }
-      50%       { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
-    }
-    @media (prefers-reduced-motion: reduce) { .glow { animation: none; } }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      max-width: 560px;
-    }
-
-    .wordmark {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #C9A000;
-      margin-bottom: 3.5rem;
-    }
-
-    .sun {
-      width: 56px;
-      height: 56px;
-      background: #F5C518;
-      border-radius: 50%;
-      margin: 0 auto 2.5rem;
-      box-shadow: 0 0 0 12px rgba(245,197,24,.12), 0 0 0 28px rgba(245,197,24,.06);
-    }
-
-    h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.75rem, 6vw, 4.5rem);
-      font-weight: 600;
-      line-height: 1.08;
-      letter-spacing: -0.01em;
-      color: #1C1A0F;
-      margin-bottom: 1.5rem;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: #C9A000;
-    }
-
-    .divider {
-      width: 2.5rem;
-      height: 2px;
-      background: #F5C518;
-      margin: 0 auto 1.5rem;
-    }
-
-    p {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: #6b6645;
-      font-weight: 300;
-      max-width: 380px;
-      margin: 0 auto 3rem;
-    }
-
-    .instagram {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      color: #1C1A0F;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(28,26,15,.2);
-      padding-bottom: 2px;
-      transition: border-color .2s, color .2s;
-    }
-    .instagram:hover { color: #C9A000; border-color: #C9A000; }
-
-    .notify-form {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-    }
-    .notify-form input[type="email"] {
-      font-family: Inter, sans-serif;
-      font-size: 0.85rem;
-      font-weight: 300;
-      padding: 0.65rem 1rem;
-      border: 1px solid rgba(28,26,15,.2);
-      border-radius: 2px;
-      background: transparent;
-      color: #1C1A0F;
-      width: 220px;
-      outline: none;
-      transition: border-color .2s;
-    }
-    .notify-form input[type="email"]::placeholder { color: rgba(28,26,15,.35); }
-    .notify-form input[type="email"]:focus { border-color: #C9A000; }
-    .notify-form button {
-      font-family: Inter, sans-serif;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.65rem 1.25rem;
-      background: #F5C518;
-      color: #1C1A0F;
-      border: none;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: background .2s;
-    }
-    .notify-form button:hover { background: #C9A000; }
-
-    footer {
-      position: fixed;
-      bottom: 1.5rem;
-      font-size: 0.7rem;
-      color: rgba(28,26,15,.3);
-      letter-spacing: 0.05em;
-    }
-  </style>
-</head>
-<body>
-  <div class="glow"></div>
-
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section class="hero">
   <div class="container">
-    <p class="wordmark">True Wellness School</p>
-    <div class="sun"></div>
-    <h1>Something <em>beautiful</em><br />is here.</h1>
-    <div class="divider"></div>
-    <p>A new chapter in holistic wellness — for mind, body, emotions, and spirit. We are putting the finishing touches on something that will change how you experience wellbeing. Stay close — we can't wait to share it with you.</p>
-    <form class="notify-form" onsubmit="return false;">
-      <input type="email" placeholder="your@email.com" aria-label="Email address" />
-      <button type="submit">Notify me</button>
-    </form>
-    <a class="instagram" href="{{ .Site.Params.instagram }}" target="_blank">
-      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      Follow us @truewellnessschool
-    </a>
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow">Washington DC · Maryland · Virginia</span>
+        <h1 class="hero-headline">Helping Families Thrive Through Mental, Emotional, Physical, and Spiritual Wellness.</h1>
+        <p class="hero-sub">True Wellness provides practical, evidence-informed wellness education for families, youth, seniors, schools, employers, and community organizations across the DMV region. Through workshops, programs, and community learning experiences, we help people build healthier habits for everyday life.</p>
+        <div class="btn-group">
+          <a href="{{ "/assessment/" | relURL }}" class="btn btn-primary">Take the Free Wellness Assessment</a>
+          <a href="{{ "/programs/"   | relURL }}" class="btn btn-secondary">Explore Programs</a>
+        </div>
+      </div>
+      <div class="hero-illustration" aria-hidden="true">
+        <svg width="340" height="380" viewBox="0 0 340 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Botanical illustration: leaves and stems in sage/gold tones -->
+          <ellipse cx="170" cy="200" rx="110" ry="140" fill="#A8C5A0" opacity="0.12"/>
+          <!-- Main stem -->
+          <path d="M170 360 C170 280 160 240 170 160" stroke="#7A9E72" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <!-- Large left leaf -->
+          <path d="M170 240 C130 210 90 200 80 170 C110 168 150 185 170 220" fill="#A8C5A0" opacity="0.75"/>
+          <!-- Large right leaf -->
+          <path d="M170 200 C210 170 250 165 265 140 C235 138 195 155 170 190" fill="#A8C5A0" opacity="0.65"/>
+          <!-- Small left leaf -->
+          <path d="M170 290 C145 270 120 268 112 252 C132 250 158 265 170 282" fill="#7A9E72" opacity="0.55"/>
+          <!-- Small right leaf -->
+          <path d="M170 260 C195 242 218 240 227 226 C208 224 185 238 170 255" fill="#7A9E72" opacity="0.5"/>
+          <!-- Tiny branch left -->
+          <path d="M170 180 C155 165 140 162 135 152 C148 150 163 160 170 175" fill="#A8C5A0" opacity="0.45"/>
+          <!-- Gold accent berries -->
+          <circle cx="138" cy="232" r="5" fill="#C8A96E" opacity="0.6"/>
+          <circle cx="122" cy="222" r="3.5" fill="#C8A96E" opacity="0.5"/>
+          <circle cx="248" cy="178" r="5" fill="#C8A96E" opacity="0.55"/>
+          <circle cx="258" cy="166" r="3" fill="#C8A96E" opacity="0.45"/>
+          <!-- Top bud -->
+          <ellipse cx="170" cy="148" rx="8" ry="14" fill="#A8C5A0" opacity="0.7"/>
+          <ellipse cx="170" cy="140" rx="5" ry="9" fill="#7A9E72" opacity="0.6"/>
+          <!-- Delicate grass / thin stems -->
+          <path d="M155 360 C150 320 142 290 138 260" stroke="#A8C5A0" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+          <path d="M185 360 C190 315 198 285 202 250" stroke="#A8C5A0" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.35"/>
+          <!-- Petal / round leaf right -->
+          <path d="M170 310 C195 295 215 298 220 285 C202 282 182 293 170 308" fill="#B8D4E3" opacity="0.5"/>
+          <!-- Petal left sky blue -->
+          <path d="M170 330 C145 318 128 320 124 308 C140 305 162 316 170 328" fill="#B8D4E3" opacity="0.45"/>
+          <!-- Blush accent -->
+          <ellipse cx="100" cy="278" rx="12" ry="8" fill="#E8C4C4" opacity="0.4" transform="rotate(-20 100 278)"/>
+          <ellipse cx="240" cy="210" rx="10" ry="7" fill="#E8C4C4" opacity="0.35" transform="rotate(15 240 210)"/>
+        </svg>
+      </div>
+    </div>
   </div>
+</section>
 
-  <footer>&copy; {{ now.Year }} True Wellness School</footer>
-</body>
-</html>
+<!-- ── FOUR PILLARS ──────────────────────────────────── -->
+<section class="section" style="background:var(--color-surface)">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="eyebrow">The Foundation</span>
+      <h2>The Four Pillars of Wellness</h2>
+      <p>Everything we teach is built around four interconnected areas of wellbeing.</p>
+    </div>
+
+    <div class="pillars-grid">
+      <a href="{{ "/four-pillars/mental/" | relURL }}" class="pillar-card pillar-card--mental">
+        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="24" cy="22" r="13" stroke="#2D3028" stroke-width="2" fill="none"/>
+          <path d="M24 9 C24 9 18 14 18 22 C18 28 21 32 24 35" stroke="#2D3028" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M24 9 C24 9 30 14 30 22 C30 28 27 32 24 35" stroke="#2D3028" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <line x1="24" y1="38" x2="24" y2="42" stroke="#2D3028" stroke-width="2" stroke-linecap="round"/>
+          <line x1="20" y1="42" x2="28" y2="42" stroke="#2D3028" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="pillar-card-name">Mental Wellness</span>
+        <span class="pillar-card-desc">Clear thinking, focus, resilience, and stress management</span>
+        <span class="pillar-card-arrow">Learn more →</span>
+      </a>
+
+      <a href="{{ "/four-pillars/emotional/" | relURL }}" class="pillar-card pillar-card--emotional">
+        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 38 C24 38 8 28 8 18 C8 12 13 8 18 8 C21 8 24 10 24 10 C24 10 27 8 30 8 C35 8 40 12 40 18 C40 28 24 38 24 38Z" stroke="#2D3028" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        </svg>
+        <span class="pillar-card-name">Emotional Wellness</span>
+        <span class="pillar-card-desc">Self-awareness, emotional regulation, and healthy relationships</span>
+        <span class="pillar-card-arrow">Learn more →</span>
+      </a>
+
+      <a href="{{ "/four-pillars/physical/" | relURL }}" class="pillar-card pillar-card--physical">
+        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 8 C18 8 14 12 14 18 C14 26 24 36 24 36 C24 36 34 26 34 18 C34 12 30 8 24 8Z" stroke="#2D3028" stroke-width="2" fill="none"/>
+          <path d="M24 36 L24 42" stroke="#2D3028" stroke-width="2" stroke-linecap="round"/>
+          <path d="M18 40 L30 40" stroke="#2D3028" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="24" cy="18" r="4" stroke="#2D3028" stroke-width="1.5" fill="none"/>
+        </svg>
+        <span class="pillar-card-name">Physical Wellness</span>
+        <span class="pillar-card-desc">Nutrition, movement, sleep, and preventive health habits</span>
+        <span class="pillar-card-arrow">Learn more →</span>
+      </a>
+
+      <a href="{{ "/four-pillars/spiritual/" | relURL }}" class="pillar-card pillar-card--spiritual">
+        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 40 C24 40 14 32 14 22 C14 16 18 12 24 10 C30 12 34 16 34 22 C34 32 24 40 24 40Z" stroke="#2D3028" stroke-width="2" fill="none"/>
+          <path d="M24 10 C24 10 20 14 20 20 C20 25 22 28 24 30" stroke="#2D3028" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <line x1="24" y1="6" x2="24" y2="10" stroke="#2D3028" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="pillar-card-name">Spiritual Wellness</span>
+        <span class="pillar-card-desc">Purpose, meaning, mindfulness, and inner connection</span>
+        <span class="pillar-card-arrow">Learn more →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHO WE SERVE ──────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <h2>Wellness Education for Every Stage of Life</h2>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-tile">
+        <div class="audience-tile-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D3028" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <span class="audience-tile-label">Families</span>
+      </div>
+      <div class="audience-tile">
+        <div class="audience-tile-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D3028" stroke-width="2" stroke-linecap="round"><path d="M12 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/><path d="M12 14c-6 0-10 3-10 5v1h20v-1c0-2-4-5-10-5z"/></svg>
+        </div>
+        <span class="audience-tile-label">Youth</span>
+      </div>
+      <div class="audience-tile">
+        <div class="audience-tile-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D3028" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/><path d="M12 12v4"/><path d="M9 16l3 2 3-2"/></svg>
+        </div>
+        <span class="audience-tile-label">Parents</span>
+      </div>
+      <div class="audience-tile">
+        <div class="audience-tile-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D3028" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0 1 12 0v2"/><path d="M4 9.5a8 8 0 0 0 16 0"/></svg>
+        </div>
+        <span class="audience-tile-label">Seniors</span>
+      </div>
+      <div class="audience-tile">
+        <div class="audience-tile-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D3028" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
+        <span class="audience-tile-label">Schools</span>
+      </div>
+      <div class="audience-tile">
+        <div class="audience-tile-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D3028" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <span class="audience-tile-label">Employers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURED PROGRAMS ─────────────────────────────── -->
+<section class="section" style="background:var(--color-surface)">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Programs</span>
+      <h2>Evidence-Informed Wellness Programs</h2>
+      <p>All programs are built on the Four Pillars framework and designed for real life — not just the gym.</p>
+    </div>
+    <div class="grid-3">
+      <div class="program-card">
+        <div class="program-card-meta">
+          <span class="tag">Families</span>
+          <span class="tag">8 Weeks</span>
+        </div>
+        <h3 class="program-card-title">Family Wellness Foundations</h3>
+        <p class="program-card-desc">A practical eight-week program helping parents and children build healthier routines, improve communication, and create a family wellness plan together.</p>
+        <a href="{{ "/programs/family/" | relURL }}" class="program-card-link">Learn more →</a>
+      </div>
+      <div class="program-card">
+        <div class="program-card-meta">
+          <span class="tag">Youth</span>
+          <span class="tag">8 Modules</span>
+        </div>
+        <h3 class="program-card-title">Youth Wellness &amp; Resilience</h3>
+        <p class="program-card-desc">School-based program teaching middle and high schoolers stress management, healthy habits, mindfulness, and leadership skills for everyday life.</p>
+        <a href="{{ "/programs/youth/" | relURL }}" class="program-card-link">Learn more →</a>
+      </div>
+      <div class="program-card">
+        <div class="program-card-meta">
+          <span class="tag">Adults 50+</span>
+          <span class="tag">6 Weeks</span>
+        </div>
+        <h3 class="program-card-title">Senior Wellness &amp; Healthy Aging</h3>
+        <p class="program-card-desc">A six-week senior center program focused on brain health, mobility, nutrition, social connection, and purposeful living for adults 50 and older.</p>
+        <a href="{{ "/programs/seniors/" | relURL }}" class="program-card-link">Learn more →</a>
+      </div>
+    </div>
+    <div style="margin-top:32px;text-align:center">
+      <a href="{{ "/programs/" | relURL }}" class="btn btn-secondary">View All Programs</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── ASSESSMENT CTA ────────────────────────────────── -->
+{{ partial "assessment-cta.html" . }}
+
+<!-- ── UPCOMING EVENTS ──────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Upcoming</span>
+      <h2>Workshops &amp; Events</h2>
+      <p>Join True Wellness for live workshops, wellness fairs, and community programs across the DMV region.</p>
+    </div>
+    <div class="grid-3">
+      {{ $events := where (where .Site.RegularPages "Section" "events") ".Params.featured" true }}
+      {{ if $events }}
+        {{ range first 3 $events }}
+        <article class="event-card">
+          <div class="event-card-date-bar">
+            <time class="event-card-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+          </div>
+          <div class="event-card-body">
+            <h3 class="event-card-title">{{ .Title }}</h3>
+            <p class="event-card-meta">{{ .Params.location }} · {{ .Params.audience }}</p>
+            <p class="event-card-desc">{{ .Description }}</p>
+            <a href="{{ with .Params.registration_url }}{{ . }}{{ else }}{{ "/events/" | relURL }}{{ end }}" class="btn btn-primary">Register</a>
+          </div>
+        </article>
+        {{ end }}
+      {{ else }}
+        {{ range first 3 (where .Site.RegularPages "Section" "events") }}
+        <article class="event-card">
+          <div class="event-card-date-bar">
+            <time class="event-card-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+          </div>
+          <div class="event-card-body">
+            <h3 class="event-card-title">{{ .Title }}</h3>
+            <p class="event-card-meta">{{ .Params.location }} · {{ .Params.audience }}</p>
+            <p class="event-card-desc">{{ .Description }}</p>
+            <a href="{{ "/events/" | relURL }}" class="btn btn-primary">Learn More</a>
+          </div>
+        </article>
+        {{ end }}
+      {{ end }}
+    </div>
+    <div style="margin-top:32px;text-align:center">
+      <a href="{{ "/events/" | relURL }}" class="btn btn-secondary">View All Events</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMMUNITY CTA ─────────────────────────────────── -->
+<section class="section" style="background:var(--color-surface)">
+  <div class="container" style="max-width:640px;text-align:center">
+    <span class="eyebrow">Community</span>
+    <h2>Join the True Wellness Community</h2>
+    <p style="color:var(--color-text-light);font-size:var(--text-lg);font-weight:300;margin:16px 0 28px">Connect with families, educators, wellness professionals, and community organizations across the DMV region. Get free resources, event invitations, and wellness tips delivered weekly.</p>
+    {{ partial "newsletter-form.html" . }}
+  </div>
+</section>
+
+<!-- ── PARTNERS ──────────────────────────────────────── -->
+<section class="section">
+  <div class="container" style="text-align:center;max-width:640px">
+    <span class="eyebrow">Partnerships</span>
+    <h2>Bringing Wellness to Your Community</h2>
+    <p style="color:var(--color-text-light);font-size:var(--text-lg);font-weight:300;margin:16px 0 28px">We partner with schools, senior centers, libraries, employers, and community organizations to bring wellness education directly to the people who need it most.</p>
+    <a href="{{ "/partnership/" | relURL }}" class="btn btn-primary">Explore Partnerships</a>
+  </div>
+</section>
+
+{{ end }}

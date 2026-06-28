@@ -1,0 +1,90 @@
+{{ define "main" }}
+<div class="page-hero">
+  <div class="container">
+    <h1>Why True Wellness Exists</h1>
+    <p>Too many families, students, seniors, and working adults are navigating stress, burnout, loneliness, and unhealthy routines without practical tools or community support. True Wellness exists to change that.</p>
+  </div>
+</div>
+
+<!-- Mission & Vision -->
+<section class="section">
+  <div class="container">
+    <div class="grid-2" style="gap:32px;align-items:start">
+      <div class="card">
+        <span class="eyebrow">Our Mission</span>
+        <p style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:300;line-height:1.5;margin-top:12px">To help individuals, families, and communities improve overall wellbeing through evidence-informed holistic wellness education.</p>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Our Vision</span>
+        <p style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:300;line-height:1.5;margin-top:12px">To become the leading holistic wellness education platform in the DMV region before expanding nationally.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Philosophy -->
+<section class="section" style="background:var(--color-surface)">
+  <div class="container" style="max-width:800px">
+    <div class="section-header">
+      <span class="eyebrow">Our Approach</span>
+      <h2>How We Teach Wellness</h2>
+    </div>
+    <p style="font-size:var(--text-lg);font-weight:300;color:var(--color-text-light);line-height:1.85;margin-bottom:20px">True Wellness combines modern science with traditional wellness systems. Our programs integrate lifestyle medicine, nutrition science, behavior change, sleep science, exercise science, mindfulness, meditation, yoga, breathwork, Ayurveda, and traditional wellness practices — in a responsible, educational, and evidence-informed way.</p>
+    <div class="assessment-disclaimer" role="note">
+      True Wellness programs are educational in nature and are not a substitute for medical care, therapy, diagnosis, or treatment. When appropriate, we encourage participants to consult qualified healthcare professionals.
+    </div>
+  </div>
+</section>
+
+<!-- What We Believe -->
+<section class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="eyebrow">Our Values</span>
+      <h2>What We Believe</h2>
+    </div>
+    <div class="beliefs-grid">
+      <div class="belief-card">Wellness is more than fitness — it's how you think, feel, move, rest, connect, and find purpose.</div>
+      <div class="belief-card">Every person deserves access to practical, affordable wellness education.</div>
+      <div class="belief-card">Sustainable habits matter more than quick fixes.</div>
+      <div class="belief-card">Community makes wellness stick.</div>
+      <div class="belief-card">Science and tradition together are more powerful than either alone.</div>
+      <div class="belief-card">Wellness education should be inclusive, non-judgmental, and family-friendly.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Year One Goals -->
+<section class="section" style="background:var(--color-surface)">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="eyebrow">Year One</span>
+      <h2>Our First-Year Goals</h2>
+    </div>
+    <div class="goals-grid">
+      <div class="goal-item">
+        <span class="goal-number">1,000</span>
+        <p class="goal-label">Email Subscribers</p>
+      </div>
+      <div class="goal-item">
+        <span class="goal-number">100</span>
+        <p class="goal-label">Paid Members</p>
+      </div>
+      <div class="goal-item">
+        <span class="goal-number">10</span>
+        <p class="goal-label">School Partnerships</p>
+      </div>
+      <div class="goal-item">
+        <span class="goal-number">5</span>
+        <p class="goal-label">Senior Center Partners</p>
+      </div>
+      <div class="goal-item">
+        <span class="goal-number">12</span>
+        <p class="goal-label">Community Events</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ partial "assessment-cta.html" . }}
+{{ end }}

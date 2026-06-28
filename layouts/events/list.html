@@ -1,0 +1,61 @@
+{{ define "main" }}
+<div class="page-hero">
+  <div class="container">
+    <h1>Workshops, Events &amp; Community Programs</h1>
+    <p>Join True Wellness for live workshops, community events, wellness fairs, and educational programs across the DMV region.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Event category tags -->
+    <div class="components-list" style="margin-bottom:40px">
+      <span class="component-tag">Family Wellness Workshops</span>
+      <span class="component-tag">Youth Resilience Sessions</span>
+      <span class="component-tag">Senior Wellness Classes</span>
+      <span class="component-tag">Meditation &amp; Mindfulness</span>
+      <span class="component-tag">Community Wellness Fairs</span>
+      <span class="component-tag">Corporate Wellness Days</span>
+      <span class="component-tag">School-Based Events</span>
+    </div>
+
+    {{ $events := where .Site.RegularPages "Section" "events" }}
+    {{ if $events }}
+    <div class="grid-3">
+      {{ range $events }}
+      <article class="event-card">
+        <div class="event-card-date-bar">
+          <time class="event-card-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        </div>
+        <div class="event-card-body">
+          <h2 class="event-card-title">{{ .Title }}</h2>
+          <p class="event-card-meta">
+            {{ with .Params.location }}{{ . }}{{ end }}
+            {{ with .Params.audience }} · {{ . }}{{ end }}
+          </p>
+          <p class="event-card-desc">{{ .Description }}</p>
+          <a href="{{ with .Params.registration_url }}{{ . }}{{ else }}{{ "/contact/" | relURL }}{{ end }}" class="btn btn-primary">Register</a>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    {{ else }}
+    <div class="card" style="text-align:center;padding:60px 40px">
+      <h2 style="font-size:var(--text-2xl);margin-bottom:12px">Events Coming Soon</h2>
+      <p style="color:var(--color-text-light);margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto">We are scheduling workshops, wellness fairs, and community events across the DMV region. Join our newsletter to be the first to know.</p>
+      {{ partial "newsletter-form.html" . }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<!-- Partnership CTA -->
+<section class="section" style="background:var(--color-surface)">
+  <div class="container" style="max-width:640px;text-align:center">
+    <h2 style="font-size:var(--text-2xl);margin-bottom:12px">Host a True Wellness Event</h2>
+    <p style="color:var(--color-text-light);margin-bottom:24px">Bring a True Wellness event to your school, senior center, library, or organization. We'll work with you to create a meaningful experience for your community.</p>
+    <a href="{{ "/partnership/" | relURL }}" class="btn btn-primary">Request a Partnership Conversation</a>
+  </div>
+</section>
+{{ end }}

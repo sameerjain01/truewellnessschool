@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="page-hero">
+  <div class="container">
+    {{ partial "breadcrumb.html" . }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+  </div>
+</div>
+<div class="section">
+  <div class="container" style="max-width:760px">
+    {{ .Content }}
+  </div>
+</div>
+{{ end }}

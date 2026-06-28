@@ -1,0 +1,76 @@
+{{ define "main" }}
+{{ $pillar := .Params.pillar | default "mental" }}
+<div class="page-hero">
+  <div class="container">
+    {{ partial "breadcrumb.html" . }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+  </div>
+</div>
+
+<section class="section">
+  <div class="container" style="max-width:800px">
+
+    <!-- Definition -->
+    <div class="pillar-definition pillar-definition--{{ $pillar }}" style="margin-bottom:48px">
+      {{ .Params.definition }}
+    </div>
+
+    <!-- Key Components -->
+    {{ with .Params.components }}
+    <div class="content-section">
+      <h2 style="font-size:var(--text-2xl);margin-bottom:16px">Key Components</h2>
+      <div class="components-list">
+        {{ range . }}
+        <span class="component-tag">{{ . }}</span>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    <!-- Recommended Practices -->
+    {{ with .Params.practices }}
+    <div class="content-section">
+      <h2 style="font-size:var(--text-2xl);margin-bottom:16px">Recommended Practices</h2>
+      <div class="components-list">
+        {{ range . }}
+        <span class="component-tag">{{ . }}</span>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    <!-- Topics in True Wellness Programs -->
+    {{ with .Params.topics }}
+    <div class="content-section">
+      <h2 style="font-size:var(--text-2xl);margin-bottom:16px">Topics in True Wellness Programs</h2>
+      <div class="components-list">
+        {{ range . }}
+        <span class="component-tag">{{ . }}</span>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    <!-- Any additional markdown content -->
+    {{ with .Content }}
+    <div class="content-section" style="line-height:1.8;color:var(--color-text-light)">
+      {{ . }}
+    </div>
+    {{ end }}
+
+    <!-- CTAs -->
+    <div class="btn-group" style="margin-top:40px">
+      <a href="{{ "/programs/" | relURL }}"   class="btn btn-primary">Explore Programs</a>
+      <a href="{{ "/assessment/" | relURL }}" class="btn btn-secondary">Take the Assessment</a>
+    </div>
+
+    <!-- Back link -->
+    <div style="margin-top:32px">
+      <a href="{{ "/four-pillars/" | relURL }}" style="font-size:var(--text-sm);color:var(--color-text-light)">← All Four Pillars</a>
+    </div>
+  </div>
+</section>
+
+{{ partial "assessment-cta.html" . }}
+{{ end }}

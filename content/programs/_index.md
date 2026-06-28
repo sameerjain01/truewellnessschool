@@ -1,4 +1,4 @@
 ---
-title: "Wellness Programs for Every Stage"
-description: "Three tailored tracks — Youth, Mid-Age, and Senior — each built on our 4 Pillars framework."
+title: "Wellness Programs"
+description: "True Wellness programs for families, youth, parents, seniors, employers, and children — evidence-informed wellness education across the DMV region."
 ---

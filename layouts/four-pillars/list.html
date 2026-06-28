@@ -1,0 +1,83 @@
+{{ define "main" }}
+<div class="page-hero">
+  <div class="container">
+    <h1>The Four Pillars of Wellness</h1>
+    <p>Real wellness isn't just about exercise or nutrition. It's about how you think, feel, move, rest, relate, and find meaning in everyday life. The Four Pillars framework is the foundation for everything True Wellness teaches.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="pillars-grid">
+      <a href="{{ "/four-pillars/mental/" | relURL }}" class="pillar-card pillar-card--mental">
+        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="24" cy="22" r="13" stroke="#2D3028" stroke-width="2" fill="none"/>
+          <path d="M24 9 C24 9 18 14 18 22 C18 28 21 32 24 35" stroke="#2D3028" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M24 9 C24 9 30 14 30 22 C30 28 27 32 24 35" stroke="#2D3028" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <line x1="24" y1="38" x2="24" y2="42" stroke="#2D3028" stroke-width="2" stroke-linecap="round"/>
+          <line x1="20" y1="42" x2="28" y2="42" stroke="#2D3028" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="pillar-card-name">Mental Wellness</span>
+        <span class="pillar-card-desc">Clear thinking, focus, resilience, and stress management</span>
+        <span class="pillar-card-arrow">Explore →</span>
+      </a>
+      <a href="{{ "/four-pillars/emotional/" | relURL }}" class="pillar-card pillar-card--emotional">
+        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 38 C24 38 8 28 8 18 C8 12 13 8 18 8 C21 8 24 10 24 10 C24 10 27 8 30 8 C35 8 40 12 40 18 C40 28 24 38 24 38Z" stroke="#2D3028" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        </svg>
+        <span class="pillar-card-name">Emotional Wellness</span>
+        <span class="pillar-card-desc">Self-awareness, emotional regulation, and healthy relationships</span>
+        <span class="pillar-card-arrow">Explore →</span>
+      </a>
+      <a href="{{ "/four-pillars/physical/" | relURL }}" class="pillar-card pillar-card--physical">
+        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 8 C18 8 14 12 14 18 C14 26 24 36 24 36 C24 36 34 26 34 18 C34 12 30 8 24 8Z" stroke="#2D3028" stroke-width="2" fill="none"/>
+          <path d="M24 36 L24 42" stroke="#2D3028" stroke-width="2" stroke-linecap="round"/>
+          <path d="M18 40 L30 40" stroke="#2D3028" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="24" cy="18" r="4" stroke="#2D3028" stroke-width="1.5" fill="none"/>
+        </svg>
+        <span class="pillar-card-name">Physical Wellness</span>
+        <span class="pillar-card-desc">Nutrition, movement, sleep, and preventive health habits</span>
+        <span class="pillar-card-arrow">Explore →</span>
+      </a>
+      <a href="{{ "/four-pillars/spiritual/" | relURL }}" class="pillar-card pillar-card--spiritual">
+        <svg class="pillar-card-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 40 C24 40 14 32 14 22 C14 16 18 12 24 10 C30 12 34 16 34 22 C34 32 24 40 24 40Z" stroke="#2D3028" stroke-width="2" fill="none"/>
+          <path d="M24 10 C24 10 20 14 20 20 C20 25 22 28 24 30" stroke="#2D3028" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <line x1="24" y1="6" x2="24" y2="10" stroke="#2D3028" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="pillar-card-name">Spiritual Wellness</span>
+        <span class="pillar-card-desc">Purpose, meaning, mindfulness, and inner connection</span>
+        <span class="pillar-card-arrow">Explore →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Scoring Model -->
+<section class="section" style="background:var(--color-surface)">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Assessment Scoring</span>
+      <h2>How Your Wellness Score Works</h2>
+      <p>Each pillar is scored from 0–100. Your overall wellness score is the combined average of all four pillars.</p>
+    </div>
+    <table class="score-table" style="max-width:480px">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Score Range</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="score-thriving">Thriving</td><td>80–100</td></tr>
+        <tr><td class="score-healthy">Healthy</td><td>60–79</td></tr>
+        <tr><td class="score-at-risk">At Risk</td><td>40–59</td></tr>
+        <tr><td class="score-needs">Needs Support</td><td>0–39</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{{ partial "assessment-cta.html" . }}
+{{ end }}

@@ -1,22 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ .Site.Language.Locale | default "en" }}">
 <head>
   {{ partial "head.html" . }}
 </head>
 <body>
-{{ partial "nav.html" . }}
-{{ block "main" . }}{{ end }}
-{{ partial "footer.html" . }}
-<script>
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.06 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-  const nav = document.getElementById('sitenav');
-  if (nav) window.addEventListener('scroll', () => {
-    nav.style.boxShadow = scrollY > 30 ? '0 2px 20px rgba(0,0,0,.08)' : 'none';
-  });
-</script>
-{{ block "scripts" . }}{{ end }}
+  <a href="#main-content" class="visually-hidden" style="position:fixed;top:8px;left:8px;z-index:9999;background:var(--color-sage-dark);color:var(--color-white);padding:8px 16px;border-radius:4px;font-size:0.875rem;text-decoration:none;">Skip to main content</a>
+  {{ partial "nav.html" . }}
+  <main id="main-content">
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "footer.html" . }}
+
+  <script>
+    (function() {
+      var nav = document.getElementById('site-nav');
+      if (nav) window.addEventListener('scroll', function() {
+        nav.classList.toggle('scrolled', window.scrollY > 20);
+      }, { passive: true });
+
+      var btn  = document.getElementById('nav-hamburger');
+      var menu = document.getElementById('nav-mobile');
+      if (!btn || !menu) return;
+
+      function openMenu() {
+        menu.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        var first = menu.querySelector('a');
+        if (first) first.focus();
+      }
+      function closeMenu() {
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        btn.focus();
+      }
+
+      btn.addEventListener('click', function() {
+        menu.classList.contains('open') ? closeMenu() : openMenu();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
+      });
+      menu.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
+    })();
+  </script>
+
+  {{ block "scripts" . }}{{ end }}
 </body>
 </html>
