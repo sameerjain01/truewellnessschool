@@ -118,8 +118,14 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="p-programs">Programs You're Interested In (optional)</label>
-        <input type="text" id="p-programs" name="programs" placeholder="e.g., Youth Wellness, Senior Programs…">
+        <label>Programs You're Interested In <span style="font-weight:400;color:var(--color-text-light)">(optional — select all that apply)</span></label>
+        <div id="p-programs" style="display:flex;flex-direction:column;gap:8px;margin-top:6px">
+          {{ range slice "Customized wellness workshops" "Youth resilience programs" "Senior wellness education series" "Family wellness events" "Employee wellness sessions" "Community health initiatives" "Curriculum development support" "Wellness assessments for participants" "Program evaluation and impact reporting" }}
+          <label style="display:flex;align-items:center;gap:10px;font-weight:400;cursor:pointer">
+            <input type="checkbox" name="programs" value="{{ . }}" style="width:16px;height:16px;flex-shrink:0"> {{ . }}
+          </label>
+          {{ end }}
+        </div>
       </div>
       <div class="form-group">
         <label for="p-referral">How did you hear about us? <span style="font-weight:400;color:var(--color-text-light)">(optional)</span></label>
@@ -174,8 +180,17 @@
   var submitted = false;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    var emailOk = emailIn && validEmail(emailIn.value.trim());
-    var phoneOk = !phoneIn || validPhone(phoneIn.value.trim());
+    var orgIn     = form.querySelector('[name=org_name]');
+    var nameIn    = form.querySelector('[name=contact_name]');
+    var orgTypeIn = form.querySelector('[name=org_type]');
+    var orgOk     = orgIn && orgIn.value.trim().length >= 2;
+    var nameOk    = nameIn && nameIn.value.trim().length >= 2;
+    var typeOk    = orgTypeIn && orgTypeIn.value !== '';
+    var emailOk   = emailIn && validEmail(emailIn.value.trim());
+    var phoneOk   = !phoneIn || validPhone(phoneIn.value.trim());
+    if (!orgOk)   { orgIn.focus();     return; }
+    if (!nameOk)  { nameIn.focus();    return; }
+    if (!typeOk)  { orgTypeIn.focus(); return; }
     showEmailErr(!emailOk);
     showPhoneErr(!phoneOk);
     if (!emailOk) { emailIn.focus(); return; }
@@ -199,7 +214,7 @@
         email:        form.querySelector('[name=email]').value.trim(),
         phone:        form.querySelector('[name=phone]').value.trim(),
         org_type:     form.querySelector('[name=org_type]').value,
-        programs:     form.querySelector('[name=programs]').value.trim(),
+        programs:     Array.from(form.querySelectorAll('[name=programs]:checked')).map(function(cb){return cb.value;}).join(', '),
         referral:     form.querySelector('[name=referral]').value.trim(),
         message:      form.querySelector('[name=message]').value.trim(),
         website:      form.querySelector('[name=website]').value,

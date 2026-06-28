@@ -1,0 +1,42 @@
+nav_programs: Programs
+nav_four_pillars: Four Pillars
+nav_assessment: Assessment
+nav_events: Events
+nav_resources: Resources
+nav_partnership: Partnership
+nav_about: About
+nav_cta: Take Assessment
+
+footer_tagline: Helping families thrive through Mental, Emotional, Physical, and Spiritual Wellness.
+footer_programs: Programs
+footer_resources: Resources
+footer_company: Company
+footer_legal: Legal
+
+btn_take_assessment: Take Free Assessment
+btn_learn_more: Learn More
+btn_register_interest: Register Interest
+btn_send_message: Send Message
+btn_partner_with_us: Partner With Us
+
+contact_name: Name
+contact_email: Email
+contact_phone: Phone
+contact_phone_optional: (optional)
+contact_program: Program of Interest
+contact_program_optional: (optional)
+contact_subject: Subject
+contact_message: Message
+contact_source: How did you hear about us?
+contact_source_optional: (optional)
+contact_submit: Send Message
+contact_success: "✓ Message sent! We'll be in touch within 2 business days."
+contact_error: Something went wrong. Please try again.
+contact_email_error: Please enter a valid email address.
+contact_phone_error: Please enter a valid phone number.
+
+assessment_take: Take Free Assessment
+assessment_cta_title: Ready to Discover Your Wellness?
+assessment_cta_desc: Take our free Four Pillars Wellness Assessment and get personalized insights in minutes.
+
+disclaimer: True Wellness programs are for educational purposes only and are not a substitute for medical care, diagnosis, or treatment.

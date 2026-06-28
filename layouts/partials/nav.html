@@ -24,12 +24,14 @@
 </nav>
 
 <div class="nav-mobile" id="nav-mobile" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-  <a href="{{ "/programs/" | relURL }}">Programs</a>
-  <a href="{{ "/four-pillars/" | relURL }}">Four Pillars</a>
-  <a href="{{ "/assessment/" | relURL }}">Assessment</a>
-  <a href="{{ "/events/" | relURL }}">Events</a>
-  <a href="{{ "/resources/" | relURL }}">Resources</a>
-  <a href="{{ "/partnership/" | relURL }}">Partnership</a>
-  <a href="{{ "/about/" | relURL }}">About</a>
+  <ul role="list">
+    <li><a href="{{ "/programs/" | relURL }}"{{ if eq $section "programs" }} aria-current="page"{{ end }}>Programs</a></li>
+    <li><a href="{{ "/four-pillars/" | relURL }}"{{ if eq $section "four-pillars" }} aria-current="page"{{ end }}>Four Pillars</a></li>
+    <li><a href="{{ "/assessment/" | relURL }}"{{ if eq $section "assessment" }} aria-current="page"{{ end }}>Assessment</a></li>
+    <li><a href="{{ "/events/" | relURL }}"{{ if eq $section "events" }} aria-current="page"{{ end }}>Events</a></li>
+    <li><a href="{{ "/resources/" | relURL }}"{{ if eq $section "resources" }} aria-current="page"{{ end }}>Resources</a></li>
+    <li><a href="{{ "/partnership/" | relURL }}"{{ if eq $section "partnership" }} aria-current="page"{{ end }}>Partnership</a></li>
+    <li><a href="{{ "/about/" | relURL }}"{{ if eq $section "about" }} aria-current="page"{{ end }}>About</a></li>
+  </ul>
   <a href="{{ "/assessment/" | relURL }}" class="btn btn-primary">Take Free Assessment</a>
 </div>

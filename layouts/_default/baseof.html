@@ -4,12 +4,13 @@
   {{ partial "head.html" . }}
 </head>
 <body>
-  <a href="#main-content" class="visually-hidden" style="position:fixed;top:8px;left:8px;z-index:9999;background:var(--color-sage-dark);color:var(--color-white);padding:8px 16px;border-radius:4px;font-size:0.875rem;text-decoration:none;">Skip to main content</a>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   {{ partial "nav.html" . }}
   <main id="main-content">
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
+  {{ partial "a11y-bar.html" . }}
 
   <script>
     (function() {
@@ -40,7 +41,15 @@
         menu.classList.contains('open') ? closeMenu() : openMenu();
       });
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
+        if (!menu.classList.contains('open')) return;
+        if (e.key === 'Escape') { closeMenu(); return; }
+        // Focus trap — cycle Tab within mobile menu
+        if (e.key === 'Tab') {
+          var focusable = Array.from(menu.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'));
+          var first = focusable[0], last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
       });
       menu.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeMenu); });
     })();

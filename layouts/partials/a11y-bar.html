@@ -1,0 +1,97 @@
+<div class="a11y-bar" role="region" aria-label="Accessibility options">
+  <div class="a11y-panel" id="a11y-panel" role="dialog" aria-label="Accessibility settings">
+
+    <div class="a11y-row">
+      <span class="a11y-label">Text size</span>
+      <div class="a11y-btns" role="group" aria-label="Adjust text size">
+        <button class="a11y-btn" id="a11y-font-sm" aria-label="Smaller text" title="Smaller text">A−</button>
+        <button class="a11y-btn" id="a11y-font-md" aria-label="Reset text size" title="Reset text size">A</button>
+        <button class="a11y-btn" id="a11y-font-lg" aria-label="Larger text" title="Larger text">A+</button>
+      </div>
+    </div>
+
+    <div class="a11y-row">
+      <span class="a11y-label">Appearance</span>
+      <button class="a11y-btn" id="a11y-dark" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle dark mode">🌙</button>
+    </div>
+
+    <div class="a11y-row">
+      <span class="a11y-label">Language</span>
+      <div class="a11y-lang-switcher" role="group" aria-label="Language">
+        <a href="/" hreflang="en" class="a11y-btn lang-switch" id="lang-en" aria-label="English" lang="en">EN</a>
+        <a href="/es/" hreflang="es" class="a11y-btn lang-switch" id="lang-es" aria-label="Español" lang="es">ES</a>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="a11y-toggle" id="a11y-toggle" aria-expanded="false" aria-controls="a11y-panel" aria-label="Open accessibility options">
+    <span aria-hidden="true">⚙</span>
+  </button>
+</div>
+
+<script>
+(function(){
+  var SIZES = { sm: '90%', md: '100%', lg: '115%' };
+  var root  = document.documentElement;
+
+  // Restore saved prefs
+  var savedSize  = localStorage.getItem('tw-font-size') || 'md';
+  var savedDark  = localStorage.getItem('tw-dark') === '1';
+
+  function applySize(k) {
+    root.style.fontSize = SIZES[k] || SIZES.md;
+    ['sm','md','lg'].forEach(function(s) {
+      var b = document.getElementById('a11y-font-' + s);
+      if (b) b.classList.toggle('active', s === k);
+    });
+    localStorage.setItem('tw-font-size', k);
+  }
+
+  function applyDark(on) {
+    root.setAttribute('data-theme', on ? 'dark' : 'light');
+    var btn = document.getElementById('a11y-dark');
+    if (btn) { btn.textContent = on ? '☀' : '🌙'; btn.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+    localStorage.setItem('tw-dark', on ? '1' : '0');
+  }
+
+  applySize(savedSize);
+  applyDark(savedDark);
+
+  // Highlight current language
+  var path = window.location.pathname;
+  var isEs = path.startsWith('/es/') || path === '/es';
+  var enBtn = document.getElementById('lang-en');
+  var esBtn = document.getElementById('lang-es');
+  if (enBtn) enBtn.classList.toggle('active', !isEs);
+  if (esBtn) esBtn.classList.toggle('active', isEs);
+
+  // Panel toggle
+  var toggleBtn = document.getElementById('a11y-toggle');
+  var panel     = document.getElementById('a11y-panel');
+  if (toggleBtn && panel) {
+    toggleBtn.addEventListener('click', function() {
+      var open = panel.classList.toggle('open');
+      toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.a11y-bar')) panel.classList.remove('open');
+    });
+  }
+
+  // Font size buttons
+  ['sm','md','lg'].forEach(function(k) {
+    var b = document.getElementById('a11y-font-' + k);
+    if (b) b.addEventListener('click', function() { applySize(k); });
+  });
+
+  // Dark mode button
+  var darkBtn = document.getElementById('a11y-dark');
+  if (darkBtn) {
+    darkBtn.addEventListener('click', function() {
+      applyDark(root.getAttribute('data-theme') !== 'dark');
+    });
+  }
+})();
+</script>

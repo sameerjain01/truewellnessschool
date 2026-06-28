@@ -1,0 +1,42 @@
+nav_programs: Programas
+nav_four_pillars: Cuatro Pilares
+nav_assessment: Evaluación
+nav_events: Eventos
+nav_resources: Recursos
+nav_partnership: Alianzas
+nav_about: Nosotros
+nav_cta: Tomar Evaluación
+
+footer_tagline: Ayudando a las familias a prosperar a través del Bienestar Mental, Emocional, Físico y Espiritual.
+footer_programs: Programas
+footer_resources: Recursos
+footer_company: Empresa
+footer_legal: Legal
+
+btn_take_assessment: Evaluación Gratuita
+btn_learn_more: Saber Más
+btn_register_interest: Registrar Interés
+btn_send_message: Enviar Mensaje
+btn_partner_with_us: Ser Aliado
+
+contact_name: Nombre
+contact_email: Correo electrónico
+contact_phone: Teléfono
+contact_phone_optional: (opcional)
+contact_program: Programa de interés
+contact_program_optional: (opcional)
+contact_subject: Asunto
+contact_message: Mensaje
+contact_source: ¿Cómo nos conoció?
+contact_source_optional: (opcional)
+contact_submit: Enviar Mensaje
+contact_success: "✓ ¡Mensaje enviado! Nos pondremos en contacto en un plazo de 2 días hábiles."
+contact_error: Algo salió mal. Por favor, inténtelo de nuevo.
+contact_email_error: Por favor, ingrese un correo electrónico válido.
+contact_phone_error: Por favor, ingrese un número de teléfono válido.
+
+assessment_take: Evaluación Gratuita
+assessment_cta_title: ¿Listo para Descubrir su Bienestar?
+assessment_cta_desc: Tome nuestra Evaluación de los Cuatro Pilares del Bienestar y obtenga información personalizada en minutos.
+
+disclaimer: Los programas de True Wellness son únicamente con fines educativos y no sustituyen la atención médica, el diagnóstico ni el tratamiento.

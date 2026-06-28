@@ -1,7 +1,21 @@
 baseURL = 'https://truewellnessschool.com/'
-locale = 'en-us'
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = false
 title = 'True Wellness'
 enableRobotsTXT = true
+
+[languages]
+  [languages.en]
+    languageName = 'English'
+    languageCode = 'en-US'
+    weight = 1
+    title = 'True Wellness'
+  [languages.es]
+    languageName = 'Español'
+    languageCode = 'es'
+    weight = 2
+    title = 'True Wellness'
+    contentDir = 'content/es'
 
 [security.funcs]
   getenv = ['^HUGO_', '^CI$', '^TURNSTILE_SITE_KEY$']
