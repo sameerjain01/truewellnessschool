@@ -67,8 +67,11 @@
 (function(){
   var form = document.getElementById('contact-form');
   if (!form) return;
+  var submitted = false;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+    if (submitted) return;
+    submitted = true;
     var btn = form.querySelector('button[type=submit]');
     btn.disabled = true; btn.textContent = 'Sending…';
     var ts = form.querySelector('.cf-turnstile');
