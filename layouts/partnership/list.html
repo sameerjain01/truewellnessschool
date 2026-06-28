@@ -94,11 +94,13 @@
       </div>
       <div class="form-group">
         <label for="p-email">Email</label>
-        <input type="email" id="p-email" name="email" placeholder="your@email.com" required>
+        <input type="email" id="p-email" name="email" placeholder="your@email.com" required autocomplete="email">
+        <p id="p-email-err" role="alert" style="display:none;font-size:var(--text-sm);color:#c0392b;margin-top:4px">Please enter a valid email address.</p>
       </div>
       <div class="form-group">
-        <label for="p-phone">Phone (optional)</label>
-        <input type="tel" id="p-phone" name="phone" placeholder="(555) 000-0000">
+        <label for="p-phone">Phone <span style="font-weight:400;color:var(--color-text-light)">(optional)</span></label>
+        <input type="tel" id="p-phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel">
+        <p id="p-phone-err" role="alert" style="display:none;font-size:var(--text-sm);color:#c0392b;margin-top:4px">Please enter a valid phone number.</p>
       </div>
       <div class="form-group">
         <label for="org-type">Organization Type</label>
@@ -120,8 +122,17 @@
         <input type="text" id="p-programs" name="programs" placeholder="e.g., Youth Wellness, Senior Programs…">
       </div>
       <div class="form-group">
-        <label for="p-referral">How did you hear about us?</label>
-        <input type="text" id="p-referral" name="referral" placeholder="Google, word of mouth, social media…">
+        <label for="p-referral">How did you hear about us? <span style="font-weight:400;color:var(--color-text-light)">(optional)</span></label>
+        <select id="p-referral" name="referral">
+          <option value="">— Select one —</option>
+          <option value="Google / Search">Google / Search</option>
+          <option value="Instagram">Instagram</option>
+          <option value="Facebook">Facebook</option>
+          <option value="Friend or Colleague">Friend or Colleague</option>
+          <option value="School or Employer">School or Employer</option>
+          <option value="Event">Event</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="p-message">Tell us more about your organization and needs</label>
@@ -138,11 +149,37 @@
 {{ define "scripts" }}
 <script>
 (function(){
-  var form = document.getElementById('partner-form');
+  function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function validPhone(v) { return !v || /^[\d\s()\-+.]{7,20}$/.test(v); }
+
+  var form     = document.getElementById('partner-form');
+  var emailIn  = document.getElementById('p-email');
+  var emailErr = document.getElementById('p-email-err');
+  var phoneIn  = document.getElementById('p-phone');
+  var phoneErr = document.getElementById('p-phone-err');
   if (!form) return;
+
+  function showEmailErr(s) { if (emailErr) emailErr.style.display = s ? 'block' : 'none'; }
+  function showPhoneErr(s) { if (phoneErr) phoneErr.style.display = s ? 'block' : 'none'; }
+
+  if (emailIn) {
+    emailIn.addEventListener('blur', function() { showEmailErr(!validEmail(this.value.trim())); });
+    emailIn.addEventListener('input', function() { if (emailErr && emailErr.style.display !== 'none') showEmailErr(!validEmail(this.value.trim())); });
+  }
+  if (phoneIn) {
+    phoneIn.addEventListener('blur', function() { showPhoneErr(!validPhone(this.value.trim())); });
+    phoneIn.addEventListener('input', function() { if (phoneErr && phoneErr.style.display !== 'none') showPhoneErr(!validPhone(this.value.trim())); });
+  }
+
   var submitted = false;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+    var emailOk = emailIn && validEmail(emailIn.value.trim());
+    var phoneOk = !phoneIn || validPhone(phoneIn.value.trim());
+    showEmailErr(!emailOk);
+    showPhoneErr(!phoneOk);
+    if (!emailOk) { emailIn.focus(); return; }
+    if (!phoneOk) { phoneIn.focus(); return; }
     if (submitted) return;
     submitted = true;
     var btn = form.querySelector('button[type=submit]');
