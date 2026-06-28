@@ -3,6 +3,9 @@ locale = 'en-us'
 title = 'True Wellness'
 enableRobotsTXT = true
 
+[security.funcs]
+  getenv = ['^HUGO_', '^CI$', '^TURNSTILE_SITE_KEY$']
+
 [params]
   description = "True Wellness is a DMV holistic wellness education company helping families, youth, seniors, and communities build healthier lives through the Four Pillars of Wellness."
   keywords    = "holistic wellness DMV, family wellness programs Virginia, youth wellness programs Maryland, senior wellness DC, wellness education Washington DC, wellness workshops near me"
