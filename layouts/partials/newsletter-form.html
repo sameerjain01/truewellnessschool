@@ -1,5 +1,55 @@
-<form class="newsletter-form" action="#" method="post" aria-label="Newsletter signup">
+{{ $siteKey := os.Getenv "TURNSTILE_SITE_KEY" }}
+<form class="newsletter-form" id="nl-form" aria-label="Newsletter signup" novalidate>
+  <input type="text" name="website" style="position:absolute;left:-9999px;pointer-events:none" tabindex="-1" autocomplete="off" aria-hidden="true">
   <label for="nl-email" class="visually-hidden">Email address</label>
-  <input type="email" id="nl-email" name="email" placeholder="your@email.com" aria-label="Email address" required>
+  <input type="email" id="nl-email" name="email" placeholder="your@email.com" required autocomplete="email">
+  {{ if $siteKey }}<div class="cf-turnstile" data-sitekey="{{ $siteKey }}" data-size="invisible"></div>{{ end }}
   <button type="submit" class="btn btn-primary">Join the Newsletter</button>
 </form>
+<p id="nl-msg" role="alert" style="display:none;margin-top:12px;font-weight:500"></p>
+<script>
+(function(){
+  var form = document.getElementById('nl-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!document.getElementById('nl-email').value.trim()) return;
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var ts = form.querySelector('.cf-turnstile');
+    if (ts && window.turnstile) {
+      turnstile.execute(ts, { callback: send });
+    } else { send(''); }
+  });
+  function send(token) {
+    fetch('/submit', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        type: 'newsletter',
+        email: document.getElementById('nl-email').value.trim(),
+        website: form.querySelector('[name=website]').value,
+        token: token
+      })
+    }).then(function(r){ return r.json(); }).then(show).catch(function(){ show({success:false}); });
+  }
+  function show(d) {
+    var msg = document.getElementById('nl-msg');
+    var btn = form.querySelector('button[type=submit]');
+    if (d.success || d.error === 'duplicate') {
+      msg.style.color = 'var(--color-sage-dark)';
+      msg.textContent = d.error === 'duplicate'
+        ? '✓ You’re already subscribed — welcome back!'
+        : '✓ You’re subscribed! Welcome to True Wellness.';
+      msg.style.display = 'block';
+      form.style.display = 'none';
+    } else {
+      msg.style.color = '#c0392b';
+      msg.textContent = 'Something went wrong. Please try again.';
+      msg.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Join the Newsletter';
+      var ts = form.querySelector('.cf-turnstile');
+      if (ts && window.turnstile) turnstile.reset(ts);
+    }
+  }
+})();
+</script>

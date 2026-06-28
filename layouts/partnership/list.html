@@ -81,7 +81,9 @@
       <p>Tell us about your organization and we'll follow up within 2 business days.</p>
     </div>
 
-    <form class="contact-form" onsubmit="handlePartnerInquiry(event)" aria-label="Partnership inquiry form" style="max-width:100%">
+    {{ $siteKey := os.Getenv "TURNSTILE_SITE_KEY" }}
+    <form class="contact-form" id="partner-form" aria-label="Partnership inquiry form" style="max-width:100%" novalidate>
+      <input type="text" name="website" style="position:absolute;left:-9999px;pointer-events:none" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form-group">
         <label for="org-name">Organization Name</label>
         <input type="text" id="org-name" name="org_name" placeholder="Your organization" required>
@@ -125,8 +127,9 @@
         <label for="p-message">Tell us more about your organization and needs</label>
         <textarea id="p-message" name="message" rows="4" placeholder="What's your community, how many people you serve, what wellness needs you have…"></textarea>
       </div>
+      {{ if $siteKey }}<div class="cf-turnstile" data-sitekey="{{ $siteKey }}" data-size="invisible"></div>{{ end }}
       <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Request a Partnership Conversation</button>
-      <p id="partner-success" style="display:none;color:var(--color-sage-dark);font-weight:500;text-align:center;margin-top:16px">✓ Thank you! We'll be in touch within 2 business days.</p>
+      <p id="partner-msg" role="alert" style="display:none;font-weight:500;text-align:center;margin-top:16px"></p>
     </form>
   </div>
 </section>
@@ -134,10 +137,53 @@
 
 {{ define "scripts" }}
 <script>
-function handlePartnerInquiry(e) {
-  e.preventDefault();
-  e.target.querySelector('button').style.display = 'none';
-  document.getElementById('partner-success').style.display = 'block';
-}
+(function(){
+  var form = document.getElementById('partner-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var ts = form.querySelector('.cf-turnstile');
+    if (ts && window.turnstile) {
+      turnstile.execute(ts, { callback: send });
+    } else { send(''); }
+  });
+  function send(token) {
+    fetch('/submit', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        type:         'partnership',
+        org_name:     form.querySelector('[name=org_name]').value.trim(),
+        contact_name: form.querySelector('[name=contact_name]').value.trim(),
+        email:        form.querySelector('[name=email]').value.trim(),
+        phone:        form.querySelector('[name=phone]').value.trim(),
+        org_type:     form.querySelector('[name=org_type]').value,
+        programs:     form.querySelector('[name=programs]').value.trim(),
+        referral:     form.querySelector('[name=referral]').value.trim(),
+        message:      form.querySelector('[name=message]').value.trim(),
+        website:      form.querySelector('[name=website]').value,
+        token: token
+      })
+    }).then(function(r){ return r.json(); }).then(show).catch(function(){ show({success:false}); });
+  }
+  function show(d) {
+    var msg = document.getElementById('partner-msg');
+    var btn = form.querySelector('button[type=submit]');
+    if (d.success) {
+      msg.style.color = 'var(--color-sage-dark)';
+      msg.textContent = '✓ Thank you! We\'ll be in touch within 2 business days.';
+      msg.style.display = 'block';
+      btn.style.display = 'none';
+    } else {
+      msg.style.color = '#c0392b';
+      msg.textContent = 'Something went wrong. Please try again.';
+      msg.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Request a Partnership Conversation';
+      var ts = form.querySelector('.cf-turnstile');
+      if (ts && window.turnstile) turnstile.reset(ts);
+    }
+  }
+})();
 </script>
 {{ end }}
