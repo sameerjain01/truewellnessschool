@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div class="page-hero">
+  <div class="container">
+    {{ partial "breadcrumb.html" . }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+  </div>
+</div>
+<section class="section">
+  <div class="container" style="max-width:47.5rem">
+    <div style="display:flex;flex-wrap:wrap;gap:0.625rem;margin-bottom:2rem">
+      {{ with .Params.pillar }}<span class="tag" style="background:var(--pillar-{{ . }})">{{ . | title }} Wellness</span>{{ end }}
+      {{ with .Params.category }}<span class="tag">{{ . }}</span>{{ end }}
+      {{ with .Params.audience }}<span class="tag">{{ . }}</span>{{ end }}
+    </div>
+    <div style="line-height:1.85;color:var(--color-text-light)">
+      {{ .Content }}
+    </div>
+    <div style="margin-top:3rem;padding:1.75rem;background:var(--color-surface);border-radius:var(--radius-card);border:1px solid var(--color-border)">
+      <p style="font-size:var(--text-base);color:var(--color-text);margin-bottom:1rem">Ready to go deeper? Take the Free Wellness Assessment or explore our programs.</p>
+      <div class="btn-group">
+        <a href="{{ "/assessment/" | relURL }}" class="btn btn-primary">Take the Free Assessment</a>
+        <a href="{{ "/programs/"   | relURL }}" class="btn btn-secondary">Explore Programs</a>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem">
+      <a href="{{ "/resources/" | relURL }}" style="font-size:var(--text-sm);color:var(--color-text-light)">← All Resources</a>
+    </div>
+  </div>
+</section>
+{{ end }}

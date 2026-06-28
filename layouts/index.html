@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="hero-illustration">
-        <img src="{{ "/images/hero-logo.png" | relURL }}" alt="True Wellness School" style="width:340px;height:auto;max-width:100%;">
+        <img src="{{ "/images/hero-logo.png" | relURL }}" alt="True Wellness School" style="max-width:min(21.25rem,100%);height:auto">
       </div>
     </div>
   </div>
@@ -144,7 +144,7 @@
         <a href="{{ "/programs/seniors/" | relURL }}" class="program-card-link">Learn more →</a>
       </div>
     </div>
-    <div style="margin-top:32px;text-align:center">
+    <div style="margin-top:2rem;text-align:center">
       <a href="{{ "/programs/" | relURL }}" class="btn btn-secondary">View All Programs</a>
     </div>
   </div>
@@ -193,7 +193,7 @@
         {{ end }}
       {{ end }}
     </div>
-    <div style="margin-top:32px;text-align:center">
+    <div style="margin-top:2rem;text-align:center">
       <a href="{{ "/events/" | relURL }}" class="btn btn-secondary">View All Events</a>
     </div>
   </div>
@@ -201,20 +201,20 @@
 
 <!-- ── COMMUNITY CTA ─────────────────────────────────── -->
 <section class="section" style="background:var(--color-surface)">
-  <div class="container" style="max-width:640px;text-align:center">
+  <div class="container" style="max-width:40rem;text-align:center">
     <span class="eyebrow">Community</span>
     <h2>Join the True Wellness Community</h2>
-    <p style="color:var(--color-text-light);font-size:var(--text-lg);font-weight:300;margin:16px 0 28px">Connect with families, educators, wellness professionals, and community organizations across the DMV region. Get free resources, event invitations, and wellness tips delivered weekly.</p>
+    <p style="color:var(--color-text-light);font-size:var(--text-lg);font-weight:300;margin:1rem 0 1.75rem">Connect with families, educators, wellness professionals, and community organizations across the DMV region. Get free resources, event invitations, and wellness tips delivered weekly.</p>
     {{ partial "newsletter-form.html" . }}
   </div>
 </section>
 
 <!-- ── PARTNERS ──────────────────────────────────────── -->
 <section class="section">
-  <div class="container" style="text-align:center;max-width:640px">
+  <div class="container" style="text-align:center;max-width:40rem">
     <span class="eyebrow">Partnerships</span>
     <h2>Bringing Wellness to Your Community</h2>
-    <p style="color:var(--color-text-light);font-size:var(--text-lg);font-weight:300;margin:16px 0 28px">We partner with senior centers, libraries, and community organizations to bring wellness education directly to the people who need it most.</p>
+    <p style="color:var(--color-text-light);font-size:var(--text-lg);font-weight:300;margin:1rem 0 1.75rem">We partner with senior centers, libraries, and community organizations to bring wellness education directly to the people who need it most.</p>
     <a href="{{ "/partnership/" | relURL }}" class="btn btn-primary">Explore Partnerships</a>
   </div>
 </section>

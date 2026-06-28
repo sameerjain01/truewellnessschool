@@ -8,10 +8,10 @@
 </div>
 
 <section class="section">
-  <div class="container" style="max-width:800px">
+  <div class="container" style="max-width:50rem">
 
     <!-- Program meta tags -->
-    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px">
+    <div style="display:flex;flex-wrap:wrap;gap:0.625rem;margin-bottom:2.5rem">
       {{ with .Params.audience  }}<span class="tag">{{ . }}</span>{{ end }}
       {{ with .Params.format    }}<span class="tag">{{ . }}</span>{{ end }}
       {{ with .Params.duration  }}<span class="tag">{{ . }}</span>{{ end }}
@@ -20,10 +20,10 @@
     <!-- Outcomes -->
     {{ with .Params.outcomes }}
     <div class="content-section">
-      <h2 style="font-size:var(--text-2xl);margin-bottom:20px">What You'll Gain</h2>
-      <ul style="display:flex;flex-direction:column;gap:10px">
+      <h2 style="font-size:var(--text-2xl);margin-bottom:1.25rem">What You'll Gain</h2>
+      <ul style="display:flex;flex-direction:column;gap:0.625rem">
         {{ range . }}
-        <li style="font-size:var(--text-base);color:var(--color-text-light);padding-left:24px;position:relative">
+        <li style="font-size:var(--text-base);color:var(--color-text-light);padding-left:1.5rem;position:relative">
           <span style="position:absolute;left:0;color:var(--color-sage-dark);font-weight:700">✓</span>
           {{ . }}
         </li>
@@ -35,7 +35,7 @@
     <!-- Curriculum -->
     {{ with .Params.curriculum }}
     <div class="content-section">
-      <h2 style="font-size:var(--text-2xl);margin-bottom:20px">Program Curriculum</h2>
+      <h2 style="font-size:var(--text-2xl);margin-bottom:1.25rem">Program Curriculum</h2>
       <div class="curriculum-list">
         {{ range $i, $week := . }}
         <div class="curriculum-item">
@@ -68,7 +68,7 @@
       </div>
     </div>
 
-    <div style="margin-top:16px">
+    <div style="margin-top:1rem">
       <a href="{{ "/programs/" | relURL }}" style="font-size:var(--text-sm);color:var(--color-text-light)">← All Programs</a>
     </div>
   </div>

@@ -10,7 +10,7 @@
   <div class="container">
 
     <!-- Event category tags -->
-    <div class="components-list" style="margin-bottom:40px">
+    <div class="components-list" style="margin-bottom:2.5rem">
       <span class="component-tag">Family Wellness Workshops</span>
       <span class="component-tag">Youth Resilience Sessions</span>
       <span class="component-tag">Senior Wellness Classes</span>
@@ -41,9 +41,9 @@
       {{ end }}
     </div>
     {{ else }}
-    <div class="card" style="text-align:center;padding:60px 40px">
-      <h2 style="font-size:var(--text-2xl);margin-bottom:12px">Events Coming Soon</h2>
-      <p style="color:var(--color-text-light);margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto">We are scheduling workshops, wellness fairs, and community events across the DMV region. Join our newsletter to be the first to know.</p>
+    <div class="card" style="text-align:center;padding:3.75rem 2.5rem">
+      <h2 style="font-size:var(--text-2xl);margin-bottom:0.75rem">Events Coming Soon</h2>
+      <p style="color:var(--color-text-light);margin-bottom:1.5rem;max-width:30rem;margin-left:auto;margin-right:auto">We are scheduling workshops, wellness fairs, and community events across the DMV region. Join our newsletter to be the first to know.</p>
       {{ partial "newsletter-form.html" . }}
     </div>
     {{ end }}
@@ -52,9 +52,9 @@
 
 <!-- Partnership CTA -->
 <section class="section" style="background:var(--color-surface)">
-  <div class="container" style="max-width:640px;text-align:center">
-    <h2 style="font-size:var(--text-2xl);margin-bottom:12px">Host a True Wellness Event</h2>
-    <p style="color:var(--color-text-light);margin-bottom:24px">Bring a True Wellness event to your school, senior center, library, or organization. We'll work with you to create a meaningful experience for your community.</p>
+  <div class="container" style="max-width:40rem;text-align:center">
+    <h2 style="font-size:var(--text-2xl);margin-bottom:0.75rem">Host a True Wellness Event</h2>
+    <p style="color:var(--color-text-light);margin-bottom:1.5rem">Bring a True Wellness event to your school, senior center, library, or organization. We'll work with you to create a meaningful experience for your community.</p>
     <a href="{{ "/partnership/" | relURL }}" class="btn btn-primary">Request a Partnership Conversation</a>
   </div>
 </section>

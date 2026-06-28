@@ -7,18 +7,18 @@
   </div>
 </div>
 <section class="section">
-  <div class="container" style="max-width:760px">
-    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px">
+  <div class="container" style="max-width:47.5rem">
+    <div style="display:flex;flex-wrap:wrap;gap:0.625rem;margin-bottom:2rem">
       <span class="tag">{{ .Date.Format "January 2, 2006" }}</span>
       {{ with .Params.location }}<span class="tag">{{ . }}</span>{{ end }}
       {{ with .Params.audience }}<span class="tag">{{ . }}</span>{{ end }}
       {{ with .Params.category }}<span class="tag">{{ . }}</span>{{ end }}
     </div>
     {{ .Content }}
-    <div style="margin-top:32px">
+    <div style="margin-top:2rem">
       <a href="{{ with .Params.registration_url }}{{ . }}{{ else }}{{ printf "%s?%s" ("/contact/" | relURL) (querify "program" .Title) | safeURL }}{{ end }}" class="btn btn-primary">Register for This Event</a>
     </div>
-    <div style="margin-top:20px">
+    <div style="margin-top:1.25rem">
       <a href="{{ "/events/" | relURL }}" style="font-size:var(--text-sm);color:var(--color-text-light)">← All Events</a>
     </div>
   </div>

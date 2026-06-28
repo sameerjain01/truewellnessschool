@@ -8,7 +8,7 @@
 
 <section class="section">
   <div class="container">
-    <div class="grid-2" style="gap:60px;align-items:start">
+    <div class="grid-2" style="gap:3.75rem;align-items:start">
       <div>
         {{ $siteKey := os.Getenv "TURNSTILE_SITE_KEY" }}
         <form class="contact-form" id="contact-form" aria-label="Contact form" novalidate>
@@ -20,12 +20,12 @@
           <div class="form-group">
             <label for="c-email">Email</label>
             <input type="email" id="c-email" name="email" placeholder="your@email.com" required autocomplete="email">
-            <p id="c-email-err" role="alert" style="display:none;font-size:var(--text-sm);color:#c0392b;margin-top:4px">Please enter a valid email address.</p>
+            <p id="c-email-err" role="alert" style="display:none;font-size:var(--text-sm);color:#c0392b;margin-top:0.25rem">Please enter a valid email address.</p>
           </div>
           <div class="form-group">
             <label for="c-phone">Phone <span style="font-weight:400;color:var(--color-text-light)">(optional)</span></label>
             <input type="tel" id="c-phone" name="phone" placeholder="(555) 555-5555" autocomplete="tel">
-            <p id="c-phone-err" role="alert" style="display:none;font-size:var(--text-sm);color:#c0392b;margin-top:4px">Please enter a valid phone number.</p>
+            <p id="c-phone-err" role="alert" style="display:none;font-size:var(--text-sm);color:#c0392b;margin-top:0.25rem">Please enter a valid phone number.</p>
           </div>
           <div class="form-group">
             <label for="c-program">Program of Interest <span style="font-weight:400;color:var(--color-text-light)">(optional)</span></label>
@@ -67,29 +67,29 @@
           </div>
           {{ if $siteKey }}<div class="cf-turnstile" data-sitekey="{{ $siteKey }}" data-size="invisible"></div>{{ end }}
           <button type="submit" class="btn btn-primary">Send Message</button>
-          <p id="contact-msg" role="alert" style="display:none;font-weight:500;margin-top:16px"></p>
+          <p id="contact-msg" role="alert" style="display:none;font-weight:500;margin-top:1rem"></p>
         </form>
       </div>
 
       <div>
-        <div style="margin-bottom:32px">
-          <p class="eyebrow" style="margin-bottom:8px">Response Time</p>
+        <div style="margin-bottom:2rem">
+          <p class="eyebrow" style="margin-bottom:0.5rem">Response Time</p>
           <p style="font-size:var(--text-base);color:var(--color-text-light)">We respond to all inquiries within 2 business days.</p>
         </div>
-        <div style="margin-bottom:32px">
-          <p class="eyebrow" style="margin-bottom:8px">Region Served</p>
+        <div style="margin-bottom:2rem">
+          <p class="eyebrow" style="margin-bottom:0.5rem">Region Served</p>
           <p style="font-size:var(--text-base);color:var(--color-text-light)">Washington DC · Maryland · Virginia</p>
         </div>
-        <div style="margin-bottom:32px">
-          <p class="eyebrow" style="margin-bottom:8px">Follow Us</p>
+        <div style="margin-bottom:2rem">
+          <p class="eyebrow" style="margin-bottom:0.5rem">Follow Us</p>
           <div class="btn-group">
-            <a href="{{ .Site.Params.instagram }}" target="_blank" rel="noopener" class="btn btn-secondary" style="padding:10px 20px;font-size:var(--text-sm)">Instagram</a>
-            <a href="{{ .Site.Params.facebook }}"  target="_blank" rel="noopener" class="btn btn-secondary" style="padding:10px 20px;font-size:var(--text-sm)">Facebook</a>
+            <a href="{{ .Site.Params.instagram }}" target="_blank" rel="noopener" class="btn btn-secondary" style="padding:0.625rem 1.25rem;font-size:var(--text-sm)">Instagram</a>
+            <a href="{{ .Site.Params.facebook }}"  target="_blank" rel="noopener" class="btn btn-secondary" style="padding:0.625rem 1.25rem;font-size:var(--text-sm)">Facebook</a>
           </div>
         </div>
         <div>
-          <p class="eyebrow" style="margin-bottom:8px">Partnership Inquiries</p>
-          <p style="font-size:var(--text-sm);color:var(--color-text-light);margin-bottom:12px">Looking to bring True Wellness to your school, senior center, or organization?</p>
+          <p class="eyebrow" style="margin-bottom:0.5rem">Partnership Inquiries</p>
+          <p style="font-size:var(--text-sm);color:var(--color-text-light);margin-bottom:0.75rem">Looking to bring True Wellness to your school, senior center, or organization?</p>
           <a href="{{ "/partnership/" | relURL }}" class="btn btn-secondary">Partner With Us</a>
         </div>
       </div>
