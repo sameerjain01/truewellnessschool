@@ -19,7 +19,29 @@
           </div>
           <div class="form-group">
             <label for="c-email">Email</label>
-            <input type="email" id="c-email" name="email" placeholder="your@email.com" required>
+            <input type="email" id="c-email" name="email" placeholder="your@email.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="c-phone">Phone <span style="font-weight:400;color:var(--color-text-light)">(optional)</span></label>
+            <input type="tel" id="c-phone" name="phone" placeholder="(555) 555-5555" autocomplete="tel">
+            <p id="c-phone-err" role="alert" style="display:none;font-size:var(--text-sm);color:#c0392b;margin-top:4px">Please enter a valid phone number.</p>
+          </div>
+          <div class="form-group">
+            <label for="c-program">Program of Interest <span style="font-weight:400;color:var(--color-text-light)">(optional)</span></label>
+            <select id="c-program" name="program">
+              <option value="">— Select a program —</option>
+              <option value="Free Wellness Assessment">Free Wellness Assessment</option>
+              <option value="Youth Wellness &amp; Resilience">Youth Wellness &amp; Resilience</option>
+              <option value="Family Wellness Foundations">Family Wellness Foundations</option>
+              <option value="Senior Wellness &amp; Healthy Aging">Senior Wellness &amp; Healthy Aging</option>
+              <option value="Parent Wellness Program">Parent Wellness Program</option>
+              <option value="Corporate Wellness Programs">Corporate Wellness Programs</option>
+              <option value="Summer Wellness Camp">Summer Wellness Camp</option>
+              <option value="Free Community Membership">Free Community Membership</option>
+              <option value="Wellness Membership">Wellness Membership</option>
+              <option value="Premium Membership">Premium Membership</option>
+              <option value="General Inquiry">General Inquiry</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="c-subject">Subject</label>
@@ -28,6 +50,19 @@
           <div class="form-group">
             <label for="c-message">Message</label>
             <textarea id="c-message" name="message" rows="5" placeholder="Tell us what's on your mind…" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="c-source">How did you hear about us? <span style="font-weight:400;color:var(--color-text-light)">(optional)</span></label>
+            <select id="c-source" name="source">
+              <option value="">— Select one —</option>
+              <option value="Google / Search">Google / Search</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Friend or Family">Friend or Family</option>
+              <option value="School or Employer">School or Employer</option>
+              <option value="Event">Event</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
           {{ if $siteKey }}<div class="cf-turnstile" data-sitekey="{{ $siteKey }}" data-size="invisible"></div>{{ end }}
           <button type="submit" class="btn btn-primary">Send Message</button>
@@ -65,11 +100,42 @@
 {{ define "scripts" }}
 <script>
 (function(){
-  var form = document.getElementById('contact-form');
+  // Pre-fill from URL params (e.g. /contact/?program=Youth+Wellness)
+  var params = new URLSearchParams(location.search);
+  var programParam = params.get('program');
+  if (programParam) {
+    var sel = document.getElementById('c-program');
+    if (sel) {
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value.toLowerCase() === programParam.toLowerCase()) {
+          sel.selectedIndex = i; break;
+        }
+      }
+    }
+    var subj = document.getElementById('c-subject');
+    if (subj && !subj.value) subj.value = 'Interest in ' + programParam;
+  }
+
+  function validPhone(v) { return !v || /^[\d\s()\-+.]{7,20}$/.test(v); }
+
+  var form     = document.getElementById('contact-form');
+  var phoneIn  = document.getElementById('c-phone');
+  var phoneErr = document.getElementById('c-phone-err');
   if (!form) return;
+
+  if (phoneIn) {
+    phoneIn.addEventListener('blur', function() {
+      phoneErr.style.display = validPhone(this.value.trim()) ? 'none' : 'block';
+    });
+  }
+
   var submitted = false;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+    if (phoneIn && !validPhone(phoneIn.value.trim())) {
+      phoneErr.style.display = 'block'; phoneIn.focus(); return;
+    }
+    if (phoneErr) phoneErr.style.display = 'none';
     if (submitted) return;
     submitted = true;
     var btn = form.querySelector('button[type=submit]');
@@ -83,13 +149,16 @@
     fetch('/submit', {
       method: 'POST', headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
-        type: 'contact',
+        type:    'contact',
         name:    form.querySelector('[name=name]').value.trim(),
         email:   form.querySelector('[name=email]').value.trim(),
+        phone:   form.querySelector('[name=phone]').value.trim(),
+        program: form.querySelector('[name=program]').value,
         subject: form.querySelector('[name=subject]').value.trim(),
         message: form.querySelector('[name=message]').value.trim(),
+        source:  form.querySelector('[name=source]').value,
         website: form.querySelector('[name=website]').value,
-        token: token
+        token:   token
       })
     }).then(function(r){ return r.json(); }).then(show).catch(function(){ show({success:false}); });
   }
